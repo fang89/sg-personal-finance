@@ -1,0 +1,1105 @@
+<title>The Boring SG Money Stack</title>
+<style>
+/* ============================================================
+   Tokens — light is the base; dark redefines tokens only.
+   ============================================================ */
+:root {
+  --paper:        #F4F5F1;
+  --raised:       #FFFFFF;
+  --band:         #FAFBF7;
+  --ink:          #151E19;
+  --ink-soft:     #4E5A53;
+  --ink-faint:    #7C877F;
+  --rule:         #D5D9D0;
+  --rule-strong:  #B3BAAF;
+  --accent:       #1B5E4B;
+  --accent-ink:   #16513F;
+  --accent-tint:  #E5EDE8;
+  --caution:      #8A5E14;
+  --caution-tint: #F6EEDC;
+  --shadow:       0 1px 2px rgba(21,30,25,.05), 0 8px 24px -16px rgba(21,30,25,.28);
+
+  --f-text: "Charter", "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, "Times New Roman", serif;
+  --f-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
+  --f-ui:   system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --measure: 68ch;
+  --col: 940px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:        #0F1310;
+    --raised:       #161B17;
+    --band:         #131813;
+    --ink:          #E6EAE1;
+    --ink-soft:     #98A49B;
+    --ink-faint:    #6E7A71;
+    --rule:         #29312A;
+    --rule-strong:  #3C463D;
+    --accent:       #6FC29C;
+    --accent-ink:   #8FD3B2;
+    --accent-tint:  #16261F;
+    --caution:      #D6A65E;
+    --caution-tint: #262013;
+    --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --paper:        #0F1310;
+  --raised:       #161B17;
+  --band:         #131813;
+  --ink:          #E6EAE1;
+  --ink-soft:     #98A49B;
+  --ink-faint:    #6E7A71;
+  --rule:         #29312A;
+  --rule-strong:  #3C463D;
+  --accent:       #6FC29C;
+  --accent-ink:   #8FD3B2;
+  --accent-tint:  #16261F;
+  --caution:      #D6A65E;
+  --caution-tint: #262013;
+  --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-text);
+  font-size: 17px;
+  line-height: 1.62;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; font-weight: 600; }
+p, ul, ol { margin: 0; }
+strong { font-weight: 700; }
+code, .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+code { font-size: .88em; background: var(--band); border: 1px solid var(--rule); border-radius: 3px; padding: .05em .3em; }
+
+.mono-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+/* ============================================================
+   Shell
+   ============================================================ */
+.wrap { max-width: var(--col); margin: 0 auto; padding: 0 24px; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-in {
+  max-width: var(--col); margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+.brand {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink); font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.brand .dot { color: var(--accent); }
+.topnav { display: flex; gap: 18px; margin-left: auto; align-items: center; }
+.topnav a {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
+}
+.topnav a:hover { color: var(--accent-ink); }
+#themeBtn {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-soft); background: transparent; border: 1px solid var(--rule);
+  border-radius: 3px; padding: 4px 8px; cursor: pointer;
+}
+#themeBtn:hover { color: var(--ink); border-color: var(--rule-strong); }
+@media (max-width: 720px) { .topnav a { display: none; } }
+
+/* ============================================================
+   Masthead
+   ============================================================ */
+.masthead { padding: 68px 0 44px; border-bottom: 2px solid var(--ink); }
+.masthead .eyebrow { display: block; margin-bottom: 18px; }
+.masthead h1 {
+  font-size: clamp(38px, 7.2vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -.022em;
+  max-width: 15ch;
+}
+.masthead .standfirst {
+  margin-top: 20px; max-width: 60ch; font-size: 19px; color: var(--ink-soft);
+}
+.stamp {
+  margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px 28px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.stamp b { color: var(--ink-soft); font-weight: 600; }
+
+/* ============================================================
+   Sections — left rail carries the role, right carries the text
+   ============================================================ */
+.section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+.section-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+@media (min-width: 900px) {
+  .section-grid { grid-template-columns: 148px minmax(0, 1fr); gap: 0 44px; }
+  .rail { position: sticky; top: 74px; align-self: start; }
+}
+.rail { display: flex; flex-direction: column; gap: 6px; }
+.rail .role {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent); font-weight: 600;
+}
+.rail .rail-note { font-family: var(--f-mono); font-size: 11px; line-height: 1.5; color: var(--ink-faint); }
+
+.body-col { display: grid; gap: 20px; justify-items: stretch; }
+.body-col > p, .body-col > ul, .body-col > ol, .body-col > h3 + p { max-width: var(--measure); }
+.body-col h2 {
+  font-size: clamp(27px, 4vw, 36px); line-height: 1.14; letter-spacing: -.015em; max-width: 22ch;
+}
+.body-col h3 {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--ink); font-weight: 600;
+  padding-top: 12px; border-top: 1px solid var(--rule);
+}
+.lede { font-size: 19px; color: var(--ink-soft); }
+ul.ticks, ol.steps { padding-left: 0; list-style: none; display: grid; gap: 9px; }
+ul.ticks li { padding-left: 22px; position: relative; }
+ul.ticks li::before {
+  content: "—"; position: absolute; left: 0; top: 0;
+  color: var(--accent); font-family: var(--f-mono); font-size: 13px;
+}
+ol.steps { counter-reset: s; }
+ol.steps li { padding-left: 30px; position: relative; counter-increment: s; }
+ol.steps li::before {
+  content: counter(s, decimal-leading-zero);
+  position: absolute; left: 0; top: 2px;
+  font-family: var(--f-mono); font-size: 11px; color: var(--accent); font-weight: 600;
+}
+
+/* ============================================================
+   Panels, tables, callouts
+   ============================================================ */
+.panel {
+  background: var(--raised); border: 1px solid var(--rule); border-radius: 4px;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.panel-head {
+  padding: 12px 16px; border-bottom: 1px solid var(--rule); background: var(--band);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.panel-head .t { font-family: var(--f-mono); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; font-weight: 600; }
+.panel-head .s { font-family: var(--f-mono); font-size: 11px; color: var(--ink-faint); }
+.panel-body { padding: 16px; display: grid; gap: 14px; }
+
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+caption { text-align: left; padding: 0 0 10px; font-size: 12px; color: var(--ink-faint); letter-spacing: .06em; text-transform: uppercase; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; white-space: nowrap; }
+thead th {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint);
+  font-weight: 600; border-bottom: 1px solid var(--rule-strong); background: var(--band);
+}
+tbody tr:nth-child(even) { background: var(--band); }
+tbody tr:last-child td { border-bottom: none; }
+td.n, th.n { text-align: right; }
+td.wrap-ok { white-space: normal; min-width: 22ch; font-family: var(--f-text); font-size: 15px; line-height: 1.45; }
+tr.is-best td { background: var(--accent-tint); }
+tr.is-best td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+
+.note {
+  border-left: 3px solid var(--accent); background: var(--accent-tint);
+  padding: 14px 16px; border-radius: 0 4px 4px 0; max-width: var(--measure);
+}
+.note.warn { border-left-color: var(--caution); background: var(--caution-tint); }
+.note .tag {
+  display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; margin-bottom: 5px; color: var(--accent-ink); font-weight: 600;
+}
+.note.warn .tag { color: var(--caution); }
+.note p { font-size: 16px; }
+.note p + p { margin-top: 8px; }
+
+/* Cell rules are drawn as clipped box-shadows rather than grid gaps, so a row
+   that does not divide evenly leaves band, not a bare grey block. */
+.figrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: var(--raised); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.fig { padding: 14px 16px; display: grid; gap: 4px; box-shadow: 1px 0 0 var(--rule), 0 1px 0 var(--rule); }
+.fig .k { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.fig .v { font-family: var(--f-mono); font-size: 26px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; font-weight: 600; line-height: 1.1; }
+.fig .m { font-size: 13px; color: var(--ink-soft); font-family: var(--f-text); line-height: 1.4; }
+.fig.accent .v { color: var(--accent-ink); }
+
+/* ============================================================
+   Calculators
+   ============================================================ */
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.field { display: grid; gap: 5px; }
+.field label { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.field input, .field select {
+  font-family: var(--f-mono); font-size: 14px; font-variant-numeric: tabular-nums;
+  padding: 8px 10px; border: 1px solid var(--rule-strong); border-radius: 3px;
+  background: var(--paper); color: var(--ink); width: 100%;
+}
+.field input:focus, .field select:focus { border-color: var(--accent); }
+.field .hint { font-family: var(--f-mono); font-size: 10px; color: var(--ink-faint); }
+
+.meter { display: grid; gap: 7px; }
+.meter-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+.meter-top b { color: var(--ink); font-size: 13px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.meter-rail { height: 12px; background: var(--band); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.meter-fill { height: 100%; background: var(--accent); border-radius: 0 3px 3px 0; width: 0%; transition: width .35s ease; }
+.meter-foot { font-family: var(--f-mono); font-size: 11px; color: var(--ink-faint); }
+
+.outrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); background: var(--band); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.out { padding: 12px 14px; display: grid; gap: 3px; box-shadow: 1px 0 0 var(--rule), 0 1px 0 var(--rule); }
+.out .k { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.out .v { font-family: var(--f-mono); font-size: 20px; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: -.02em; }
+.out .v.good { color: var(--accent-ink); }
+.out .v.bad { color: var(--caution); }
+
+/* ============================================================
+   Closing + footer
+   ============================================================ */
+.checklist { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.check { background: var(--raised); padding: 13px 16px; display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+.check .mk { font-family: var(--f-mono); font-size: 11px; color: var(--accent); font-weight: 600; padding-top: 4px; }
+.check .tx { font-size: 16px; }
+.check .tx em { font-style: normal; font-family: var(--f-mono); font-size: 12px; color: var(--ink-faint); display: block; margin-top: 2px; letter-spacing: .04em; }
+
+footer { padding: 48px 0 72px; }
+.foot-grid { display: grid; gap: 26px; }
+@media (min-width: 780px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px 44px; } }
+.srclist { display: grid; gap: 7px; font-family: var(--f-mono); font-size: 12px; line-height: 1.5; }
+.srclist a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.srclist a:hover { color: var(--accent-ink); border-bottom-color: var(--accent); }
+.disclaimer { font-size: 14px; color: var(--ink-soft); max-width: 60ch; }
+.disclaimer strong { color: var(--ink); }
+.colophon { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--rule); font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink-faint); text-transform: uppercase; }
+</style>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">SG Money Stack<span class="dot">.</span></a>
+    <nav class="topnav">
+      <a href="#floor">01 / Floor</a>
+      <a href="#engine">02 / Engine</a>
+      <a href="#leakage">03 / Leakage</a>
+      <a href="#order">Order</a>
+    </nav>
+    <button id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</div>
+
+<main class="wrap" id="top">
+
+  <header class="masthead">
+    <span class="mono-label eyebrow">A Singapore resident's three-move plan</span>
+    <h1>Three moves, then stop optimising.</h1>
+    <p class="standfirst">
+      Most personal finance content in Singapore sells you complexity. Nearly all of the
+      return available to an ordinary salaried resident sits in three decisions: fund the
+      CPF floor, own the world through one Irish-domiciled fund, and stop leaking a few
+      hundred dollars a year at the card terminal. This page is those three, with the
+      numbers as they stand in 2026.
+    </p>
+    <div class="stamp">
+      <span>Figures verified <b>16 Aug 2026</b></span>
+      <span>Tax year <b>YA2026</b></span>
+      <span>Not financial advice — <b>see footer</b></span>
+    </div>
+  </header>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <section class="section" id="floor">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">01 — Floor</span>
+        <span class="rail-note">CPF. A guaranteed 4% base and a tax deduction you can take every January.</span>
+      </div>
+      <div class="body-col">
+        <h2>Fund MediSave and Special Account until the Basic Retirement Sum is in sight</h2>
+        <p class="lede">
+          Before any market exposure, build the part of your retirement that cannot fall.
+          CPF's Special, MediSave and Retirement Accounts pay a floor of 4% per annum,
+          government-backed, and the cash you put in there is deductible against income tax
+          in the same year.
+        </p>
+
+        <h3>The 2026 numbers</h3>
+        <p>
+          Your retirement sums are locked to the year you turn 55 — the figure that matters
+          to you is the one in force in your cohort year, not today's. Today's:
+        </p>
+
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">CPF retirement sums — members turning 55 in 2026</caption>
+            <thead>
+              <tr><th>Sum</th><th class="n">Amount</th><th>What it buys you</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>BRS</strong> — Basic</td>
+                <td class="n">$110,200</td>
+                <td class="wrap-ok">About $950/month for life from 65 on CPF LIFE Standard. Requires a property with lease to 95 to withdraw above it.</td>
+              </tr>
+              <tr>
+                <td><strong>FRS</strong> — Full</td>
+                <td class="n">$220,400</td>
+                <td class="wrap-ok">Twice BRS. This is also the ceiling on how much you may top up your Special Account with cash before 55.</td>
+              </tr>
+              <tr>
+                <td><strong>ERS</strong> — Enhanced</td>
+                <td class="n">$440,800</td>
+                <td class="wrap-ok">Four times BRS since 2025. Only reachable from 55 onward, and it rises every 1 January for everyone 55+.</td>
+              </tr>
+              <tr>
+                <td><strong>BHS</strong> — Basic Healthcare</td>
+                <td class="n">$79,000</td>
+                <td class="wrap-ok">The MediSave ceiling for 2026, up 4.6% from $75,500. Fixed for life at the figure in force when you turn 65.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <span class="tag">Why BRS and not FRS</span>
+          <p>
+            BRS is the point where CPF LIFE covers a genuinely basic retirement without you
+            having to think about it again. Everything above BRS is a choice between a
+            risk-free 4% locked to 65, and money you control. Reaching BRS first, then
+            deciding, is a cleaner sequence than committing to FRS at 30 and regretting the
+            liquidity at 45. Top-ups are <strong>irreversible</strong>.
+          </p>
+        </div>
+
+        <h3>The two levers, and what each one is capped at</h3>
+        <p>
+          There are exactly two cash top-ups worth knowing. Both are made from your own bank
+          account, both earn the 4% floor, and both draw on the <em>same</em> $8,000 relief.
+        </p>
+
+        <div class="tablewrap panel">
+          <table>
+            <thead>
+              <tr><th>Lever</th><th>Goes to</th><th class="n">Your cap in 2026</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RSTU</strong> top-up</td>
+                <td>Special Account</td>
+                <td class="n">$220,400 − your SA</td>
+                <td class="wrap-ok">Counts directly toward the Retirement Account created at 55. This is the lever that gets you to BRS.</td>
+              </tr>
+              <tr>
+                <td><strong>VC-MA</strong> top-up</td>
+                <td>MediSave Account</td>
+                <td class="n">$79,000 − your MA</td>
+                <td class="wrap-ok">Also within the CPF Annual Limit of $37,740 across all contributions. Pays for hospital bills and MediShield/Integrated Shield premiums.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Filling MediSave has a second-order effect worth understanding: once MA hits the
+          BHS, your <em>mandatory</em> monthly contributions that would have gone to MA
+          overflow into your Special Account instead (Ordinary Account, once you are 55+).
+          Below 55, capping MediSave quietly redirects part of your payroll into the account
+          that counts toward BRS.
+        </p>
+
+        <h3>What the tax relief is actually worth</h3>
+        <p>
+          Up to <strong>$8,000</strong> of relief for cash top-ups to your own SA/RA/MA, plus
+          up to another <strong>$8,000</strong> for top-ups to parents, parents-in-law,
+          grandparents, spouse or siblings. It is a deduction, not a rebate, so its value is
+          your marginal rate:
+        </p>
+
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">Value of a full $8,000 self top-up — YA2026 resident rates</caption>
+            <thead>
+              <tr><th>Chargeable income band</th><th class="n">Marginal rate</th><th class="n">Tax saved</th><th class="n">Effective yield, year one</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$40,001 – $80,000</td><td class="n">7.0%</td><td class="n">$560</td><td class="n">7.0%</td></tr>
+              <tr><td>$80,001 – $120,000</td><td class="n">11.5%</td><td class="n">$920</td><td class="n">11.5%</td></tr>
+              <tr><td>$120,001 – $160,000</td><td class="n">15.0%</td><td class="n">$1,200</td><td class="n">15.0%</td></tr>
+              <tr><td>$160,001 – $200,000</td><td class="n">18.0%</td><td class="n">$1,440</td><td class="n">18.0%</td></tr>
+              <tr><td>$200,001 – $240,000</td><td class="n">19.0%</td><td class="n">$1,520</td><td class="n">19.0%</td></tr>
+              <tr><td>$240,001 – $280,000</td><td class="n">19.5%</td><td class="n">$1,560</td><td class="n">19.5%</td></tr>
+              <tr><td>$280,001 – $320,000</td><td class="n">20.0%</td><td class="n">$1,600</td><td class="n">20.0%</td></tr>
+              <tr><td>$320,001 – $500,000</td><td class="n">22.0%</td><td class="n">$1,760</td><td class="n">22.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Read that last column carefully. A taxpayer in the 15% band who tops up $8,000 has
+          made $1,200 back immediately, <em>and then</em> the $8,000 compounds at 4% for
+          decades. Nothing else on this page pays that in year one. If your $8,000 straddles
+          a bracket boundary the saving is blended across the two rates.
+        </p>
+
+        <div class="note warn">
+          <span class="tag">Three things that will trip you up</span>
+          <p>
+            <strong>The $8,000 is shared, not per-account.</strong> $5,000 to SA and $5,000
+            to MA gets you $8,000 of relief, not $10,000.
+          </p>
+          <p>
+            <strong>All reliefs together are capped at $80,000 per YA.</strong> If you are
+            already near the cap through CPF contributions, NSman, spouse and child reliefs,
+            a top-up buys you nothing in tax.
+          </p>
+          <p>
+            <strong>Matched top-ups do not double-dip.</strong> Top-ups attracting the
+            Matched Retirement Savings Scheme grant lost relief eligibility from YA2026;
+            Matched MediSave Scheme top-ups made from 1 Jan 2026 lose it from YA2027. The
+            grant is worth more than the relief — just do not plan on both.
+          </p>
+        </div>
+
+        <h3>Interest, and the part everyone forgets</h3>
+        <ul class="ticks">
+          <li><strong>OA 2.5%, SA/MA/RA 4%</strong> — both floors, and the 4% floor is
+              legislated through 31 December 2026.</li>
+          <li><strong>Extra 1%</strong> on your first $60,000 of combined balances (max
+              $20,000 from OA) if you are under 55. So the first $60,000 is really earning
+              5% in SA.</li>
+          <li><strong>At 55, extra 2%</strong> on the first $30,000 and 1% on the next
+              $30,000 — up to 6% on the first tranche.</li>
+          <li><strong>The Special Account is gone at 55.</strong> Since 19 January 2025, SA
+              closes at 55: balances move to the Retirement Account up to your cohort FRS,
+              and any remainder drops to OA at 2.5%. Money you top up above FRS does not
+              stay at 4%.</li>
+        </ul>
+
+        <!-- CALCULATOR 1 -->
+        <div class="panel" id="calc-cpf">
+          <div class="panel-head">
+            <span class="t">Top-up planner</span>
+            <span class="s">4% floor · BRS grown at 3.5%/yr · your own contributions excluded</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="cAge">Your age today</label>
+                <input id="cAge" type="number" min="18" max="54" step="1" value="35">
+                <span class="hint">Years to 55 sets the horizon</span>
+              </div>
+              <div class="field">
+                <label for="cSA">Special Account balance</label>
+                <input id="cSA" type="number" min="0" step="1000" value="40000">
+                <span class="hint">S$, from your CPF statement</span>
+              </div>
+              <div class="field">
+                <label for="cTop">Annual cash top-up</label>
+                <input id="cTop" type="number" min="0" max="20000" step="500" value="8000">
+                <span class="hint">$8,000 is the relief limit</span>
+              </div>
+              <div class="field">
+                <label for="cRate">Marginal tax rate</label>
+                <select id="cRate">
+                  <option value="0">0% — below $20,000</option>
+                  <option value="0.02">2% — $20k–30k</option>
+                  <option value="0.035">3.5% — $30k–40k</option>
+                  <option value="0.07">7% — $40k–80k</option>
+                  <option value="0.115" selected>11.5% — $80k–120k</option>
+                  <option value="0.15">15% — $120k–160k</option>
+                  <option value="0.18">18% — $160k–200k</option>
+                  <option value="0.19">19% — $200k–240k</option>
+                  <option value="0.195">19.5% — $240k–280k</option>
+                  <option value="0.20">20% — $280k–320k</option>
+                  <option value="0.22">22% — $320k–500k</option>
+                </select>
+                <span class="hint">Chargeable income, YA2026</span>
+              </div>
+            </div>
+
+            <div class="meter">
+              <div class="meter-top">
+                <span>Projected SA at 55 vs your cohort BRS</span>
+                <b id="mPct">—</b>
+              </div>
+              <div class="meter-rail">
+                <div class="meter-fill" id="mFill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progress toward your cohort Basic Retirement Sum"></div>
+              </div>
+              <div class="meter-foot" id="mFoot">—</div>
+            </div>
+
+            <div class="outrow">
+              <div class="out"><span class="k">SA at 55</span><span class="v" id="oSA">—</span></div>
+              <div class="out"><span class="k">Your cohort BRS</span><span class="v" id="oBRS">—</span></div>
+              <div class="out"><span class="k">Surplus / shortfall</span><span class="v" id="oGap">—</span></div>
+              <div class="out"><span class="k">Tax saved / year</span><span class="v good" id="oTax">—</span></div>
+              <div class="out"><span class="k">Tax saved, total</span><span class="v good" id="oTaxTotal">—</span></div>
+            </div>
+            <p class="meter-foot" id="cWarn"></p>
+            <p style="font-size:14px;color:var(--ink-soft);max-width:var(--measure)">
+              Deliberately conservative: it ignores the mandatory SA contributions coming out
+              of your salary every month, and the extra 1% on your first $60,000. Your real
+              balance at 55 will be higher. BRS is projected forward at 3.5% a year, its
+              historical pace — $110,200 in 2026 becomes $114,100 in 2027 on the published
+              schedule.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <section class="section" id="engine">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">02 — Engine</span>
+        <span class="rail-note">IBKR plus one or two Irish-domiciled accumulating funds. Set up once.</span>
+      </div>
+      <div class="body-col">
+        <h2>Buy the world through Ireland, not through the United States</h2>
+        <p class="lede">
+          Above your CPF floor, the job is broad equity exposure at the lowest total cost.
+          For a Singapore resident, the domicile of the fund is worth more than the choice of
+          index — and picking the wrong one costs you money every year you hold it, plus a
+          US tax filing your estate would rather not deal with.
+        </p>
+
+        <h3>The two reasons domicile matters</h3>
+        <div class="figrow">
+          <div class="fig accent">
+            <span class="k">US dividend withholding</span>
+            <span class="v">15%</span>
+            <span class="m">Through an Irish UCITS fund, under the US–Ireland treaty. A US-domiciled ETF pays <strong>30%</strong> — Singapore has no US tax treaty.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">Annual drag saved</span>
+            <span class="v">≈0.25%</span>
+            <span class="m">15 points of withholding on a ~1.7% world dividend yield. Larger than the fund's whole management fee.</span>
+          </div>
+          <div class="fig">
+            <span class="k">US estate tax exposure</span>
+            <span class="v">$0</span>
+            <span class="m">Irish funds are not US-situs assets. Hold US-domiciled ETFs and anything above <strong>US$60,000</strong> at death can face rates to 40%, with a Form 706-NA filing.</span>
+          </div>
+        </div>
+
+        <p>
+          The estate point is the one people dismiss and should not. There is no US–Singapore
+          estate tax treaty. A Singapore resident holding VOO or VTI has built a US-situs
+          estate; their executor must file with the IRS before the shares can be released.
+          IWDA and EIMI simply are not in that net.
+        </p>
+
+        <div class="note">
+          <span class="tag">Why accumulating, not distributing</span>
+          <p>
+            Singapore does not tax capital gains or foreign dividends in an individual's
+            hands, so a distributing fund costs you nothing in tax here — it costs you
+            <em>friction</em>. An accumulating share class reinvests inside the fund at
+            institutional cost: no dividend landing in USD, no FX conversion, no odd-lot
+            re-purchase, no cash sitting idle, nothing to remember. That is the entire
+            argument, and it is enough.
+          </p>
+        </div>
+
+        <h3>The funds</h3>
+        <div class="tablewrap panel">
+          <table>
+            <thead>
+              <tr><th>Ticker</th><th>Fund</th><th class="n">TER</th><th>ISIN</th><th>Covers</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>IWDA</strong></td>
+                <td class="wrap-ok">iShares Core MSCI World UCITS ETF USD (Acc)</td>
+                <td class="n">0.20%</td>
+                <td>IE00B4L5Y983</td>
+                <td class="wrap-ok">~1,300 large- and mid-cap companies across 23 developed markets. About 70% United States by weight.</td>
+              </tr>
+              <tr>
+                <td><strong>EIMI</strong></td>
+                <td class="wrap-ok">iShares Core MSCI EM IMI UCITS ETF USD (Acc)</td>
+                <td class="n">0.18%</td>
+                <td>IE00BKM4GZ66</td>
+                <td class="wrap-ok">~3,000 emerging-market companies including small caps. The IMI index is what makes it broader than most EM funds.</td>
+              </tr>
+              <tr>
+                <td><strong>VWRA</strong></td>
+                <td class="wrap-ok">Vanguard FTSE All-World UCITS ETF USD (Acc)</td>
+                <td class="n">0.22%</td>
+                <td>IE00BK5BQT80</td>
+                <td class="wrap-ok">Developed and emerging in one line. Two basis points more, one fewer thing to rebalance. A completely reasonable substitute for both.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          If you hold IWDA and EIMI separately, weight them to global market capitalisation —
+          emerging markets have sat near <strong>10%</strong> of world market cap in recent
+          years, so roughly 90/10, rebalanced with new money rather than by selling. Check
+          the current split on the index factsheet before you fix a number. If that sounds
+          like admin you will not keep up, buy VWRA and stop.
+        </p>
+
+        <div class="note warn">
+          <span class="tag">Listing currency is not currency risk</span>
+          <p>
+            IWDA trades on the LSE in USD as <code>IWDA</code> and in GBP as
+            <code>SWDA</code>, and on Euronext Amsterdam in EUR. Same fund, same assets, same
+            returns. The currency of the line you buy affects your FX conversion cost and
+            nothing else. Your actual currency exposure comes from the underlying companies,
+            and it is unavoidable in a global fund. Do not buy a GBP-hedged share class
+            thinking it protects a Singaporean.
+          </p>
+        </div>
+
+        <h3>Setting up IBKR</h3>
+        <ol class="steps">
+          <li>
+            <strong>Open with Interactive Brokers Singapore Pte Ltd</strong>, the MAS-licensed
+            entity. Apply online; you will need your NRIC/FIN, proof of address, and answers
+            on income and trading experience. There is no minimum balance and no inactivity
+            fee for IBKR Pro accounts.
+          </li>
+          <li>
+            <strong>Choose Tiered pricing, not Fixed.</strong> For LSE-listed ETFs, Tiered
+            commissions start around <span class="num">USD 0.35</span> per trade against a
+            <span class="num">USD 1.70</span> minimum on Fixed. On a $1,000 monthly purchase
+            that difference is most of your transaction cost.
+          </li>
+          <li>
+            <strong>Fund in SGD</strong> by FAST or PayNow to your IBKR deposit details. Bank
+            transfer, not card.
+          </li>
+          <li>
+            <strong>Convert SGD to USD inside IBKR</strong> on the IDEALPRO venue —
+            commission around 0.2 basis points with a <span class="num">USD 2.00</span>
+            minimum, at near-interbank rates. Converting at your bank first, or letting the
+            broker auto-convert on settlement, costs many multiples of this.
+          </li>
+          <li>
+            <strong>Buy the LSE USD line with a limit order.</strong> London runs 08:00–16:30
+            local: 15:00–23:30 Singapore time in summer, 16:00–00:30 in winter. Avoid the
+            first and last fifteen minutes, when spreads are widest. Irish-domiciled ETFs are
+            exempt from UK stamp duty, so there is no 0.5% charge.
+          </li>
+          <li>
+            <strong>Automate the boredom.</strong> Same day each month, same order, no
+            reading the news first. Then close the app.
+          </li>
+        </ol>
+
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">What one $2,000 monthly purchase actually costs</caption>
+            <thead>
+              <tr><th>Cost</th><th class="n">Approx.</th><th>How to keep it small</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>FX conversion</td><td class="n">USD 2.00</td><td class="wrap-ok">Minimum commission bites below ~USD 100k converted. Convert in larger, less frequent blocks.</td></tr>
+              <tr><td>Commission (Tiered)</td><td class="n">~USD 0.35+</td><td class="wrap-ok">Verify on IBKR's live pricing page; schedules change.</td></tr>
+              <tr><td>Bid–ask spread</td><td class="n">~1–3 bps</td><td class="wrap-ok">Trade mid-session with a limit order, never at the open.</td></tr>
+              <tr><td>Fund TER</td><td class="n">0.20% / yr</td><td class="wrap-ok">The only cost you pay forever. It is already near the floor.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note warn">
+          <span class="tag">The five expensive mistakes</span>
+          <p>
+            Buying VOO, VTI or SPY as a Singapore resident. Buying the distributing class by
+            accident — check for "(Acc)" in the full fund name. Converting SGD at your bank's
+            retail rate. Choosing Fixed pricing and paying five times the commission. Adding
+            a third, fourth and fifth fund until you own an expensive index of your own
+            design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <section class="section" id="leakage">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">03 — Leakage</span>
+        <span class="rail-note">One flat card. No categories, no minimum spend, no monthly arithmetic.</span>
+      </div>
+      <div class="body-col">
+        <h2>One uncapped cashback card, and never think about it again</h2>
+        <p class="lede">
+          This is the smallest of the three levers, and it is the one people spend the most
+          time on. The whole point of a no-frills card is that it removes a recurring
+          decision. A flat rate on everything, no minimum spend, no cap, no category table
+          taped inside your wallet.
+        </p>
+
+        <h3>The shortlist</h3>
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">Uncapped flat-rate cashback, no minimum spend — August 2026</caption>
+            <thead>
+              <tr><th>Card</th><th class="n">Rate</th><th class="n">Annual fee</th><th>The distinguishing thing</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UOB Absolute Cashback</strong></td>
+                <td class="n">1.70%</td>
+                <td class="n">$196.20</td>
+                <td class="wrap-ok">Highest flat rate available, and famously almost no excluded categories. Runs on the Amex network, so acceptance is the trade-off.</td>
+              </tr>
+              <tr>
+                <td><strong>Citi Cash Back+</strong></td>
+                <td class="n">1.60%</td>
+                <td class="n">$194.40</td>
+                <td class="wrap-ok">Mastercard, so it works everywhere. Cashback does not expire.</td>
+              </tr>
+              <tr>
+                <td><strong>SC Simply Cash</strong></td>
+                <td class="n">1.50%</td>
+                <td class="n">$196.20</td>
+                <td class="wrap-ok">Visa, and pays on bills usually excluded elsewhere — insurance, education, IRAS — through SC EasyBill.</td>
+              </tr>
+              <tr>
+                <td><strong>Amex True Cashback</strong></td>
+                <td class="n">1.50%</td>
+                <td class="n">$174.40</td>
+                <td class="wrap-ok">Issued by Amex directly, so it clears the same near-zero-exclusion bar. Same acceptance caveat.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Every fee above is waived for the first year. From year two the fee, not the rate,
+          decides the winner — and 0.2 percentage points of rate is a very small number to
+          pay $196 for.
+        </p>
+
+        <!-- CALCULATOR 2 -->
+        <div class="panel" id="calc-card">
+          <div class="panel-head">
+            <span class="t">Which card actually wins</span>
+            <span class="s">Net of annual fee</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="kSpend">Monthly card spend</label>
+                <input id="kSpend" type="number" min="0" step="100" value="2500">
+                <span class="hint">S$, everything you could put on a card</span>
+              </div>
+              <div class="field">
+                <label for="kWaive">Fee waived each year?</label>
+                <select id="kWaive">
+                  <option value="1" selected>Yes — I will call and ask</option>
+                  <option value="0">No — I pay the fee</option>
+                </select>
+                <span class="hint">Banks usually waive on request</span>
+              </div>
+            </div>
+            <div class="tablewrap">
+              <table id="kTable">
+                <thead>
+                  <tr><th>Card</th><th class="n">Rate</th><th class="n">Cashback / yr</th><th class="n">Fee</th><th class="n">Net / yr</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="meter-foot" id="kNote"></p>
+          </div>
+        </div>
+
+        <h3>The rules that matter more than the rate</h3>
+        <ul class="ticks">
+          <li><strong>Ask for the fee waiver every year.</strong> One phone call or an app
+              request. If a bank refuses, that is your signal to move the spend to the
+              fee-waived card and cancel.</li>
+          <li><strong>Never revolve a balance.</strong> Card interest in Singapore runs around
+              26–28% per annum and a late payment fee is roughly $100. One missed month
+              erases several years of 1.7%.</li>
+          <li><strong>Pay by GIRO on the full statement balance.</strong> Not the minimum. Set
+              it once at application.</li>
+          <li><strong>Put everything through the one card</strong> — insurance premiums, town
+              council, phone, groceries — which is exactly why the near-zero-exclusion cards
+              are worth their acceptance quirks.</li>
+          <li><strong>Ignore the sign-up bonus in your comparison.</strong> It is one-off; the
+              rate is forever.</li>
+        </ul>
+
+        <div class="note">
+          <span class="tag">Deliberately out of scope</span>
+          <p>
+            Miles cards, minimum-spend cashback cards (UOB One, OCBC 365, HSBC Live+) and
+            multi-card category stacking all pay more than 1.7% — to people who will track
+            spend by category every month and hit the thresholds. That is a real strategy and
+            a real hobby. This page assumes you do not want the hobby, and the cost of that
+            choice is a few hundred dollars a year.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ORDER ==================== -->
+  <section class="section" id="order">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">Put together</span>
+        <span class="rail-note">Sized honestly, so you spend your attention in the right place.</span>
+      </div>
+      <div class="body-col">
+        <h2>The levers are not the same size</h2>
+        <p>
+          Worked for a single person earning $110,000, spending $2,500 a month on a card and
+          holding $150,000 invested. The order in which these deserve your attention is the
+          order of the last column, and it is not the order most people work in.
+        </p>
+
+        <div class="tablewrap panel">
+          <table>
+            <thead>
+              <tr><th>Move</th><th>Mechanism</th><th class="n">Year-one value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>01 Floor</strong></td><td class="wrap-ok">$8,000 CPF top-up at an 11.5% marginal rate, plus 4% on the balance</td><td class="n">$920 + 4%/yr</td></tr>
+              <tr><td><strong>02 Engine</strong></td><td class="wrap-ok">Irish rather than US domicile on $150,000, at ~0.25% of withholding drag avoided</td><td class="n">~$375/yr</td></tr>
+              <tr><td><strong>03 Leakage</strong></td><td class="wrap-ok">1.7% flat cashback on $30,000 of annual spend, fee waived</td><td class="n">$510/yr</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The engine line understates itself badly — it prices only the tax leak, not the
+          returns of being invested at all, which over thirty years dwarfs everything else on
+          this page. But as a <em>decision you make once and then leave alone</em>, all three
+          are the same kind of thing: set up correctly, then ignored.
+        </p>
+
+        <h3>The whole page, as a checklist</h3>
+        <div class="checklist">
+          <div class="check"><span class="mk">01</span><span class="tx">Check your CPF statement for SA and MA balances.<em>cpf.gov.sg → my cpf → account balances</em></span></div>
+          <div class="check"><span class="mk">02</span><span class="tx">Top up MediSave toward $79,000, and the Special Account with what is left of the $8,000.<em>Any time before 31 December for that year's relief</em></span></div>
+          <div class="check"><span class="mk">03</span><span class="tx">Set a calendar reminder for early January to repeat it.<em>Earlier in the year is more compounding</em></span></div>
+          <div class="check"><span class="mk">04</span><span class="tx">Open IBKR Singapore, select Tiered pricing.<em>Two to three business days</em></span></div>
+          <div class="check"><span class="mk">05</span><span class="tx">Fund by PayNow, convert SGD to USD on IDEALPRO, buy IWDA — or VWRA if you want one line.<em>Limit order, mid-session</em></span></div>
+          <div class="check"><span class="mk">06</span><span class="tx">Repeat the same purchase monthly or quarterly, without reading the news first.<em>The hard part</em></span></div>
+          <div class="check"><span class="mk">07</span><span class="tx">Apply for one flat cashback card and put every payment through it.<em>GIRO, full balance</em></span></div>
+          <div class="check"><span class="mk">08</span><span class="tx">Diarise the annual fee date and call for the waiver.<em>Eleven months from approval</em></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <span class="mono-label" style="display:block;margin-bottom:10px">Disclaimer</span>
+        <p class="disclaimer">
+          <strong>This is not financial advice.</strong> It is a summary of publicly
+          available rules, written for general information, by someone who is not your
+          financial adviser and does not know your circumstances. CPF limits, tax rates,
+          broker fee schedules and card terms all change — several of them every January.
+          Every figure here was checked against the primary sources on
+          <strong>16 August 2026</strong> and may be out of date by the time you read it.
+          Verify at the source before acting, and consider taking licensed advice for
+          anything irreversible. CPF top-ups, in particular, cannot be undone.
+        </p>
+      </div>
+      <div>
+        <span class="mono-label" style="display:block;margin-bottom:10px">Primary sources</span>
+        <div class="srclist">
+          <a href="https://www.cpf.gov.sg/service/article/what-are-the-retirement-sums-basic-retirement-sum-brs-full-retirement-sum-frs-and-enhanced-retirement-sum-ers">CPF Board — BRS, FRS and ERS</a>
+          <a href="https://www.cpf.gov.sg/member/infohub/news/news-releases/cpf-interest-rates-from-1-january-to-31-march-2026-and-basic-healthcare-sum-for-2026">CPF Board — 2026 interest rates and Basic Healthcare Sum</a>
+          <a href="https://www.cpf.gov.sg/member/infohub/news/news-releases/closure-of-special-account-for-cpf-members-aged-55-and-above-and-other-cpf-enhancements">CPF Board — Closure of the Special Account at 55</a>
+          <a href="https://www.cpf.gov.sg/member/growing-your-savings/saving-more-with-cpf/top-up-to-enjoy-higher-retirement-payouts">CPF Board — Retirement Sum Topping-Up Scheme</a>
+          <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/central-provident-fund-(cpf)-cash-top-up-relief">IRAS — CPF Cash Top-up Relief</a>
+          <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs">IRAS — Tax reliefs and the $80,000 cap</a>
+          <a href="https://www.mom.gov.sg/-/media/mom/documents/budget2022/factsheet-on-basic-retirement-sums-for-cpf-members-reaching-age-55-from-2023-to-2027.pdf">MOM — Basic Retirement Sums, 2023 to 2027</a>
+          <a href="https://www.justetf.com/en/etf-profile.html?isin=IE00B4L5Y983">justETF — IWDA (IE00B4L5Y983)</a>
+          <a href="https://www.justetf.com/en/etf-profile.html?isin=IE00BKM4GZ66">justETF — EIMI (IE00BKM4GZ66)</a>
+          <a href="https://www.justetf.com/en/etf-profile.html?isin=IE00BK5BQT80">justETF — VWRA (IE00BK5BQT80)</a>
+          <a href="https://www.interactivebrokers.com.sg/en/pricing/commissions-home.php">Interactive Brokers Singapore — commissions</a>
+          <a href="https://www.irs.gov/businesses/small-businesses-self-employed/some-nonresidents-with-us-assets-must-file-estate-tax-returns">IRS — nonresident US estate tax filing</a>
+          <a href="https://www.uob.com.sg/personal/cards/cashback/absolute-cashback-card.page">UOB — Absolute Cashback Card</a>
+          <a href="https://www.sc.com/sg/credit-cards/simply-cash-credit-card/">Standard Chartered — Simply Cash Card</a>
+          <a href="https://www.citibank.com.sg/credit-cards/">Citibank Singapore — credit cards</a>
+          <a href="https://www.americanexpress.com/en-sg/credit-cards/">American Express Singapore — cards</a>
+        </div>
+      </div>
+    </div>
+    <div class="colophon">
+      Figures current 16 Aug 2026 · Open source, corrections welcome · Built as a static page
+    </div>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- theme toggle ---------- */
+  var root = document.documentElement;
+  var btn = document.getElementById("themeBtn");
+  try {
+    var saved = localStorage.getItem("sgms-theme");
+    if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+  } catch (e) { /* storage blocked; fall through to host theme */ }
+
+  btn.addEventListener("click", function () {
+    var isDark = root.getAttribute("data-theme") === "dark" ||
+      (!root.hasAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var next = isDark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("sgms-theme", next); } catch (e) { /* ignore */ }
+  });
+
+  /* ---------- formatting ---------- */
+  var sgd = new Intl.NumberFormat("en-SG", { style: "currency", currency: "SGD", maximumFractionDigits: 0 });
+  var sgd2 = new Intl.NumberFormat("en-SG", { style: "currency", currency: "SGD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function money(v) { return sgd.format(Math.round(v)); }
+  function num(el) { var v = parseFloat(el.value); return isFinite(v) && v > 0 ? v : 0; }
+
+  /* ---------- 01 · CPF top-up planner ---------- */
+  var BRS_2026 = 110200, FRS_2026 = 220400, BRS_GROWTH = 0.035, CPF_RATE = 0.04;
+  var cAge = document.getElementById("cAge"),
+      cSA = document.getElementById("cSA"),
+      cTop = document.getElementById("cTop"),
+      cRate = document.getElementById("cRate");
+
+  function runCpf() {
+    var age = Math.min(54, Math.max(18, parseInt(cAge.value, 10) || 35));
+    var sa0 = num(cSA);
+    var top = Math.min(20000, num(cTop));
+    var rate = parseFloat(cRate.value) || 0;
+    var yrs = 55 - age;
+
+    // Top-up made at the start of each year, so it earns interest in that year too.
+    var growth = Math.pow(1 + CPF_RATE, yrs);
+    var saAt55 = sa0 * growth + (yrs > 0 ? top * ((growth - 1) / CPF_RATE) * (1 + CPF_RATE) : 0);
+
+    var brs = BRS_2026 * Math.pow(1 + BRS_GROWTH, yrs);
+    var frs = FRS_2026 * Math.pow(1 + BRS_GROWTH, yrs);
+    var gap = saAt55 - brs;
+    var pct = brs > 0 ? Math.max(0, (saAt55 / brs) * 100) : 0;
+
+    // Relief is capped at $8,000 and is worthless at a 0% marginal rate.
+    var taxYear = Math.min(top, 8000) * rate;
+
+    document.getElementById("oSA").textContent = money(saAt55);
+    document.getElementById("oBRS").textContent = money(brs);
+
+    var gapEl = document.getElementById("oGap");
+    gapEl.textContent = (gap >= 0 ? "+" : "−") + money(Math.abs(gap));
+    gapEl.className = "v " + (gap >= 0 ? "good" : "bad");
+
+    document.getElementById("oTax").textContent = taxYear > 0 ? money(taxYear) : "$0";
+    document.getElementById("oTaxTotal").textContent = money(taxYear * yrs);
+
+    var fill = document.getElementById("mFill");
+    fill.style.width = Math.min(100, pct).toFixed(1) + "%";       // the bar stops at the target
+    fill.setAttribute("aria-valuenow", Math.min(100, pct).toFixed(0));
+    document.getElementById("mPct").textContent = pct.toFixed(0) + "%";  // the label does not
+    document.getElementById("mFoot").textContent =
+      yrs + (yrs === 1 ? " year" : " years") + " to 55 · projected cohort BRS " + money(brs) +
+      " · projected cohort FRS " + money(frs);
+
+    var warn = "";
+    if (rate === 0) {
+      warn = "At a 0% marginal rate the relief is worth nothing — top up for the 4% floor, not the tax.";
+    } else if (saAt55 > frs) {
+      warn = "Projected SA exceeds the FRS. Cash top-ups stop at the FRS, and at 55 anything above it moves to the Ordinary Account at 2.5%.";
+    } else if (gap < 0 && top === 0) {
+      warn = "With no top-ups you fall short of BRS on this projection — though your mandatory salary contributions, which this ignores, close much of that gap.";
+    } else if (gap >= 0) {
+      warn = "On this projection you clear BRS before 55 without counting a single dollar of mandatory contribution.";
+    }
+    document.getElementById("cWarn").textContent = warn;
+  }
+
+  [cAge, cSA, cTop, cRate].forEach(function (el) {
+    el.addEventListener("input", runCpf);
+    el.addEventListener("change", runCpf);
+  });
+  runCpf();
+
+  /* ---------- 03 · Card break-even ---------- */
+  var CARDS = [
+    { name: "UOB Absolute Cashback", rate: 0.017, fee: 196.20 },
+    { name: "Citi Cash Back+",       rate: 0.016, fee: 194.40 },
+    { name: "SC Simply Cash",        rate: 0.015, fee: 196.20 },
+    { name: "Amex True Cashback",    rate: 0.015, fee: 174.40 }
+  ];
+  var kSpend = document.getElementById("kSpend"),
+      kWaive = document.getElementById("kWaive"),
+      kBody = document.querySelector("#kTable tbody"),
+      kNote = document.getElementById("kNote");
+
+  function runCards() {
+    var annual = num(kSpend) * 12;
+    var waived = kWaive.value === "1";
+    var rows = CARDS.map(function (c) {
+      var fee = waived ? 0 : c.fee;
+      return { name: c.name, rate: c.rate, gross: annual * c.rate, fee: fee, net: annual * c.rate - fee };
+    }).sort(function (a, b) { return b.net - a.net; });
+
+    kBody.innerHTML = "";
+    rows.forEach(function (r, i) {
+      var tr = document.createElement("tr");
+      if (i === 0) tr.className = "is-best";
+      [
+        ["", r.name],
+        ["n", (r.rate * 100).toFixed(2) + "%"],
+        ["n", sgd2.format(r.gross)],
+        ["n", r.fee === 0 ? "waived" : sgd2.format(r.fee)],
+        ["n", sgd2.format(r.net)]
+      ].forEach(function (cell) {
+        var td = document.createElement("td");
+        if (cell[0]) td.className = cell[0];
+        td.textContent = cell[1];
+        tr.appendChild(td);
+      });
+      kBody.appendChild(tr);
+    });
+
+    // Two break-evens worth knowing, both against the 1.7% card paying its fee.
+    var beVsAmex = (196.20 - 174.40) / (0.017 - 0.015) / 12;  // both fees paid
+    var beVsWaived = 196.20 / (0.017 - 0.015) / 12;           // the 1.5% card got its waiver
+    kNote.textContent = waived
+      ? "With fees waived, rate is all that matters and the highest rate wins at every spend level. Difference between first and last here: " +
+        sgd2.format(rows[0].net - rows[rows.length - 1].net) + " a year."
+      : "Paying full fees, UOB Absolute beats Amex True Cashback above about " + money(beVsAmex) +
+        " a month. But against a 1.5% card whose fee was waived, it needs roughly " + money(beVsWaived) +
+        " a month to be worth the $196 — which is why the waiver matters more than the rate.";
+  }
+
+  [kSpend, kWaive].forEach(function (el) {
+    el.addEventListener("input", runCards);
+    el.addEventListener("change", runCards);
+  });
+  runCards();
+})();
+</script>
