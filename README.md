@@ -1,20 +1,25 @@
-# The Boring SG Money Stack
+# SG Household Money Guide
 
-A single-page personal finance guide for Singapore residents, covering three decisions
-and deliberately nothing else:
+A single-page personal finance guide for Singapore households, in five sections plus a
+checklist:
 
-1. **Floor** — funding CPF MediSave and Special Account toward the Basic Retirement Sum,
+1. **CPF** — funding CPF MediSave and Special Account toward the Basic Retirement Sum,
    and what the cash top-up tax relief is actually worth at each marginal rate.
-2. **Engine** — buying Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
+2. **ETFs** — buying Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
    Interactive Brokers, and why domicile beats index choice for a Singapore resident.
-3. **Leakage** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
+3. **Cards** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
+4. **Helper** — hiring a migrant domestic worker: full cost, the $60 concessionary levy,
+   MOM requirements and the step-by-step process.
+5. **Baby** — every government benefit for a Singapore Citizen newborn (Baby Bonus, CDA,
+   MediSave grant, parental leave, tax rebates) and the April 2027 switch to the
+   SG Child Support Package.
 
 Two interactive calculators are built in: a CPF top-up planner that projects your Special
 Account against your own cohort's Basic Retirement Sum, and a card comparison that nets
 cashback against the annual fee.
 
-**This is not financial advice.** Every figure was checked against primary sources on
-16 August 2026. See the disclaimer and source list in the page footer.
+**This is not financial advice.** Figures were checked against primary sources on
+16 August 2026 (CPF, ETFs, cards) and 4 October 2026 (helper, baby). See the disclaimer and source list in the page footer.
 
 ## Structure
 
@@ -80,6 +85,9 @@ that move, and when:
 | ETF expense ratios | occasionally | [justETF](https://www.justetf.com/en/etf-profile.html?isin=IE00B4L5Y983) |
 | IBKR commission schedule | occasionally | [IBKR Singapore](https://www.interactivebrokers.com.sg/en/pricing/commissions-home.php) |
 | Card rates and annual fees | frequently, with little notice | each issuer |
+| MDW levy, bond, insurance rules | occasionally | [MOM](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker) |
+| Baby Bonus / CDA / SG Child Support Package | Budget and National Day Rally; scheme replaced 1 Apr 2027 | [Made for Families](https://www.madeforfamilies.gov.sg/ndr-2026-supporting-families) |
+| Parental leave | Budget and NDR | [Made for Families](https://www.madeforfamilies.gov.sg/parental-leave-and-benefits/shared-parental-leave) |
 
 Hard-coded numbers live in two places: the HTML tables, and the constants at the top of
 each calculator in the `<script>` block (`BRS_2026`, `FRS_2026`, `BRS_GROWTH`, `CPF_RATE`,
