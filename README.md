@@ -7,6 +7,8 @@ checklist:
    and what the cash top-up tax relief is actually worth at each marginal rate.
 2. **ETFs** — buying Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
    Interactive Brokers, and why domicile beats index choice for a Singapore resident.
+   Includes the embedded **STI dashboard** (`sti/`): the Straits Times Index and its 30
+   constituents since 1987, annotated with market events and earnings.
 3. **Cards** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
 4. **Helper** — hiring a migrant domestic worker: full cost, the $60 concessionary levy,
    MOM requirements and the step-by-step process.
@@ -24,15 +26,19 @@ cashback against the annual fee.
 ## Structure
 
 ```
-index.html                 the entire site — no build step, no dependencies
+index.html                 the entire guide — no build step, no dependencies
+sti/                       STI dashboard, embedded in the ETF section and served at /sti/
+  index.html               the dashboard app; ?embed=1 hides its header for the iframe
+  data.js, earnings.js …   generated data; refresh with the fetch_*.py scripts (see sti/README.md)
 artifact.html              generated preview body (Claude Artifact / embed use)
 tools/build_artifact.py    regenerates artifact.html from index.html
 .nojekyll                  tells GitHub Pages to serve the files as-is
 ```
 
-`index.html` is the single source of truth. Everything — styles, scripts, content — is
-inline in that one file, so it works from a local `file://` open, any static host, or
-GitHub Pages with no toolchain.
+`index.html` is the single source of truth for the guide. Its styles, scripts and
+content are inline, so it works from a local `file://` open, any static host, or GitHub
+Pages with no toolchain. The STI dashboard embed sizes itself to fit only when served over
+HTTP (same origin); from `file://` it falls back to a fixed height.
 
 ## Running it locally
 
@@ -87,6 +93,7 @@ that move, and when:
 | Card rates and annual fees | frequently, with little notice | each issuer |
 | MDW levy, bond, insurance rules | occasionally | [MOM](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker) |
 | Baby Bonus / CDA / SG Child Support Package | Budget and National Day Rally; scheme replaced 1 Apr 2027 | [Made for Families](https://www.madeforfamilies.gov.sg/ndr-2026-supporting-families) |
+| STI dashboard prices and earnings | whenever refreshed (`sti/fetch_*.py`) | Yahoo Finance |
 | Parental leave | Budget and NDR | [Made for Families](https://www.madeforfamilies.gov.sg/parental-leave-and-benefits/shared-parental-leave) |
 
 Hard-coded numbers live in two places: the HTML tables, and the constants at the top of
