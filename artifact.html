@@ -632,6 +632,19 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
             <a href="#baby-what-to-do-and-when" data-sec="baby"><b>What to do, and when</b></a>
           </div>
         </li>
+        <li class="dd" data-secs="childcare">
+          <button class="dd-btn" type="button" aria-expanded="false"><span class="num">5</span>Childcare <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="dd-panel dd-right">
+            <a href="#childcare" data-sec="childcare"><b>Overview</b></a>
+            <a href="#childcare-the-stages-and-what-they-cost" data-sec="childcare"><b>The stages, and what they cost</b></a>
+            <a href="#childcare-the-subsidies" data-sec="childcare"><b>The subsidies</b></a>
+            <a href="#childcare-fee-calculator" data-sec="childcare"><b>Fee calculator</b></a>
+            <a href="#childcare-what-it-adds-up-to" data-sec="childcare"><b>What it adds up to, 0 to 6</b></a>
+            <a href="#childcare-centre-helper-or-grandparents" data-sec="childcare"><b>Centre, helper or grandparents</b></a>
+            <a href="#childcare-what-is-changing" data-sec="childcare"><b>What is changing</b></a>
+            <a href="#childcare-getting-a-place" data-sec="childcare"><b>Getting a place</b></a>
+          </div>
+        </li>
       </ul>
     </nav>
     <button id="themeBtn" type="button" aria-label="Switch colour theme">Dark mode</button>
@@ -721,6 +734,12 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="h">Claim every baby benefit</span>
         <span class="d">Baby Bonus, CDA matching, MediSave grant, 30 weeks of paid leave, tax rebates — and the April 2027 switch.</span>
         <span class="x">$25,000+ for a first child · what to file, when</span>
+      </a>
+      <a class="toc-card" href="#childcare">
+        <span class="n">5 · Childcare</span>
+        <span class="h">Childcare and preschool costs</span>
+        <span class="d">Infant care, childcare and kindergarten fees after subsidies, operator by operator, and the cuts coming from 2028.</span>
+        <span class="x">$365–746/mo at an Anchor Operator · fee calculator</span>
       </a>
       </div>
     </div>
@@ -2166,7 +2185,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
 
         <h3 id="baby-childcare-health-and-housing">Childcare, health and housing</h3>
         <ul class="ticks">
-          <li><strong>Infant care subsidy:</strong> $600 a month basic subsidy if the mother works, plus up to $710 more on a means test for household income up to $12,000 a month ($15,000 from 2027). Childcare from 18 months: $300 basic, plus up to $467 more. The subsidy is paid directly to the centre.</li>
+          <li><strong>Infant care subsidy:</strong> $600 a month basic subsidy if the mother works, plus up to $710 more on a means test for household income up to $12,000 a month ($15,000 from 2027). Childcare from 18 months: $300 basic, plus up to $467 more. The subsidy is paid directly to the centre. See <a href="#childcare">Childcare</a> for what you actually pay.</li>
           <li><strong>Health:</strong> the baby has MediShield Life from birth for life, congenital conditions included. Childhood vaccinations and developmental screenings are free at polyclinics and CHAS GP clinics.</li>
           <li><strong>Passport:</strong> the first one is free if you apply on MyICA before the baby's first birthday.</li>
           <li><strong>Housing:</strong> first-timer families with a child (or expecting one) get priority and an extra ballot for BTO flats. From the Feb 2027 launch, it is one extra ballot per citizen child. NDR 2026 also raised the income ceiling for housing grants to $16,000.</li>
@@ -2181,6 +2200,247 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <li><strong>Within a few weeks:</strong> open the CDA at the bank and make the first deposit. Add the baby to your MOM household for the helper levy concession, and apply for the free passport.</li>
           <li><strong>Before 1 April 2027:</strong> set up PayNow on the baby's birth certificate number for the new Child Credits.</li>
           <li><strong>Next tax season:</strong> claim the Parenthood Tax Rebate, Qualifying Child Relief and Working Mother's Child Relief in your tax return.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5 · Childcare ==================== -->
+  <section class="section" id="childcare">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">5 — Childcare</span>
+        <span class="rail-note">What infant care, childcare and kindergarten actually cost after subsidies, from 2 months to 6 years, and what changes from 2027.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#childcare-the-stages-and-what-they-cost">The stages, and what they cost</a>
+          <a href="#childcare-the-subsidies">The subsidies</a>
+          <a href="#childcare-fee-calculator">Fee calculator</a>
+          <a href="#childcare-what-it-adds-up-to">What it adds up to, 0 to 6</a>
+          <a href="#childcare-centre-helper-or-grandparents">Centre, helper or grandparents</a>
+          <a href="#childcare-what-is-changing">What is changing</a>
+          <a href="#childcare-getting-a-place">Getting a place</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Know what preschool really costs before you choose one</h2>
+        <p class="lede">
+          From about two months old until Primary 1, most Singapore children spend the
+          working day in a licensed preschool. The fee on the brochure is not what you pay.
+          A citizen child whose mother works gets $600 a month off infant care and $300 off
+          childcare at <em>any</em> licensed centre, and more if the household earns $12,000
+          a month or less. The bigger lever is which operator you choose: government-supported
+          centres are fee-capped, and private ones are not.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li>At a government-supported <strong>Anchor Operator</strong>, a working household above the means test pays about <strong>$746 a month for infant care</strong> and <strong>$365 for full-day childcare</strong>, GST included.</li>
+            <li>A private centre typically costs <strong>two to four times</strong> as much for the same hours. Over the six years that is the difference between roughly $32,000 and $90,000+.</li>
+            <li>Register interest in infant care <strong>during pregnancy</strong>, and pay the fees from the <a href="#baby-the-cda-is-the-best-return-on-this-page">CDA</a>, where the government has already matched your money.</li>
+          </ul>
+        </div>
+
+        <h3 id="childcare-the-stages-and-what-they-cost">The stages, and what they cost</h3>
+        <div class="figrow">
+          <div class="fig accent">
+            <span class="k">Infant care, Anchor Operator</span>
+            <span class="v">$746/mo</span>
+            <span class="m">Fee cap $1,235 + GST, less the $600 basic subsidy.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">Full-day childcare, Anchor Operator</span>
+            <span class="v">$365/mo</span>
+            <span class="m">Fee cap $610 + GST, less the $300 basic subsidy.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">MOE Kindergarten, K1–K2</span>
+            <span class="v">$160/mo</span>
+            <span class="m">Citizens; half-day. KCare after-school care is up to $425 more.</span>
+          </div>
+          <div class="fig">
+            <span class="k">Target by 2030</span>
+            <span class="v">$150/mo</span>
+            <span class="m">Full-day childcare at government-supported centres; $300 for infant care.</span>
+          </div>
+        </div>
+
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">Full-day fees per month in 2026, before subsidy, GST included</caption>
+            <thead>
+              <tr><th>Stage</th><th>Age</th><th class="n">Anchor Operator</th><th class="n">Partner Operator</th><th class="n">Private</th><th class="n">Basic subsidy</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Infant care</strong></td><td>2–18 months</td><td class="n">$1,346</td><td class="n">$1,406</td><td class="n">~$1,800–3,000</td><td class="n">$600</td></tr>
+              <tr><td><strong>Childcare</strong></td><td>18 months–6 years</td><td class="n">$665</td><td class="n">$709</td><td class="n">~$1,300–2,500</td><td class="n">$300</td></tr>
+              <tr><td><strong>MOE Kindergarten</strong></td><td>K1–K2 (5–6)</td><td class="n" colspan="3">$160 half-day · KCare full-day top-up up to $425</td><td class="n">KiFAS, means-tested</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="ticks">
+          <li><strong>Anchor Operators</strong> (PCF Sparkletots, My First Skool, My World, Skool4Kidz, E-Bridge) get the deepest government funding and have the lowest caps: $610 for childcare and $1,235 for infant care before 9% GST, from 1 January 2026.</li>
+          <li><strong>Partner Operators</strong> are capped a little higher: $650 and $1,290 before GST.</li>
+          <li><strong>Private centres</strong> set their own fees. The ranges above marked "~" are typical, not quoted; international and premium brands go well above them. The basic and additional subsidies still apply, but they come off a much bigger bill.</li>
+          <li><strong>Childcare covers playgroup through K2</strong>, so you can stay at one centre until Primary 1. MOE Kindergarten is the cheaper alternative for the last two years if a half day, or a half day plus KCare, suits you.</li>
+        </ul>
+
+        <h3 id="childcare-the-subsidies">The subsidies</h3>
+        <p>
+          Subsidies are for Singapore Citizen children at ECDA-licensed centres and are
+          paid straight to the centre, so they come off the bill. The <strong>basic
+          subsidy</strong> needs the main applicant (the mother, or a single father) to work
+          at least 56 hours a month; otherwise it drops to $150. The <strong>additional
+          subsidy</strong> is means-tested on gross monthly household income, or on per-capita
+          income for larger families, and is capped so you always pay a minimum co-payment.
+        </p>
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">Full-day subsidies for a working applicant, and what you pay at an Anchor Operator (2026 rates)</caption>
+            <thead>
+              <tr><th>Household income / month</th><th class="n">Infant care: extra subsidy</th><th class="n">You pay</th><th class="n">Childcare: extra subsidy</th><th class="n">You pay</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$3,000 and below</td><td class="n">up to $710</td><td class="n">$40</td><td class="n">up to $467</td><td class="n">$3</td></tr>
+              <tr><td>$3,001–4,500</td><td class="n">up to $640</td><td class="n">$110</td><td class="n">up to $440</td><td class="n">$25</td></tr>
+              <tr><td>$4,501–6,000</td><td class="n">up to $500</td><td class="n">$250</td><td class="n">up to $340</td><td class="n">$58</td></tr>
+              <tr><td>$6,001–7,500</td><td class="n">up to $380</td><td class="n">$366</td><td class="n">up to $260</td><td class="n">$105</td></tr>
+              <tr><td>$7,501–9,000</td><td class="n">up to $240</td><td class="n">$506</td><td class="n">up to $190</td><td class="n">$175</td></tr>
+              <tr><td>$9,001–10,500</td><td class="n">up to $100</td><td class="n">$646</td><td class="n">up to $130</td><td class="n">$235</td></tr>
+              <tr><td>$10,501–12,000</td><td class="n">up to $40</td><td class="n">$706</td><td class="n">up to $80</td><td class="n">$315</td></tr>
+              <tr><td>Above $12,000</td><td class="n">—</td><td class="n">$746</td><td class="n">—</td><td class="n">$365</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          "You pay" is the Anchor Operator fee with GST, less the $600 or $300 basic subsidy
+          and the additional subsidy, but never below ECDA's minimum co-payment for that band.
+          From <strong>1 January 2027</strong> the additional subsidy reaches households earning
+          up to <strong>$15,000</strong> a month (per-capita $3,400); ECDA had not published the
+          new bands at the time of writing. At MOE and Anchor Operator kindergartens the
+          equivalent help is <strong>KiFAS</strong>, worth up to $163 a month for the lowest
+          incomes, under the same $12,000 ceiling.
+        </p>
+
+        <!-- CALCULATOR 4 -->
+        <div class="panel" id="childcare-fee-calculator">
+          <div class="panel-head">
+            <span class="t">Fee calculator</span>
+            <span class="s">Full day · Singapore Citizen child · 2026 rates</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="ccProg">Programme</label>
+                <select id="ccProg">
+                  <option value="ic">Infant care (2–18 months)</option>
+                  <option value="cc" selected>Childcare (18 months–6 years)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="ccOp">Centre</label>
+                <select id="ccOp">
+                  <option value="aop" selected>Anchor Operator</option>
+                  <option value="pop">Partner Operator</option>
+                  <option value="pvt">Private — enter fee</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="ccFee">Monthly fee</label>
+                <input id="ccFee" type="number" min="0" step="10" value="665">
+                <span class="hint">S$, including GST</span>
+              </div>
+              <div class="field">
+                <label for="ccInc">Household income</label>
+                <input id="ccInc" type="number" min="0" step="500" value="13000">
+                <span class="hint">S$ a month, gross, both parents</span>
+              </div>
+              <div class="field">
+                <label for="ccWork">Mother working 56+ hrs/month?</label>
+                <select id="ccWork">
+                  <option value="1" selected>Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+            </div>
+            <div class="outrow">
+              <div class="out"><span class="k">Basic subsidy</span><span class="v" id="ccBS">—</span></div>
+              <div class="out"><span class="k">Additional subsidy</span><span class="v" id="ccAS">—</span></div>
+              <div class="out"><span class="k">You pay a month</span><span class="v" id="ccNet">—</span></div>
+              <div class="out"><span class="k">You pay a year</span><span class="v" id="ccYr">—</span></div>
+            </div>
+            <p class="meter-foot" id="ccNote"></p>
+          </div>
+        </div>
+
+        <h3 id="childcare-what-it-adds-up-to">What it adds up to, 0 to 6</h3>
+        <p>
+          For a working household above the means test, with the child in infant care from
+          2 months and childcare from 18 months until Primary 1 (16 + 54 months), at today's
+          fees:
+        </p>
+        <div class="tablewrap panel">
+          <table>
+            <thead>
+              <tr><th>Where</th><th class="n">Infant care</th><th class="n">Childcare</th><th class="n">Total</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Anchor Operator</strong></td><td class="n">$11,900</td><td class="n">$19,700</td><td class="n">~$31,600</td></tr>
+              <tr><td><strong>Partner Operator</strong></td><td class="n">$12,900</td><td class="n">$22,100</td><td class="n">~$35,000</td></tr>
+              <tr><td><strong>Private</strong>, at $2,200 / $1,600 a month</td><td class="n">$25,600</td><td class="n">$70,200</td><td class="n">~$95,800</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Two things shrink these. A first child's CDA holds <strong>$13,000</strong> once you
+          deposit $4,000 and collect the match and First Step Grant, which on its own covers
+          all 16 months of Anchor Operator infant care. And a child born in 2026 is
+          in childcare from 2028 to 2032, exactly when the government plans to cut
+          government-supported fees toward $150 a month, so the childcare column is likely
+          to come in well under today's figure.
+        </p>
+
+        <h3 id="childcare-centre-helper-or-grandparents">Centre, helper or grandparents</h3>
+        <div class="tablewrap panel">
+          <table>
+            <thead>
+              <tr><th>Arrangement</th><th class="n">Cash cost / month</th><th>What else to weigh</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Infant care centre</strong> (Anchor Operator)</td><td class="n">$746</td><td class="wrap-ok">Trained staff and a fixed routine. Sick days mean someone stays home: each parent has 6 days of childcare leave a year, plus 12 days of unpaid infant care leave until age 2.</td></tr>
+              <tr><td><strong>Live-in helper</strong></td><td class="n">~$1,000–1,250</td><td class="wrap-ok">With the $60 concessionary levy. Covers the whole household and sick days, not just childcare, and many families use one alongside childcare from 18 months. See <a href="#helper">Hiring a helper</a>.</td></tr>
+              <tr><td><strong>Grandparents</strong></td><td class="n">whatever you agree</td><td class="wrap-ok">The mother can claim <a href="#tax-every-relief-a-family-can-claim">Grandparent Caregiver Relief</a> of $3,000 a year. Many families still pay a monthly allowance; it is not deductible.</td></tr>
+              <tr><td><strong>One parent at home</strong></td><td class="n">lost income</td><td class="wrap-ok">If the mother does not work, a centre place gets only a $150 basic subsidy and no additional subsidy, until the NDR 2026 change below takes effect.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="childcare-what-is-changing">What is changing</h3>
+        <div class="note warn">
+          <span class="tag">Announced, not yet in force</span>
+          <p>
+            At the National Day Rally on 23 August 2026 the government said fees at
+            government-supported preschools will fall to <strong>$150 a month for full-day
+            childcare</strong> and <strong>$300 for infant care</strong>, progressively from
+            2028 and reaching those levels by 2030, with extra help for lower-income families
+            on top. Full subsidies will also be extended to citizen children <strong>whether
+            or not the main applicant works</strong>. Details and dates are due in early 2027.
+          </p>
+        </div>
+        <ul class="ticks">
+          <li><strong>1 January 2027:</strong> additional subsidy and KiFAS income ceiling rises from $12,000 to $15,000.</li>
+          <li><strong>2028 to 2030:</strong> fee cuts at Anchor and Partner Operators toward $150 / $300. Private centres are not covered, so the gap to private grows.</li>
+          <li><strong>Childcare leave</strong> is set to rise to 8 days a year (10 with two children, 12 with three); see <a href="#baby-parental-leave">Parental leave</a>.</li>
+        </ul>
+
+        <h3 id="childcare-getting-a-place">Getting a place</h3>
+        <ol class="steps">
+          <li><strong>During pregnancy:</strong> shortlist centres near home or one parent's workplace in the Preschool Search on LifeSG, and note which are Anchor or Partner Operators.</li>
+          <li><strong>As early as each centre allows:</strong> register interest at several. Infant care places are scarce because of the 1:5 staff ratio, and popular centres run waitlists of 6 to 18 months.</li>
+          <li><strong>On enrolment:</strong> apply for the subsidy through the centre, with both parents' income documents. It is deducted from the monthly bill.</li>
+          <li><strong>Pay by CDA GIRO:</strong> link the child's CDA to the centre so fees come out of the matched money first.</li>
+          <li><strong>The year the child turns 4:</strong> if you want MOE Kindergarten for K1–K2, register in its annual exercise; dates are on the MOE website.</li>
+          <li><strong>The year the child turns 6:</strong> Primary 1 registration, usually in July.</li>
         </ol>
       </div>
     </div>
@@ -2284,6 +2544,15 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           </div>
         </div>
 
+        <div class="check-group">
+          <span class="mono-label">Childcare</span>
+          <div class="checklist">
+            <div class="check" data-id="26"><span class="mk">26</span><span class="tx">Shortlist Anchor and Partner Operator centres near home or work, and register interest at several.<em>During pregnancy, for infant care</em></span></div>
+            <div class="check" data-id="27"><span class="mk">27</span><span class="tx">Apply for the childcare subsidy through the centre on enrolment.<em>Recheck the means test from 1 Jan 2027: ceiling $15,000</em></span></div>
+            <div class="check" data-id="28"><span class="mk">28</span><span class="tx">Link the child's CDA to the centre for fee GIRO.<em>Matched money pays first</em></span></div>
+          </div>
+        </div>
+
         </div>
 
         </div>
@@ -2379,6 +2648,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   var PAGES = [
     ["cpf", "CPF"], ["etf", "ETF investing"], ["cards", "Credit card"], ["insurance", "Insurance"],
     ["tax", "Tax"], ["sti", "STI dashboard"], ["helper", "Hiring a helper"], ["baby", "Baby bonus"],
+    ["childcare", "Childcare"],
     ["checklist", "Checklist"]
   ];
   var BASE_TITLE = document.title;
@@ -2617,6 +2887,47 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   }
   [iInc, iLife, iCi, iSav].forEach(function (el) { el.addEventListener("input", runIns); });
   runIns();
+
+  /* ---------- 5 · Childcare fee calculator ---------- */
+  // Fee caps from 1 Jan 2026 with 9% GST; additional subsidy bands [income up to, max AS, min co-pay].
+  var CC_FEES = { ic: { aop: 1346.15, pop: 1406.10, pvt: 2200 }, cc: { aop: 664.90, pop: 708.50, pvt: 1600 } };
+  var CC_BS = { ic: 600, cc: 300 };
+  var CC_AS = {
+    ic: [[3000, 710, 40], [4500, 640, 110], [6000, 500, 250], [7500, 380, 360], [9000, 240, 500], [10500, 100, 640], [12000, 40, 700]],
+    cc: [[3000, 467, 3], [4500, 440, 25], [6000, 340, 58], [7500, 260, 104], [9000, 190, 162], [10500, 130, 232], [12000, 80, 315]]
+  };
+  var ccProg = document.getElementById("ccProg"), ccOp = document.getElementById("ccOp"),
+      ccFee = document.getElementById("ccFee"), ccInc = document.getElementById("ccInc"),
+      ccWork = document.getElementById("ccWork");
+  function setCcFee() {
+    var op = ccOp.value;
+    ccFee.value = Math.round(CC_FEES[ccProg.value][op]);
+    ccFee.readOnly = op !== "pvt";
+    runCc();
+  }
+  function runCc() {
+    var prog = ccProg.value, op = ccOp.value, working = ccWork.value === "1", inc = num(ccInc);
+    var fee = op === "pvt" ? num(ccFee) : CC_FEES[prog][op];
+    var bs = Math.min(fee, working ? CC_BS[prog] : 150);
+    var band = working ? CC_AS[prog].filter(function (b) { return inc <= b[0]; })[0] : null;
+    var as = band ? Math.min(band[1], Math.max(0, fee - bs - band[2])) : 0;
+    var net = fee - bs - as;
+    document.getElementById("ccBS").textContent = money(bs);
+    document.getElementById("ccAS").textContent = money(as);
+    document.getElementById("ccNet").textContent = money(net);
+    document.getElementById("ccYr").textContent = money(net * 12);
+    var note;
+    if (!working) note = "With the mother not working, only the $150 basic subsidy applies. NDR 2026 plans to give full subsidies regardless of working status; details are due in early 2027.";
+    else if (!band) note = "Above the $12,000 means test, so no additional subsidy in 2026." + (inc <= 15000 ? " From 1 January 2027 the ceiling rises to $15,000, so you may qualify then: ask the centre to reassess." : "");
+    else if (as < band[1]) note = "Your band's additional subsidy is up to " + money(band[1]) + ", but it stops at ECDA's minimum co-payment of " + money(band[2]) + " a month.";
+    else note = "You get the full additional subsidy for your income band.";
+    if (op === "pvt") note += " Private fees are your own figure; subsidies apply at any ECDA-licensed centre.";
+    document.getElementById("ccNote").textContent = note;
+  }
+  [ccProg, ccOp].forEach(function (el) { el.addEventListener("change", setCcFee); });
+  ccWork.addEventListener("change", runCc);
+  [ccFee, ccInc].forEach(function (el) { el.addEventListener("input", runCc); });
+  setCcFee();
 
   /* ---------- 1.5 · Tax estimator ---------- */
   var BANDS = [[20000, 0], [30000, 0.02], [40000, 0.035], [80000, 0.07], [120000, 0.115], [160000, 0.15],
