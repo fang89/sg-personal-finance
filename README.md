@@ -1,14 +1,13 @@
 # SG Household Money Guide
 
-A single-page personal finance guide for Singapore households, in seven sections plus a
+A single-page personal finance guide for Singapore households, in eight sections plus a
 checklist:
 
 1. **CPF** — funding CPF MediSave and Special Account toward the Basic Retirement Sum,
    and what the cash top-up tax relief is actually worth at each marginal rate.
 2. **ETFs** — buying Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
    Interactive Brokers, and why domicile beats index choice for a Singapore resident.
-   Includes the embedded **STI dashboard** (`sti/`): the Straits Times Index and its 30
-   constituents since 1987, annotated with market events and earnings.
+   Includes where Singapore stocks and the STI fit.
 3. **Cards** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
 4. **Helper** — hiring a migrant domestic worker: full cost, the $60 concessionary levy,
    MOM requirements and the step-by-step process.
@@ -20,6 +19,8 @@ checklist:
    illness cover a parent needs, and insuring a newborn.
 7. **Tax** — 2026 resident rates, every relief a family can claim, SRS, which spouse
    should claim what, and the tax-year calendar.
+8. **STI dashboard** — the Straits Times Index and its 30 constituents since 1987 on an
+   interactive chart, annotated with market events and every earnings result.
 
 Four interactive calculators are built in: a CPF top-up planner that projects your Special
 Account against your own cohort's Basic Retirement Sum, a card comparison that nets
@@ -33,9 +34,10 @@ and a tax estimator.
 
 ```
 index.html                 the entire guide — no build step, no dependencies
-sti/                       STI dashboard, embedded in the ETF section and served at /sti/
-  index.html               the dashboard app; ?embed=1 hides its header for the iframe
+sti/                       section 08: the STI dashboard's code and data
+  app.js                   chart code; its markup and styles live in index.html under #sti-app
   data.js, earnings.js …   generated data; refresh with the fetch_*.py scripts (see sti/README.md)
+  index.html               redirect from the old /sti/ address to ../#sti
 artifact.html              generated preview body (Claude Artifact / embed use)
 tools/build_artifact.py    regenerates artifact.html from index.html
 .nojekyll                  tells GitHub Pages to serve the files as-is
@@ -43,8 +45,8 @@ tools/build_artifact.py    regenerates artifact.html from index.html
 
 `index.html` is the single source of truth for the guide. Its styles, scripts and
 content are inline, so it works from a local `file://` open, any static host, or GitHub
-Pages with no toolchain. The STI dashboard embed sizes itself to fit only when served over
-HTTP (same origin); from `file://` it falls back to a fixed height.
+Pages with no toolchain. The STI dashboard (section 08) loads its ~3 MB of data from `sti/` only when the
+reader scrolls near it.
 
 ## Running it locally
 

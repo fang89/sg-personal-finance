@@ -363,6 +363,35 @@ footer { padding: 48px 0 72px; }
   caption { display: block; }
 }
 
+
+/* STI dashboard tokens (section 08) */
+:root {
+    --surface-1: #ffffff; --plane: #f4f7fc;
+    --ink-1: #0f1b33; --ink-2: #475569; --muted: #64748b;
+    --grid: #e2e8f2; --baseline: #cbd5e3; --border: rgba(15,27,51,0.10);
+    --series-1: #1d4ed8; --up: #006300; --down: #d03b3b;
+    --cat-crisis: #e34948; --cat-sg: #1baf7a; --cat-policy: #4a3aa7; --cat-milestone: #eda100; --cat-earnings: #eb6834;
+    --bm-gspc: #4a3aa7; --bm-ixic: #e87ba4; --bm-hsi: #e34948; --bm-n225: #1baf7a; --bm-btc: #eb6834; --bm-gold: #eda100;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface-1: #0f172a; --plane: #0a1020;
+    --ink-1: #e6ecf5; --ink-2: #c3cddc; --muted: #8e9bb0;
+    --grid: #1f2a40; --baseline: #2c3a55; --border: rgba(255,255,255,0.10);
+    --series-1: #60a5fa; --up: #0ca30c; --down: #e66767;
+    --cat-crisis: #e66767; --cat-sg: #199e70; --cat-policy: #9085e9; --cat-milestone: #c98500; --cat-earnings: #d95926;
+    --bm-gspc: #9085e9; --bm-ixic: #d55181; --bm-hsi: #e66767; --bm-n225: #199e70; --bm-btc: #d95926; --bm-gold: #c98500;
+  }
+}
+:root[data-theme="dark"] {
+    --surface-1: #0f172a; --plane: #0a1020;
+    --ink-1: #e6ecf5; --ink-2: #c3cddc; --muted: #8e9bb0;
+    --grid: #1f2a40; --baseline: #2c3a55; --border: rgba(255,255,255,0.10);
+    --series-1: #60a5fa; --up: #0ca30c; --down: #e66767;
+    --cat-crisis: #e66767; --cat-sg: #199e70; --cat-policy: #9085e9; --cat-milestone: #c98500; --cat-earnings: #d95926;
+    --bm-gspc: #9085e9; --bm-ixic: #d55181; --bm-hsi: #e66767; --bm-n225: #199e70; --bm-btc: #d95926; --bm-gold: #c98500;
+}
+
 /* ============================================================
    Blue-and-white accents
    ============================================================ */
@@ -379,12 +408,152 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
 .fig.accent { border-top: 3px solid var(--accent); }
 .body-col h2 { color: var(--ink); }
 .body-col h3 { color: var(--accent-ink); }
-.embed-panel { max-width: none; }
-.embed-panel .panel-head a.s { color: var(--accent-ink); text-decoration: none; font-weight: 500; }
-.embed-panel .panel-head a.s:hover { text-decoration: underline; }
-.embed-frame { display: block; width: 100%; height: 1100px; border: 0; background: var(--paper); }
-.embed-panel .embed-frame { padding: 0; }
 .embed-cap { font-size: 14px; color: var(--ink-faint); max-width: var(--measure); }
+
+/* ============================================================
+   08 · STI dashboard (scoped to #sti-app; sizes by container)
+   ============================================================ */
+#sti-app {
+  container: sti / inline-size; margin-top: 24px; position: relative; min-height: 640px;
+  font-size: 14px; line-height: 1.45; color: var(--ink-1);
+}
+#sti-app .sti-loading { position: absolute; inset: 0 0 auto 0; padding: 48px 0; text-align: center; color: var(--ink-faint); font-size: 15px; }
+#sti-app.ready .sti-loading { display: none; }
+#sti-app:not(.ready) > :not(.sti-loading) { visibility: hidden; }
+#sti-app th, #sti-app td { vertical-align: baseline; white-space: nowrap; }
+#sti-app thead th { text-transform: none; letter-spacing: 0; font-size: inherit; }
+#sti-app tbody tr:hover td { background: var(--surface-1); }
+#sti-app h2 { letter-spacing: 0; }
+#sti-app .sti-foot { margin-top: 22px; color: var(--muted); font-size: 12px; }
+  #sti-app .lg { width: 18px; height: 18px; border-radius: 4px; flex: none; object-fit: contain; background: #fff; padding: 2px; box-shadow: 0 0 0 1px var(--border); }
+  #sti-app .mono {
+    width: 18px; height: 18px; border-radius: 4px; flex: none;
+    background: color-mix(in srgb, var(--series-1) 16%, transparent); color: var(--series-1);
+    font-size: 8px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center;
+  }
+  #sti-app .theme-btn {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
+    border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 12px; cursor: pointer;
+  }
+  #sti-app .theme-btn:hover { color: var(--ink-1); }
+
+  #sti-app .tiles { display: grid; grid-template-columns: minmax(220px, 1.5fr) repeat(5, minmax(128px, 1fr)); gap: 10px; margin: 14px 0; }
+  @container sti (max-width: 1100px) { #sti-app .tiles { grid-template-columns: repeat(3, 1fr); } #sti-app .tile.profile { grid-column: 1 / -1; } }
+  @container sti (max-width: 800px) { #sti-app .tiles { grid-template-columns: 1fr 1fr; } #sti-app .tile.profile { grid-column: 1 / -1; } }
+  #sti-app .tile.profile .ph { display: flex; align-items: center; gap: 7px; }
+  #sti-app .tile.profile .ph .lg, #sti-app .tile.profile .ph .mono { width: 22px; height: 22px; }
+  #sti-app .tile.profile .pn { font-weight: 650; font-size: 14px; }
+  #sti-app .tile.profile .pb { font-size: 11.5px; line-height: 1.35; color: var(--ink-2); margin-top: 4px; }
+  #sti-app .tile.profile .pm { font-size: 13px; font-weight: 650; margin-top: 5px; }
+  #sti-app .tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+  #sti-app .tile .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  #sti-app .tile .v { font-size: 22px; font-weight: 650; margin-top: 2px; }
+  #sti-app .tile .s { font-size: 12px; color: var(--ink-2); margin-top: 1px; }
+  #sti-app .tile .vr { display: flex; align-items: baseline; gap: 7px; margin-top: 3px; }
+  #sti-app .tile .vr .vl { font-size: 11px; color: var(--muted); min-width: 24px; }
+  #sti-app .tile .vr .vv { font-size: 17px; font-weight: 650; }
+  #sti-app .pos { color: var(--up); } #sti-app .neg { color: var(--down); }
+
+  #sti-app .sti-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 10px 0 12px; }
+  #sti-app .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface-1); }
+  #sti-app .seg button {
+    border: 0; background: none; color: var(--ink-2); padding: 6px 11px;
+    font: inherit; font-size: 12.5px; cursor: pointer; border-right: 1px solid var(--border);
+  }
+  #sti-app .seg button:last-child { border-right: 0; }
+  #sti-app .seg button:hover { color: var(--ink-1); }
+  #sti-app .seg button[aria-pressed="true"] { background: var(--series-1); color: #fff; }
+  #sti-app .seg.dim { opacity: 0.45; pointer-events: none; }
+  #sti-app .chips { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+  #sti-app .chip {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-2);
+    border-radius: 999px; padding: 5px 11px; font: inherit; font-size: 12.5px;
+  }
+  #sti-app .chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px var(--border); }
+  #sti-app .chip[aria-pressed="false"] { opacity: 0.45; }
+  #sti-app .chip[aria-pressed="false"] .dot { background: var(--muted); }
+  #sti-app .hint { color: var(--muted); font-size: 12px; }
+
+  #sti-app .sti-layout { display: grid; grid-template-columns: 232px 1fr; gap: 14px; align-items: start; }
+  @container sti (max-width: 860px) { #sti-app .sti-layout { grid-template-columns: 1fr; } }
+
+  #sti-app .sti-side { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  #sti-app .sti-side .grp { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); padding: 10px 12px 4px; }
+  #sti-app .sti-side button.tk {
+    display: flex; width: 100%; align-items: center; gap: 8px; border: 0; background: none;
+    padding: 6px 12px; font: inherit; font-size: 13px; color: var(--ink-1); cursor: pointer; text-align: left;
+  }
+  #sti-app .sti-side button.tk:hover { background: color-mix(in srgb, var(--series-1) 8%, transparent); }
+  #sti-app .sti-side button.tk[aria-current="true"] { background: color-mix(in srgb, var(--series-1) 14%, transparent); box-shadow: inset 3px 0 0 var(--series-1); }
+  #sti-app .tk .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #sti-app .tk .pc { font-size: 12px; font-variant-numeric: tabular-nums; }
+  @container sti (max-width: 860px) {
+    #sti-app .sti-side { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px; gap: 4px; }
+    #sti-app .sti-side .grp { display: none; }
+    #sti-app .sti-side button.tk { flex: none; width: auto; border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; }
+    #sti-app .sti-side button.tk[aria-current="true"] { box-shadow: none; border-color: var(--series-1); }
+    #sti-app .tk .nm { max-width: 110px; }
+    #sti-app .sti-controls .hint { display: none; }
+  }
+  @container sti (max-width: 600px) {
+    #sti-app .tile .v { font-size: 19px; }
+    #sti-app .chart-wrap { height: 320px; }
+    #sti-app .ov-wrap { height: 44px; }
+  }
+
+  #sti-app .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 12px 12px 8px; }
+  #sti-app .chart-head { display: flex; align-items: center; gap: 8px; padding: 0 4px 4px; }
+  #sti-app .chart-head .nm { font-weight: 650; font-size: 15px; }
+  #sti-app .chart-head .code { color: var(--muted); font-size: 12px; }
+  #sti-app .chart-wrap { position: relative; height: 430px; touch-action: pan-y; cursor: crosshair; }
+  #sti-app .chart-wrap canvas, #sti-app .ov-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #sti-app .ov-wrap { position: relative; height: 56px; margin-top: 8px; touch-action: pan-y; cursor: grab; }
+  #sti-app .tooltip {
+    position: absolute; pointer-events: none; display: none; z-index: 3; min-width: 150px; max-width: 260px;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); padding: 8px 10px; font-size: 12px;
+  }
+  #sti-app .tooltip .d { color: var(--ink-2); }
+  #sti-app .tooltip .p { font-size: 16px; font-weight: 650; color: var(--ink-1); }
+  #sti-app .tooltip .r { color: var(--ink-2); margin-top: 1px; }
+  #sti-app .tooltip .ev { display: flex; gap: 6px; align-items: baseline; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--grid); }
+  #sti-app .tooltip .ev .key { width: 14px; height: 0; border-top: 3px solid var(--c); transform: translateY(-3px); flex: none; }
+
+  #sti-app .ev-detail {
+    display: none; margin-top: 10px; border: 1px solid var(--border); border-left: 4px solid var(--c);
+    background: color-mix(in srgb, var(--c) 6%, var(--surface-1));
+    border-radius: 8px; padding: 10px 12px; position: relative;
+  }
+  #sti-app .ev-detail .dt { font-size: 12px; color: var(--ink-2); }
+  #sti-app .ev-detail .tt { font-weight: 650; margin: 1px 0 3px; }
+  #sti-app .ev-detail .bb { font-size: 13px; color: var(--ink-2); }
+  #sti-app .ev-detail .x { position: absolute; top: 6px; right: 8px; border: 0; background: none; color: var(--muted); font-size: 15px; cursor: pointer; }
+
+  #sti-app .ev-panel { margin-top: 14px; }
+  #sti-app .ev-panel h2 { font-size: 14px; margin: 0 0 8px; }
+  #sti-app .ev-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; max-height: 330px; overflow-y: auto; padding-right: 2px; }
+  #sti-app .ev-card {
+    display: block; text-align: left; font: inherit; cursor: pointer;
+    background: var(--surface-1); border: 1px solid var(--border); border-left: 4px solid var(--c);
+    border-radius: 8px; padding: 8px 10px; color: var(--ink-1);
+  }
+  #sti-app .ev-card:hover { border-color: var(--c); }
+  #sti-app .ev-card.dim { opacity: 0.5; }
+  #sti-app .ev-card.sel { box-shadow: 0 0 0 2px var(--c); }
+  #sti-app .ev-card .dt { font-size: 11px; color: var(--muted); }
+  #sti-app .ev-card .tt { font-weight: 600; font-size: 13px; margin: 1px 0 2px; }
+  #sti-app .ev-card .bb { font-size: 12px; color: var(--ink-2); }
+
+  #sti-app details.tbl { margin-top: 14px; }
+  #sti-app details.tbl summary { cursor: pointer; color: var(--ink-2); font-size: 13px; }
+  #sti-app details.tbl table { border-collapse: collapse; margin-top: 8px; font-size: 12.5px; }
+  #sti-app details.tbl th, #sti-app details.tbl td { border: 1px solid var(--grid); padding: 4px 10px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-1); background: var(--surface-1); }
+  #sti-app details.tbl th:first-child, #sti-app details.tbl td:first-child { text-align: left; }
+  #sti-app details.tbl th { color: var(--ink-2) !important; font-weight: 600; }
+  #sti-app details.tbl td.pos { color: var(--up); }
+  #sti-app details.tbl td.neg { color: var(--down); }
+
 </style>
 </head>
 <body>
@@ -400,6 +569,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
       <a data-nav href="#baby">Baby</a>
       <a data-nav href="#insurance">Insurance</a>
       <a data-nav href="#tax">Tax</a>
+      <a data-nav href="#sti">STI</a>
       <a data-nav href="#checklist">Checklist</a>
     </nav>
     <button id="themeBtn" type="button" aria-label="Switch colour theme">Dark mode</button>
@@ -461,6 +631,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <a href="#tax-which-spouse-claims-what">Which spouse claims what</a>
           <a href="#tax-the-tax-year-in-order">The tax year, in order</a>
         </div>
+      <a class="sec" data-nav href="#sti"><span class="i">08</span>STI dashboard</a>
       <a class="sec" data-nav href="#checklist"><span class="i">✓</span>Checklist</a>
     </nav>
     <p class="side-foot">Figures verified 16 Aug 2026 (CPF, ETFs, cards) and 4 Oct 2026 (helper, baby, insurance, tax). Not financial advice.</p>
@@ -498,7 +669,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
       <a class="toc-card" href="#etf">
         <span class="n">02 · ETF investing</span>
         <span class="h">Buy the world through Ireland</span>
-        <span class="d">IWDA / EIMI / VWRA through Interactive Brokers, why domicile beats index choice, and an annotated STI dashboard.</span>
+        <span class="d">IWDA / EIMI / VWRA through Interactive Brokers, why domicile beats index choice, and where Singapore stocks fit.</span>
         <span class="x">15% vs 30% withholding · no US estate tax</span>
       </a>
       <a class="toc-card" href="#cards">
@@ -530,6 +701,12 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="h">Claim every relief</span>
         <span class="d">Every relief a family can claim, CPF top-ups and SRS before 31 December, and which spouse should claim what.</span>
         <span class="x">tax estimator</span>
+      </a>
+      <a class="toc-card" href="#sti">
+        <span class="n">08 · STI dashboard</span>
+        <span class="h">38 years of the STI</span>
+        <span class="d">The index and its 30 members since 1987, annotated with crises, policy changes and earnings.</span>
+        <span class="x">interactive chart</span>
       </a>
       <a class="toc-card" href="#checklist">
         <span class="n">Checklist</span>
@@ -997,19 +1174,13 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           replacement for it.
         </p>
 
-        <div class="panel embed-panel">
-          <div class="panel-head">
-            <span class="t">STI dashboard: 38 years, annotated</span>
-            <a class="s" href="sti/">Open full screen ↗</a>
-          </div>
-          <iframe class="embed-frame" id="stiFrame" src="sti/?embed=1" title="Straits Times Index dashboard" loading="lazy"></iframe>
+        <div class="note">
+          <span class="tag">See the STI for yourself</span>
+          <p>
+            <a href="#sti">Section 08</a> charts the index and all 30 members since 1987,
+            annotated with every crisis, policy change and earnings result that moved them.
+          </p>
         </div>
-        <p class="embed-cap">
-          The index and all 30 constituents since 1987, with crises, policy changes and
-          earnings marked on the chart. Pick a ticker on the left, zoom with the scroll wheel,
-          and click an event for the story. Prices are Yahoo Finance daily closes,
-          unadjusted. Not investment advice.
-        </p>
       </div>
     </div>
   </section>
@@ -1928,6 +2099,84 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
+  <!-- ==================== 08 · STI dashboard ==================== -->
+  <section class="section" id="sti">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">08 — STI dashboard</span>
+        <span class="rail-note">The Straits Times Index and its 30 members since 1987, with the crises, policy changes and earnings that moved them.</span>
+      </div>
+      <div class="body-col">
+        <h2>Thirty-eight years of Singapore's market, annotated</h2>
+        <p class="lede">
+          The Straits Times Index and every one of its 30 constituents, with daily prices
+          back to December 1987 for the index. Market crises, Singapore-specific events,
+          policy changes and each company's earnings results are marked on the chart. Use it
+          for context, not for picking stocks; <a href="#etf-singapore-stocks-and-the-sti">section 02</a>
+          explains why the index fund beats choosing banks.
+        </p>
+        <p class="embed-cap">
+          Pick a ticker, choose a range, and drag or scroll on the chart to pan and zoom.
+          Click an event card for the story behind it. Compare against the S&amp;P 500,
+          Nasdaq, Hang Seng, Nikkei, Bitcoin or gold with the buttons above the chart.
+        </p>
+      </div>
+    </div>
+
+    <div id="sti-app" aria-label="Straits Times Index dashboard">
+      <p class="sti-loading" id="sti-loading">Loading 38 years of prices…</p>
+  <div class="tiles" id="sti-tiles"></div>
+
+  <div class="sti-controls">
+    <div class="seg" id="sti-ranges" role="group" aria-label="Date range"></div>
+    <div class="seg" id="sti-scaleSeg" role="group" aria-label="Scale">
+      <button type="button" data-scale="lin" aria-pressed="true">Linear</button>
+      <button type="button" data-scale="log" aria-pressed="false">Log</button>
+    </div>
+    <div class="chips" id="sti-catChips" role="group" aria-label="Event categories"></div>
+    <span class="hint" id="sti-benchHint">compare</span>
+    <div class="chips" id="sti-benchChips" role="group" aria-label="Compare against benchmarks"></div>
+    <span class="hint">scroll to zoom · drag to pan · click a flag or card for the story</span>
+  </div>
+
+  <div class="sti-layout">
+    <nav class="sti-side" id="sti-sidebar" aria-label="Tickers"></nav>
+
+    <div>
+      <div class="card">
+        <div class="chart-head">
+          <img class="lg" id="sti-chartLogo" alt="" style="display:none"><span class="nm" id="sti-chartName"></span><span class="code" id="sti-chartCode"></span>
+          <span class="spacer" style="flex:1"></span>
+          <span class="hint" id="sti-rangeLabel"></span>
+        </div>
+        <div class="chart-wrap" id="sti-chartWrap">
+          <canvas id="sti-base"></canvas><canvas id="sti-overlay"></canvas>
+          <div class="tooltip" id="sti-tooltip"></div>
+        </div>
+        <div class="ov-wrap" id="sti-ovWrap"><canvas id="sti-ovCanvas"></canvas></div>
+      </div>
+
+      <div class="ev-detail" id="sti-evDetail">
+        <button class="x" type="button" aria-label="Clear selection" id="sti-evClose">✕</button>
+        <div class="dt"></div><div class="tt"></div><div class="bb"></div>
+      </div>
+
+      <div class="ev-panel">
+        <h2>Key events <span class="hint" id="sti-evCount"></span></h2>
+        <div class="ev-list" id="sti-evList"></div>
+      </div>
+
+      <details class="tbl" id="sti-tableView">
+        <summary>Data table (year-end closes)</summary>
+        <div style="overflow-x:auto"><table id="sti-yearTable"></table></div>
+      </details>
+      <p class="sti-foot">Prices: Yahoo Finance daily closes (unadjusted), <span id="sti-genDate"></span> ·
+        Events curated from public reporting · Not investment advice.</p>
+    </div>
+  </div>
+    </div>
+  </section>
+
 <!-- ==================== CHECKLIST ==================== -->
   <section class="section" id="checklist">
     <div class="section-grid">
@@ -2231,17 +2480,29 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   }
   stackTables();
 
-  /* ---------- STI dashboard embed: grow the frame to fit ---------- */
-  var stiFrame = document.getElementById("stiFrame");
-  if (stiFrame) {
-    stiFrame.addEventListener("load", function () {
-      try {
-        var doc = stiFrame.contentDocument;
-        var fit = function () { stiFrame.style.height = Math.ceil(doc.body.scrollHeight) + "px"; };
-        fit();
-        if ("ResizeObserver" in window) new ResizeObserver(fit).observe(doc.body);
-      } catch (e) { /* not same-origin (opened from disk): keep the fixed height */ }
-    });
+  /* ---------- 08 · STI dashboard: load its data only when it comes near ---------- */
+  var stiApp = document.getElementById("sti-app");
+  if (stiApp) {
+    var stiStarted = false;
+    var loadSti = function () {
+      if (stiStarted) return;
+      stiStarted = true;
+      ["data.js", "benchmarks.js", "logos.js", "earnings.js", "profiles.js", "app.js"].forEach(function (f) {
+        var s = document.createElement("script");
+        s.src = "sti/" + f;
+        s.async = false;   // download in parallel, run in order
+        s.onerror = function () { document.getElementById("sti-loading").textContent = "Could not load the market data."; };
+        document.body.appendChild(s);
+      });
+    };
+    if ("IntersectionObserver" in window) {
+      var stiIo = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { stiIo.disconnect(); loadSti(); }
+      }, { rootMargin: "1500px 0px" });
+      stiIo.observe(stiApp);
+    } else {
+      loadSti();
+    }
   }
 
   /* ---------- formatting ---------- */
