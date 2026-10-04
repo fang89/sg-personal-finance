@@ -115,7 +115,7 @@ code { font-family: var(--f-mono); font-size: .86em; background: var(--band); bo
 }
 
 /* ============================================================
-   Shell: slim top bar, sidebar on wide screens
+   Shell: top bar with dropdown navigation
    ============================================================ */
 .topbar {
   position: sticky; top: 0; z-index: 40; height: var(--bar);
@@ -126,53 +126,16 @@ code { font-family: var(--f-mono); font-size: .86em; background: var(--band); bo
 .topbar-in { height: 100%; padding: 0 24px; display: flex; align-items: center; gap: 20px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 650; color: var(--ink); text-decoration: none; white-space: nowrap; letter-spacing: -.01em; }
 .brand .logo { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); color: var(--paper); display: grid; place-items: center; font-size: 12px; font-weight: 700; letter-spacing: 0; }
-.topnav { display: flex; gap: 4px; margin-left: auto; align-items: center; min-width: 0; overflow-x: auto; scrollbar-width: none; }
-.topnav::-webkit-scrollbar { display: none; }
-.topnav a { font-size: 14px; font-weight: 500; color: var(--ink-faint); text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
-.topnav a:hover { color: var(--ink); background: var(--band); }
-.topnav a.is-on { color: var(--accent-ink); background: var(--accent-tint); }
 #themeBtn {
   margin-left: auto; flex: none; font: 500 13px var(--f-text); color: var(--ink-soft);
   background: var(--raised); border: 1px solid var(--rule-strong); border-radius: 6px; padding: 6px 12px; cursor: pointer;
 }
-.topnav + #themeBtn { margin-left: 8px; }
 #themeBtn:hover { color: var(--ink); border-color: var(--ink-faint); }
 
-.layout { display: block; }
-.sidebar { display: none; }
 .wrap { max-width: var(--main); margin: 0 auto; padding: 0 24px; }
-
-@media (min-width: 1120px) {
-  .topnav { display: none; }
-  .layout { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); }
-  .sidebar {
-    display: block; position: sticky; top: var(--bar); align-self: start;
-    height: calc(100vh - var(--bar)); overflow-y: auto;
-    border-right: 1px solid var(--rule); background: var(--side); padding: 28px 16px 40px;
-  }
-  .wrap { margin: 0; padding: 0 56px; max-width: calc(var(--main) + 112px); }
-}
-@media (min-width: 1400px) { .wrap { margin: 0 auto; } }
-
-.sidenav { display: grid; gap: 2px; }
-.sidenav .grp { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); padding: 0 10px 8px; }
-.sidenav a.sec {
-  display: flex; gap: 10px; align-items: baseline; padding: 7px 10px; border-radius: 6px;
-  font-size: 14.5px; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-}
-.sidenav a.sec .i { font-size: 12px; color: var(--ink-faint); font-variant-numeric: tabular-nums; width: 18px; flex: none; }
-.sidenav a.sec:hover { background: var(--band); color: var(--ink); }
-.sidenav a.sec.is-on { background: var(--accent-tint); color: var(--accent-ink); }
-.sidenav a.sec.is-on .i { color: var(--accent-ink); }
-.sidenav .sub { display: none; margin: 2px 0 8px 28px; border-left: 1px solid var(--rule); }
-.sidenav a.sec.is-on + .sub { display: grid; }
-.sidenav .sub a { font-size: 13.5px; line-height: 1.4; padding: 5px 12px; color: var(--ink-faint); text-decoration: none; }
-.sidenav .sub a:hover { color: var(--ink); }
-.side-foot { margin-top: 28px; padding: 14px 10px 0; border-top: 1px solid var(--rule); font-size: 12.5px; line-height: 1.55; color: var(--ink-faint); }
 
 @media (max-width: 720px) {
   .topbar-in { padding: 0 16px; gap: 10px; }
-  .brand .txt { display: none; }
   .wrap { padding: 0 16px; }
 }
 
@@ -336,9 +299,7 @@ footer { padding: 48px 0 72px; }
 .check.done .mk { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; border-color: var(--accent); }
 .check.done .tx { color: var(--ink-faint); text-decoration: line-through; text-decoration-color: var(--rule-strong); }
 
-@media (min-width: 1120px) { .topnav + #themeBtn { margin-left: auto; } }
 @media (max-width: 720px) {
-  .topnav { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); padding-right: 16px; }
   #themeBtn { padding: 6px 10px; }
 }
 
@@ -364,7 +325,7 @@ footer { padding: 48px 0 72px; }
 }
 
 
-/* STI dashboard tokens (section 08) */
+/* STI dashboard tokens (section 2) */
 :root {
     --surface-1: #ffffff; --plane: #f4f7fc;
     --ink-1: #0f1b33; --ink-2: #475569; --muted: #64748b;
@@ -411,14 +372,22 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
 .embed-cap { font-size: 14px; color: var(--ink-faint); max-width: var(--measure); }
 
 /* ============================================================
-   08 · STI dashboard (scoped to #sti-app; sizes by container)
+   2 · STI dashboard (scoped to #sti-app; sizes by container)
    ============================================================ */
 #sti-app {
-  container: sti / inline-size; margin-top: 24px; position: relative; min-height: 640px;
+  container: sti / inline-size; margin-top: 24px; position: relative;
   font-size: 14px; line-height: 1.45; color: var(--ink-1);
 }
 #sti-app .sti-loading { position: absolute; inset: 0 0 auto 0; padding: 48px 0; text-align: center; color: var(--ink-faint); font-size: 15px; }
 #sti-app.ready .sti-loading { display: none; }
+/* Before the data arrives, hold roughly the finished height so links to the
+   sections below do not land short when the dashboard fills in mid-scroll. */
+#sti-app:not(.ready) { min-height: 1425px; }
+@media (max-width: 760px) { #sti-app:not(.ready) { min-height: 1480px; } }
+@media (max-width: 640px) { #sti-app:not(.ready) { min-height: 1595px; } }
+@media (max-width: 520px) { #sti-app:not(.ready) { min-height: 1685px; } }
+@media (max-width: 420px) { #sti-app:not(.ready) { min-height: 1785px; } }
+@media (max-width: 340px) { #sti-app:not(.ready) { min-height: 1865px; } }
 #sti-app:not(.ready) > :not(.sti-loading) { visibility: hidden; }
 #sti-app th, #sti-app td { vertical-align: baseline; white-space: nowrap; }
 #sti-app thead th { text-transform: none; letter-spacing: 0; font-size: inherit; }
@@ -555,24 +524,80 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   #sti-app details.tbl td.neg { color: var(--down); }
 
 
-/* STI dashboard button in the top bar */
+/* ============================================================
+   Top navigation: four groups, dropdowns on wide screens,
+   one "Menu" sheet on narrow ones
+   ============================================================ */
+.mainnav { display: flex; align-items: center; min-width: 0; }
+.menu { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; }
+.menu > li { position: relative; }
+.dd-btn, .menu-toggle {
+  display: inline-flex; align-items: center; gap: 6px; font: 500 14px var(--f-text); color: var(--ink-soft);
+  background: none; border: 0; border-radius: 7px; padding: 7px 10px; cursor: pointer; white-space: nowrap;
+}
+.dd-btn:hover, .menu-toggle:hover { color: var(--ink); background: var(--band); }
+.dd-btn[aria-expanded="true"], .dd.is-on > .dd-btn { color: var(--accent-ink); background: var(--accent-tint); }
+.chev { width: 12px; height: 12px; transition: transform .15s ease; }
+[aria-expanded="true"] > .chev { transform: rotate(180deg); }
+.num {
+  display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+  font-size: 11px; font-weight: 650; background: var(--band); color: var(--ink-faint); border: 1px solid var(--rule);
+}
+.dd.is-on .num, .dd-btn[aria-expanded="true"] .num { background: var(--accent); border-color: var(--accent); color: #fff; }
+.dd-panel {
+  display: none; position: absolute; top: calc(100% + 8px); left: 0; z-index: 50; min-width: 300px; max-width: 360px;
+  background: var(--raised); border: 1px solid var(--rule); border-radius: 12px; padding: 6px;
+  box-shadow: 0 12px 32px -12px rgba(15,27,51,.28), 0 2px 6px rgba(15,27,51,.06);
+}
+.dd-panel.dd-right { left: auto; right: 0; }
+.dd-btn[aria-expanded="true"] + .dd-panel { display: grid; }
+.dd-panel a { display: grid; gap: 2px; padding: 9px 12px; border-radius: 8px; text-decoration: none; color: var(--ink); }
+.dd-panel a b { font-size: 14.5px; font-weight: 600; }
+.dd-panel a span { font-size: 13px; color: var(--ink-faint); line-height: 1.4; }
+.dd-panel a:hover { background: var(--accent-tint); }
+.dd-panel a:hover b { color: var(--accent-ink); }
+.dd-panel a.is-on b { color: var(--accent-ink); }
+.dd-panel a.is-on { box-shadow: inset 3px 0 0 var(--accent); }
+.dd-panel a.foot { margin-top: 4px; border-top: 1px solid var(--rule); border-radius: 0 0 8px 8px; padding-top: 11px; }
+.menu-toggle { display: none; }
+
+/* STI dashboard: the one direct link, styled as a button */
 .sti-btn {
-  flex: none; display: inline-flex; align-items: center; gap: 7px; margin-left: 6px;
-  font: 600 13.5px var(--f-text); color: #fff; text-decoration: none; white-space: nowrap;
-  background: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 6px 12px;
+  display: inline-flex; align-items: center; gap: 7px; margin: 0 4px;
+  font: 600 14px var(--f-text); color: #fff; text-decoration: none; white-space: nowrap;
+  background: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 6px 12px 6px 7px;
   box-shadow: 0 1px 2px rgba(15,27,51,.12); transition: background .15s ease, box-shadow .15s ease;
 }
 .sti-btn svg { width: 15px; height: 15px; }
+.sti-btn .num { background: rgba(255,255,255,.22); border-color: transparent; color: inherit; }
 .sti-btn:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: #fff; box-shadow: 0 3px 10px -4px rgba(29,78,216,.6); }
 .sti-btn.is-on { box-shadow: 0 0 0 3px var(--accent-line); }
-.sti-btn .short { display: none; }
 :root[data-theme="dark"] .sti-btn, :root[data-theme="dark"] .sti-btn:hover { color: #0A1020; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sti-btn, :root:not([data-theme="light"]) .sti-btn:hover { color: #0A1020; } }
-@media (max-width: 720px) {
-  .sti-btn { margin-left: 0; padding: 6px 10px; }
-  .sti-btn .long { display: none; }
-  .sti-btn .short { display: inline; }
+
+/* contents grid, grouped like the menu */
+.toc-group + .toc-group { margin-top: 28px; }
+.toc .gnum { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: 8px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; letter-spacing: 0; }
+
+/* narrow screens: one Menu button that opens a sheet listing all four groups */
+@media (max-width: 1000px) {
+  .mainnav { margin-left: auto; }
+  .mainnav + #themeBtn { margin-left: 8px; }
+  .menu-toggle { display: inline-flex; border: 1px solid var(--rule-strong); background: var(--raised); padding: 6px 10px; }
+  .menu {
+    display: none; position: fixed; left: 0; right: 0; top: var(--bar); z-index: 50;
+    max-height: calc(100vh - var(--bar)); overflow-y: auto; flex-direction: column; align-items: stretch; gap: 2px;
+    background: var(--raised); border-bottom: 1px solid var(--rule); padding: 10px 16px 18px;
+    box-shadow: 0 16px 32px -16px rgba(15,27,51,.35);
+  }
+  .menu-toggle[aria-expanded="true"] + .menu { display: flex; }
+  .dd-btn { width: 100%; justify-content: flex-start; padding: 11px 8px; font-size: 15.5px; font-weight: 600; color: var(--ink); }
+  .dd-btn .chev { margin-left: auto; }
+  .dd-panel { position: static; min-width: 0; max-width: none; box-shadow: none; border: 0; border-left: 2px solid var(--rule); border-radius: 0; margin: 0 0 6px 17px; padding: 0 0 0 8px; }
+  .sti-btn { margin: 6px 0; justify-content: flex-start; padding: 9px 12px 9px 8px; font-size: 15.5px; }
 }
+@media (min-width: 1001px) { .mainnav { margin-left: 16px; } .mainnav + #themeBtn { margin-left: auto; } }
+@media (max-width: 350px) { .brand .txt { display: none; } }
 </style>
 </head>
 <body>
@@ -580,81 +605,51 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
 <div class="topbar">
   <div class="topbar-in">
     <a class="brand" href="#top"><span class="logo" aria-hidden="true">S$</span><span class="txt">SG Finance</span></a>
-    <a class="sti-btn" data-nav href="#sti" title="Straits Times Index dashboard"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 11l3.5-4 3 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="long">STI dashboard</span><span class="short">STI</span></a>
-    <nav class="topnav" aria-label="Sections">
-      <a data-nav href="#cpf">CPF</a>
-      <a data-nav href="#etf">ETFs</a>
-      <a data-nav href="#cards">Cards</a>
-      <a data-nav href="#helper">Helper</a>
-      <a data-nav href="#baby">Baby</a>
-      <a data-nav href="#insurance">Insurance</a>
-      <a data-nav href="#tax">Tax</a>
-      <a data-nav href="#checklist">Checklist</a>
+    <nav class="mainnav" aria-label="Sections">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <ul class="menu" id="menu">
+        <li class="dd" data-secs="cpf etf cards insurance tax checklist">
+          <button class="dd-btn" type="button" aria-expanded="false"><span class="num">1</span>Finance basics <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="dd-panel">
+            <a href="#cpf" data-sec="cpf"><b>CPF</b><span>Top-ups toward the Basic Retirement Sum, and the tax relief</span></a>
+            <a href="#etf" data-sec="etf"><b>ETF investing</b><span>One Irish-domiciled world fund through IBKR</span></a>
+            <a href="#cards" data-sec="cards"><b>Credit card</b><span>One flat cashback card, fee versus rate</span></a>
+            <a href="#insurance" data-sec="insurance"><b>Insurance</b><span>Shield plans, term life, insuring the baby</span></a>
+            <a href="#tax" data-sec="tax"><b>Tax</b><span>Every relief, SRS, who claims what</span></a>
+            <a class="foot" href="#checklist" data-sec="checklist"><b>Checklist</b><span>Everything on the page, in order</span></a>
+          </div>
+        </li>
+        <li><a class="sti-btn" href="#sti" data-sec="sti"><span class="num">2</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 11l3.5-4 3 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>STI dashboard</a></li>
+        <li class="dd" data-secs="helper">
+          <button class="dd-btn" type="button" aria-expanded="false"><span class="num">3</span>Hiring a helper <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="dd-panel">
+            <a href="#helper" data-sec="helper"><b>Overview</b></a>
+            <a href="#helper-what-it-costs" data-sec="helper"><b>What it costs</b></a>
+            <a href="#helper-who-qualifies-for-the-60-levy" data-sec="helper"><b>Who qualifies for the $60 levy</b></a>
+            <a href="#helper-who-can-hire-and-who-can-be-hired" data-sec="helper"><b>Who can hire, and who can be hired</b></a>
+            <a href="#helper-step-by-step" data-sec="helper"><b>Step by step</b></a>
+            <a href="#helper-your-obligations-as-employer" data-sec="helper"><b>Your obligations as employer</b></a>
+          </div>
+        </li>
+        <li class="dd" data-secs="baby">
+          <button class="dd-btn" type="button" aria-expanded="false"><span class="num">4</span>Baby bonus <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="dd-panel dd-right">
+            <a href="#baby" data-sec="baby"><b>Overview</b></a>
+            <a href="#baby-the-money-at-a-glance" data-sec="baby"><b>The money, at a glance</b></a>
+            <a href="#baby-the-cda-is-the-best-return-on-this-page" data-sec="baby"><b>The CDA is the best return on this page</b></a>
+            <a href="#baby-parental-leave" data-sec="baby"><b>Parental leave</b></a>
+            <a href="#baby-tax-reliefs-and-rebates" data-sec="baby"><b>Tax reliefs and rebates</b></a>
+            <a href="#baby-childcare-health-and-housing" data-sec="baby"><b>Childcare, health and housing</b></a>
+            <a href="#baby-what-to-do-and-when" data-sec="baby"><b>What to do, and when</b></a>
+          </div>
+        </li>
+      </ul>
     </nav>
     <button id="themeBtn" type="button" aria-label="Switch colour theme">Dark mode</button>
   </div>
 </div>
 
 <div class="layout">
-  <aside class="sidebar" aria-label="Contents">
-    <nav class="sidenav">
-      <span class="grp">Contents</span>
-      <a class="sec" data-nav href="#cpf"><span class="i">01</span>CPF</a>
-        <div class="sub">
-          <a href="#cpf-the-2026-numbers">The 2026 numbers</a>
-          <a href="#cpf-the-two-levers-and-what-each-one-is-capp">The two levers, and what each one is capped at</a>
-          <a href="#cpf-what-the-tax-relief-is-actually-worth">What the tax relief is actually worth</a>
-          <a href="#cpf-interest-and-the-part-everyone-forgets">Interest, and the part everyone forgets</a>
-        </div>
-      <a class="sec" data-nav href="#etf"><span class="i">02</span>ETF investing</a>
-        <div class="sub">
-          <a href="#etf-the-two-reasons-domicile-matters">The two reasons domicile matters</a>
-          <a href="#etf-the-funds">The funds</a>
-          <a href="#etf-setting-up-ibkr">Setting up IBKR</a>
-          <a href="#etf-singapore-stocks-and-the-sti">Singapore stocks and the STI</a>
-        </div>
-      <a class="sec" data-nav href="#cards"><span class="i">03</span>Credit card</a>
-        <div class="sub">
-          <a href="#cards-the-shortlist">The shortlist</a>
-          <a href="#cards-the-rules-that-matter-more-than-the-rate">The rules that matter more than the rate</a>
-        </div>
-      <a class="sec" data-nav href="#helper"><span class="i">04</span>Hiring a helper</a>
-        <div class="sub">
-          <a href="#helper-what-it-costs">What it costs</a>
-          <a href="#helper-who-qualifies-for-the-60-levy">Who qualifies for the $60 levy</a>
-          <a href="#helper-who-can-hire-and-who-can-be-hired">Who can hire, and who can be hired</a>
-          <a href="#helper-step-by-step">Step by step</a>
-          <a href="#helper-your-obligations-as-employer">Your obligations as employer</a>
-        </div>
-      <a class="sec" data-nav href="#baby"><span class="i">05</span>Baby benefits</a>
-        <div class="sub">
-          <a href="#baby-the-money-at-a-glance">The money, at a glance</a>
-          <a href="#baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</a>
-          <a href="#baby-parental-leave">Parental leave</a>
-          <a href="#baby-tax-reliefs-and-rebates">Tax reliefs and rebates</a>
-          <a href="#baby-childcare-health-and-housing">Childcare, health and housing</a>
-          <a href="#baby-what-to-do-and-when">What to do, and when</a>
-        </div>
-      <a class="sec" data-nav href="#insurance"><span class="i">06</span>Insurance</a>
-        <div class="sub">
-          <a href="#insurance-what-you-already-have">What you already have</a>
-          <a href="#insurance-hospital-cover">Hospital cover</a>
-          <a href="#insurance-life-and-critical-illness-cover">Life and critical illness cover</a>
-          <a href="#insurance-insuring-the-baby">Insuring the baby</a>
-        </div>
-      <a class="sec" data-nav href="#tax"><span class="i">07</span>Tax</a>
-        <div class="sub">
-          <a href="#tax-the-rates">The rates</a>
-          <a href="#tax-every-relief-a-family-can-claim">Every relief a family can claim</a>
-          <a href="#tax-srs-tax-deferred-and-often-tax-free">SRS</a>
-          <a href="#tax-which-spouse-claims-what">Which spouse claims what</a>
-          <a href="#tax-the-tax-year-in-order">The tax year, in order</a>
-        </div>
-      <a class="sec" data-nav href="#checklist"><span class="i">✓</span>Checklist</a>
-    </nav>
-    <p class="side-foot">Figures verified 16 Aug 2026 (CPF, ETFs, cards) and 4 Oct 2026 (helper, baby, insurance, tax). Not financial advice.</p>
-  </aside>
-
 <main class="wrap" id="top">
 
   <header class="masthead">
@@ -676,55 +671,38 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   </header>
 
   <section class="toc" aria-label="Contents">
-    <span class="mono-label">What's on this page</span>
-    <div class="toc-grid">
+    <div class="toc-group">
+      <span class="mono-label"><span class="gnum">1</span>Finance basics</span>
+      <div class="toc-grid">
       <a class="toc-card" href="#cpf">
-        <span class="n">01 · CPF</span>
+        <span class="n">1.1 · CPF</span>
         <span class="h">Fund the floor</span>
         <span class="d">MediSave and Special Account top-ups toward the Basic Retirement Sum, and what the tax relief is worth.</span>
         <span class="x">4% floor · up to $8,000 relief · planner</span>
       </a>
       <a class="toc-card" href="#etf">
-        <span class="n">02 · ETF investing</span>
+        <span class="n">1.2 · ETF investing</span>
         <span class="h">Buy the world through Ireland</span>
         <span class="d">IWDA / EIMI / VWRA through Interactive Brokers, why domicile beats index choice, and where Singapore stocks fit.</span>
         <span class="x">15% vs 30% withholding · no US estate tax</span>
       </a>
       <a class="toc-card" href="#cards">
-        <span class="n">03 · Credit card</span>
+        <span class="n">1.3 · Credit card</span>
         <span class="h">One flat cashback card</span>
         <span class="d">Uncapped 1.5–1.7% on everything, with the fee-versus-rate maths.</span>
         <span class="x">~$500/yr · card calculator</span>
       </a>
-      <a class="toc-card" href="#helper">
-        <span class="n">04 · Hiring a helper</span>
-        <span class="h">Hire a helper properly</span>
-        <span class="d">The real monthly cost, the $60 levy concession, MOM's rules and the step-by-step process.</span>
-        <span class="x">~$1,000–1,250/mo · levy $300 → $60</span>
-      </a>
-      <a class="toc-card" href="#baby">
-        <span class="n">05 · Baby benefits</span>
-        <span class="h">Claim every baby benefit</span>
-        <span class="d">Baby Bonus, CDA matching, MediSave grant, 30 weeks of paid leave, tax rebates — and the April 2027 switch.</span>
-        <span class="x">$25,000+ for a first child · what to file, when</span>
-      </a>
       <a class="toc-card" href="#insurance">
-        <span class="n">06 · Insurance</span>
+        <span class="n">1.4 · Insurance</span>
         <span class="h">Insure the income, not the savings</span>
         <span class="d">What MediShield Life, CareShield Life and DPS already cover, Shield plans and the 2026 rider rules, and how much term cover a parent needs.</span>
         <span class="x">9× income · cover check</span>
       </a>
       <a class="toc-card" href="#tax">
-        <span class="n">07 · Tax</span>
+        <span class="n">1.5 · Tax</span>
         <span class="h">Claim every relief</span>
         <span class="d">Every relief a family can claim, CPF top-ups and SRS before 31 December, and which spouse should claim what.</span>
         <span class="x">tax estimator</span>
-      </a>
-      <a class="toc-card" href="#sti">
-        <span class="n">08 · STI dashboard</span>
-        <span class="h">38 years of the STI</span>
-        <span class="d">The index and its 30 members since 1987, annotated with crises, policy changes and earnings.</span>
-        <span class="x">interactive chart</span>
       </a>
       <a class="toc-card" href="#checklist">
         <span class="n">Checklist</span>
@@ -732,14 +710,38 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="d">The whole page as a list of things to do, grouped by topic, with the levers sized.</span>
         <span class="x">tick through once a year</span>
       </a>
+      </div>
+    </div>
+    <div class="toc-group">
+      <span class="mono-label">The rest of the guide</span>
+      <div class="toc-grid">
+      <a class="toc-card" href="#sti">
+        <span class="n">2 · STI dashboard</span>
+        <span class="h">38 years of the STI</span>
+        <span class="d">The index and its 30 members since 1987, annotated with crises, policy changes and earnings.</span>
+        <span class="x">interactive chart</span>
+      </a>
+      <a class="toc-card" href="#helper">
+        <span class="n">3 · Hiring a helper</span>
+        <span class="h">Hire a helper properly</span>
+        <span class="d">The real monthly cost, the $60 levy concession, MOM's rules and the step-by-step process.</span>
+        <span class="x">~$1,000–1,250/mo · levy $300 → $60</span>
+      </a>
+      <a class="toc-card" href="#baby">
+        <span class="n">4 · Baby bonus</span>
+        <span class="h">Claim every baby benefit</span>
+        <span class="d">Baby Bonus, CDA matching, MediSave grant, 30 weeks of paid leave, tax rebates — and the April 2027 switch.</span>
+        <span class="x">$25,000+ for a first child · what to file, when</span>
+      </a>
+      </div>
     </div>
   </section>
 
-  <!-- ==================== 01 · CPF ==================== -->
+  <!-- ==================== 1.1 · CPF ==================== -->
   <section class="section" id="cpf">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">01 — CPF</span>
+        <span class="role">1.1 — CPF</span>
         <span class="rail-note">A guaranteed 4% floor and a tax deduction you can take every year.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#cpf-the-2026-numbers">The 2026 numbers</a>
@@ -992,11 +994,11 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
-  <!-- ==================== 02 · ETFs ==================== -->
+  <!-- ==================== 1.2 · ETFs ==================== -->
   <section class="section" id="etf">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">02 — ETFs</span>
+        <span class="role">1.2 — ETF investing</span>
         <span class="rail-note">IBKR plus one or two Irish-domiciled accumulating funds. Set up once.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#etf-the-two-reasons-domicile-matters">The two reasons domicile matters</a>
@@ -1195,7 +1197,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <div class="note">
           <span class="tag">See the STI for yourself</span>
           <p>
-            <a href="#sti">Section 08</a> charts the index and all 30 members since 1987,
+            The <a href="#sti">STI dashboard</a> charts the index and all 30 members since 1987,
             annotated with every crisis, policy change and earnings result that moved them.
           </p>
         </div>
@@ -1203,11 +1205,11 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
-  <!-- ==================== 03 · Cards ==================== -->
+  <!-- ==================== 1.3 · Cards ==================== -->
   <section class="section" id="cards">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">03 — Cards</span>
+        <span class="role">1.3 — Credit card</span>
         <span class="rail-note">One flat card. No categories, no minimum spend, no monthly arithmetic.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#cards-the-shortlist">The shortlist</a>
@@ -1339,354 +1341,11 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
-  <!-- ==================== 04 · Helper ==================== -->
-  <section class="section" id="helper">
-    <div class="section-grid">
-      <div class="rail">
-        <span class="role">04 — Helper</span>
-        <span class="rail-note">A live-in domestic helper: what it really costs, what MOM requires, and the levy discount most families qualify for.</span>
-        <nav class="rail-toc" aria-label="In this section">
-          <a href="#helper-what-it-costs">What it costs</a>
-          <a href="#helper-who-qualifies-for-the-60-levy">Who qualifies for the $60 levy</a>
-          <a href="#helper-who-can-hire-and-who-can-be-hired">Who can hire, and who can be hired</a>
-          <a href="#helper-step-by-step">Step by step</a>
-          <a href="#helper-your-obligations-as-employer">Your obligations as employer</a>
-        </nav>
-      </div>
-      <div class="body-col">
-        <h2>Hire a helper with your eyes open on the full monthly cost</h2>
-        <p class="lede">
-          A live-in migrant domestic worker (MDW) is the most common childcare and eldercare
-          arrangement in Singapore. The salary is the smallest surprise. Most of the real cost
-          is in the levy, upkeep, insurance and agency fee. The one large saving is a levy
-          concession that applies automatically once a Singapore Citizen child under 16 lives
-          with you, as long as you register the child.
-        </p>
-
-        <div class="tldr">
-          <span class="tag">In short</span>
-          <ul>
-            <li>Budget about <strong>$1,000–$1,250 a month</strong> all-in, and <strong>$13,600–$18,400</strong> in the first year including the agency fee.</li>
-            <li>The levy is <strong>$300 a month</strong>, or <strong>$60</strong> if a citizen child under 16 (or a citizen aged 67+) lives with you. That is $2,880 a year saved, so register them in the FDW eService.</li>
-            <li>The FDW levy tax relief <strong>ended from YA2025</strong>. The concessionary levy is now the only support.</li>
-          </ul>
-        </div>
-
-        <h3 id="helper-what-it-costs">What it costs</h3>
-        <div class="figrow">
-          <div class="fig">
-            <span class="k">Levy, first helper</span>
-            <span class="v">$300</span>
-            <span class="m">a month. $450 for a second helper and any after that.</span>
-          </div>
-          <div class="fig accent">
-            <span class="k">Concessionary levy</span>
-            <span class="v">$60</span>
-            <span class="m">a month, with a citizen child under 16 or a citizen aged 67+ at home.</span>
-          </div>
-          <div class="fig">
-            <span class="k">Filipina minimum pay</span>
-            <span class="v">$650</span>
-            <span class="m">a month, for contracts from 21 Oct 2025. Singapore itself sets no minimum wage.</span>
-          </div>
-          <div class="fig">
-            <span class="k">Security bond</span>
-            <span class="v">$5,000</span>
-            <span class="m">A bank or insurer guarantee, not cash. Malaysians are exempt.</span>
-          </div>
-        </div>
-
-        <div class="tablewrap panel tight">
-          <table>
-            <caption style="padding:12px 16px 10px">First-year cost, first-time Filipina helper through an agency — estimate</caption>
-            <thead>
-              <tr><th>Item</th><th class="n">Normal levy</th><th class="n">Concession levy</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Salary</td><td class="n">$7,800</td><td class="n">$7,800</td><td class="wrap-ok">12 × $650. Indonesian and Myanmar helpers are often paid $550–$750.</td></tr>
-              <tr><td>Levy</td><td class="n">$3,600</td><td class="n">$720</td><td class="wrap-ok">12 × $300, or 12 × $60. Paid by GIRO on the 17th of the following month.</td></tr>
-              <tr><td>Upkeep (food, toiletries, phone)</td><td class="n">~$3,240</td><td class="n">~$3,240</td><td class="wrap-ok">About $270 a month. She is entitled to three meals a day.</td></tr>
-              <tr><td>Insurance + bond guarantee</td><td class="n">~$520</td><td class="n">~$520</td><td class="wrap-ok">Typical 26-month package. Medical cover of at least $60,000 a year and personal accident cover of at least $60,000 are mandatory.</td></tr>
-              <tr><td>Work Permit fees</td><td class="n">$70</td><td class="n">$70</td><td class="wrap-ok">$35 to apply and $35 on issuance.</td></tr>
-              <tr><td>Settling-In Programme</td><td class="n">~$77</td><td class="n">~$77</td><td class="wrap-ok">A one-day course for first-time helpers, $76–$93.</td></tr>
-              <tr><td>Employers' Orientation Programme</td><td class="n">$29+</td><td class="n">$29+</td><td class="wrap-ok">First-time employers only. Online $29–$36, classroom $35–$76.</td></tr>
-              <tr><td>Medical exams</td><td class="n">~$100</td><td class="n">~$100</td><td class="wrap-ok">One on arrival, then every six months. Clinic prices vary.</td></tr>
-              <tr><td>Agency fee</td><td class="n">$1,000–3,000</td><td class="n">$1,000–3,000</td><td class="wrap-ok">Not regulated. Usually includes her flight. Skip it entirely by hiring a transfer helper directly.</td></tr>
-              <tr><td><strong>First year</strong></td><td class="n"><strong>~$16,400–18,400</strong></td><td class="n"><strong>~$13,600–15,600</strong></td><td class="wrap-ok">Then about $1,240 or $1,000 a month ongoing.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          Not in the table: a day's pay for each rest day she agrees to work, the
-          employer's 25% co-payment on any hospital bill above $15,000, and the home-leave air
-          ticket usually given when the two-year contract is renewed.
-        </p>
-
-        <h3 id="helper-who-qualifies-for-the-60-levy">Who qualifies for the $60 levy</h3>
-        <p>
-          The eligible person must live with you and be registered as a household member in
-          MOM's FDW eService. Any <em>one</em> of these qualifies:
-        </p>
-        <ul class="ticks">
-          <li>A <strong>Singapore Citizen child under 16</strong>. A newborn counts from the day you add them.</li>
-          <li>A <strong>Singapore Citizen aged 67 or above</strong>, or a PR aged 67 or above if you or your spouse is a citizen.</li>
-          <li>A <strong>person with disabilities</strong> certified as needing help with at least one activity of daily living, with an AIC recommendation letter.</li>
-        </ul>
-        <p>
-          Each eligible person covers one helper, up to two concession helpers per household.
-          The lower rate appears within two levy bills and is backdated to the day you
-          updated the household. MOM does not apply it automatically, so do the update the
-          week the baby's birth is registered.
-        </p>
-
-        <h3 id="helper-who-can-hire-and-who-can-be-hired">Who can hire, and who can be hired</h3>
-        <div class="tablewrap panel">
-          <table>
-            <thead><tr><th></th><th>Employer</th><th>Helper</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Age</strong></td><td class="wrap-ok">21 or older</td><td class="wrap-ok">Female, 23 to under 50 at first application (Filipinas 24+). Can renew until 60.</td></tr>
-              <tr><td><strong>Other</strong></td><td class="wrap-ok">Not an undischarged bankrupt, with the mental capacity to employ. MOM sets no published income bar but asks for income documents.</td><td class="wrap-ok">At least 8 years of formal education with a certificate. Not related to you. Outside Singapore while the permit is processed, unless Malaysian.</td></tr>
-              <tr><td><strong>Source countries</strong></td><td class="wrap-ok" colspan="2">Philippines, Indonesia, Myanmar, India, Sri Lanka, Bangladesh, Cambodia, Thailand, Malaysia, Hong Kong, Macau, South Korea, Taiwan.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 id="helper-step-by-step">Step by step</h3>
-        <ol class="steps">
-          <li><strong>Decide between an agency and a direct hire.</strong> A <em>transfer</em> helper (already working in Singapore) can be hired directly through the FDW eService with Singpass. That skips the Settling-In Programme and most of the agency fee.</li>
-          <li><strong>Attend the Employers' Orientation Programme</strong> if this is your first helper. Do it at least two working days before you apply. New or expectant mothers may send a representative.</li>
-          <li><strong>Apply in the FDW eService</strong> ($35) with her passport, your household details, income documents and her written consent. It takes about a week.</li>
-          <li><strong>Before she flies,</strong> send her the In-Principle Approval letter. Buy the $5,000 security bond (effective on her arrival date), the medical and personal accident insurance, and set up levy GIRO.</li>
-          <li><strong>Within 7 days of arrival</strong> she attends the Settling-In Programme. She may not start work until she has. <strong>Within 14 days</strong> she has a medical exam.</li>
-          <li><strong>Request issuance of the permit</strong> ($35) within two weeks. Register her fingerprints and photo if asked, and the card arrives within five working days.</li>
-          <li><strong>Register your under-16 child or 67+ parent</strong> in the eService for the $60 levy.</li>
-        </ol>
-
-        <h3 id="helper-your-obligations-as-employer">Your obligations as employer</h3>
-        <ul class="ticks">
-          <li><strong>A weekly rest day.</strong> If she agrees to work on it, pay at least one extra day's salary. Since 2023, at least <strong>one rest day a month cannot be bought out</strong>.</li>
-          <li><strong>Pay salary within 7 days</strong> of the end of each month, by bank transfer into her own account. If you pay in cash, both of you sign a monthly record. Never hold her passport, bank book or money.</li>
-          <li><strong>All medical costs are yours,</strong> including the six-monthly medical exam (6ME) at a clinic. Insurance premiums cannot be deducted from her pay.</li>
-          <li><strong>Adequate food and housing:</strong> three meals a day, her own mattress and bedding, ventilation, privacy, and no cameras in her private space.</li>
-          <li><strong>Expect well-being checks.</strong> A first-time helper has two interviews at the Centre for Domestic Employees in her first year, and MOM makes random doorstep visits with two weeks' notice.</li>
-        </ul>
-
-        <div class="note warn">
-          <span class="tag">Things that cost people their bond or permit</span>
-          <p>
-            Missing two consecutive months of levy, which revokes the permit. Having her work
-            at another address, such as your parents' flat. Lending her out part-time.
-            Paying her late or in cash without records. Not sending her home when the
-            permit ends.
-          </p>
-        </div>
-
-        <div class="note">
-          <span class="tag">If you do not want a live-in</span>
-          <p>
-            <strong>Household Services Scheme</strong> companies send licensed workers
-            part-time for cleaning, groceries and elder-minding. Child-minding was dropped
-            from the pilot in March 2026. For an elderly parent who needs help with three or
-            more daily activities, AIC's <strong>Home Caregiving Grant</strong> pays $200–$600
-            a month, and that grant can go toward a helper.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- ==================== 05 · Baby ==================== -->
-  <section class="section" id="baby">
-    <div class="section-grid">
-      <div class="rail">
-        <span class="role">05 — Baby</span>
-        <span class="rail-note">Every cash grant, account top-up, leave week and tax rebate for a Singapore Citizen baby, and the few forms that unlock them.</span>
-        <nav class="rail-toc" aria-label="In this section">
-          <a href="#baby-the-money-at-a-glance">The money, at a glance</a>
-          <a href="#baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</a>
-          <a href="#baby-parental-leave">Parental leave</a>
-          <a href="#baby-tax-reliefs-and-rebates">Tax reliefs and rebates</a>
-          <a href="#baby-childcare-health-and-housing">Childcare, health and housing</a>
-          <a href="#baby-what-to-do-and-when">What to do, and when</a>
-        </nav>
-      </div>
-      <div class="body-col">
-        <h2>Claim everything the government sets aside for a new baby</h2>
-        <p class="lede">
-          A Singapore Citizen baby comes with tens of thousands of dollars of support:
-          cash, a co-matched savings account, MediSave, 30 weeks of government-paid
-          parental leave, and tax rebates. Very little of it is paid automatically. Most of
-          it depends on one LifeSG enrolment, one bank account and one PayNow link, and on
-          you actually putting money into the CDA.
-        </p>
-
-        <div class="tldr">
-          <span class="tag">In short</span>
-          <ul>
-            <li>Enrol in the <strong>Baby Bonus</strong> scheme on LifeSG when you register the birth. That opens the CDA and starts the cash gift.</li>
-            <li>Deposit enough into the <strong>CDA</strong> to collect the full government match ($4,000 for a first child). It is a 100% instant return, and you can spend it on childcare and medical bills.</li>
-            <li>Take all <strong>30 weeks</strong> of paid leave between you, and claim the <strong>Parenthood Tax Rebate</strong> ($5,000 to $20,000) in the next tax return.</li>
-          </ul>
-        </div>
-
-        <div class="note warn">
-          <span class="tag">The scheme is changing: born 1 Jan 2026 to 31 Mar 2027</span>
-          <p>
-            At the National Day Rally on 23 August 2026 the government announced the
-            <strong>SG Child Support Package</strong>. It replaces the Baby Bonus and Large
-            Families schemes for every citizen child born from <strong>1 April 2027</strong>,
-            and is worth up to $62,000 per child regardless of birth order. It includes a
-            $10,000 Baby Gift, <strong>Child Credits of $2,000 a year from age 1 to 16</strong>,
-            CDA grants and matching, and a $10,000 PSEA top-up at 17.
-          </p>
-          <p>
-            Babies born 1 January 2026 to 31 March 2027 start on today's rules and move
-            across automatically. The cash gift is topped up to $10,000 by 30 April 2027,
-            Child Credits begin from April 2027, and the CDA match cap becomes $5,000 from
-            1 October 2027. The one thing you must do: <strong>set up PayNow on the child's
-            birth certificate or NRIC number before 1 April 2027</strong>, because that is
-            where the new payouts go.
-          </p>
-        </div>
-
-        <h3 id="baby-the-money-at-a-glance">The money, at a glance</h3>
-        <div class="figrow">
-          <div class="fig accent">
-            <span class="k">Baby Bonus cash gift</span>
-            <span class="v">$11,000</span>
-            <span class="m">1st and 2nd child; $13,000 from the 3rd. Paid in instalments to age 6½.</span>
-          </div>
-          <div class="fig accent">
-            <span class="k">CDA First Step Grant</span>
-            <span class="v">$5,000</span>
-            <span class="m">Paid automatically when the CDA opens. $10,000 for a 3rd+ child.</span>
-          </div>
-          <div class="fig accent">
-            <span class="k">CDA government match</span>
-            <span class="v">up to $4,000</span>
-            <span class="m">Dollar for dollar on what you deposit. Higher caps for later children.</span>
-          </div>
-          <div class="fig accent">
-            <span class="k">MediSave Grant</span>
-            <span class="v">$5,000</span>
-            <span class="m">Into the baby's own MediSave within a week of birth registration. Automatic.</span>
-          </div>
-        </div>
-
-        <div class="tablewrap panel tight">
-          <table>
-            <caption style="padding:12px 16px 10px">Cash and accounts by birth order — current rules for babies born now</caption>
-            <thead>
-              <tr><th>Benefit</th><th class="n">1st</th><th class="n">2nd</th><th class="n">3rd–4th</th><th class="n">5th+</th><th>How it arrives</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Baby Bonus cash gift</td><td class="n">$11,000</td><td class="n">$11,000</td><td class="n">$13,000</td><td class="n">$13,000</td><td class="wrap-ok">Into the Child Savings Account. The first $3,000 ($4,000 for a 3rd+ child) comes 7–10 working days after the CDA opens.</td></tr>
-              <tr><td>CDA First Step Grant</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$10,000</td><td class="n">$10,000</td><td class="wrap-ok">Automatic on CDA opening. The $10,000 applies to a 3rd+ child born on or after 18 Feb 2025.</td></tr>
-              <tr><td>CDA co-matching cap</td><td class="n">$4,000</td><td class="n">$7,000</td><td class="n">$9,000</td><td class="n">$15,000</td><td class="wrap-ok">The government matches each dollar you deposit, up to this cap. It becomes $5,000 for everyone from 1 Oct 2027.</td></tr>
-              <tr><td>MediSave Grant for Newborns</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="wrap-ok">Automatic. Covers MediShield Life premiums, vaccinations and hospital bills.</td></tr>
-              <tr><td>Large Family MediSave Grant</td><td class="n">—</td><td class="n">—</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="wrap-ok">Into the <em>mother's</em> MediSave, about two weeks after Baby Bonus enrolment.</td></tr>
-              <tr><td>Child LifeSG Credits</td><td class="n">$500</td><td class="n">$500</td><td class="n">$500</td><td class="n">$500</td><td class="wrap-ok">A Budget 2026 one-off. For a 2026 baby it is paid in April 2027, automatically, into the LifeSG wallet of the CDA trustee.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          Cash gift payments require the parents to be <strong>lawfully married</strong>.
-          Children of parents who have never married still get the CDA benefits. You can
-          enrol any time until the end of the year the child turns 12, but every month you
-          wait is a month of instalments and matching you have not started.
-        </p>
-
-        <h3 id="baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</h3>
-        <p>
-          Every dollar you put into the Child Development Account, up to the cap, is matched
-          instantly. A first child's parents who deposit $4,000 have $13,000 in the account
-          once the $5,000 First Step Grant is added. The money is then spent on the things
-          you were going to pay for anyway: infant care and childcare fees, kindergarten,
-          medical bills at approved clinics and hospitals, MediShield Life premiums and early
-          intervention. That makes it a 100% return in weeks, not years.
-        </p>
-        <ul class="ticks">
-          <li><strong>Open it at DBS/POSB, OCBC or UOB</strong>. You choose the bank in the LifeSG Baby Bonus application.</li>
-          <li><strong>Deposit up to the match cap</strong>. Only your own deposits into the CDA are matched. The cash gift itself does <em>not</em> count toward the match.</li>
-          <li><strong>Link the CDA to the infant care centre</strong> so fees come straight out of the account.</li>
-          <li>Matched deposits are accepted until the end of the year the child turns 12. Anything unspent moves to the child's Post-Secondary Education Account.</li>
-        </ul>
-
-        <h3 id="baby-parental-leave">Parental leave</h3>
-        <div class="tablewrap panel">
-          <table>
-            <caption style="padding:12px 16px 10px">For a citizen baby born on or after 1 April 2026 — 30 weeks paid in total</caption>
-            <thead>
-              <tr><th>Leave</th><th class="n">Length</th><th>Who pays</th><th>Rules worth knowing</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Maternity</strong></td><td class="n">16 weeks</td><td class="wrap-ok">1st/2nd child: the employer pays weeks 1–8 and the government weeks 9–16. 3rd+ child: the government pays all 16.</td><td class="wrap-ok">The first 8 weeks are taken as one continuous block. The last 8 can be spread over 12 months. Requires 3 months' service.</td></tr>
-              <tr><td><strong>Paternity</strong></td><td class="n">4 weeks</td><td class="wrap-ok">Government, capped at $2,500 a week.</td><td class="wrap-ok">Mandatory for births from 1 Apr 2025. Taken within 16 weeks of birth, or flexibly within 12 months if your employer agrees.</td></tr>
-              <tr><td><strong>Shared parental</strong></td><td class="n">10 weeks</td><td class="wrap-ok">Government, capped at $2,500 a week.</td><td class="wrap-ok">Split 5 + 5 by default. Reallocate it on LifeSG <strong>within 4 weeks of birth</strong>; after that you need your employer's agreement.</td></tr>
-              <tr><td><strong>Childcare leave</strong></td><td class="n">6 days/yr</td><td class="wrap-ok">Days 1–3 employer, days 4–6 government.</td><td class="wrap-ok">Each parent, until the youngest child turns 7. NDR 2026 will raise it to 8 days (10 with two children, 12 with three); no start date yet.</td></tr>
-              <tr><td><strong>Unpaid infant care</strong></td><td class="n">12 days/yr</td><td class="wrap-ok">Unpaid.</td><td class="wrap-ok">Each parent, until the child turns 2.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>
-          A mother whose contract ended, or who is self-employed, can still claim the
-          government-paid portion through the <strong>Government-Paid Maternity
-          Benefit</strong> if she worked at least 90 days in the 12 months before the birth.
-          Apply within 15 months of the birth.
-        </p>
-
-        <h3 id="baby-tax-reliefs-and-rebates">Tax reliefs and rebates</h3>
-        <div class="tablewrap panel">
-          <table>
-            <caption style="padding:12px 16px 10px">Claimed from the Year of Assessment after the birth year — a 2026 baby counts in YA2027</caption>
-            <thead>
-              <tr><th>Item</th><th class="n">1st</th><th class="n">2nd</th><th class="n">3rd+</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Parenthood Tax Rebate</strong></td><td class="n">$5,000</td><td class="n">$10,000</td><td class="n">$20,000</td><td class="wrap-ok">A rebate on tax payable, not a relief. Share it between the parents in any split, and unused amounts carry forward until used.</td></tr>
-              <tr><td><strong>Working Mother's Child Relief</strong></td><td class="n">$8,000</td><td class="n">$10,000</td><td class="n">$12,000</td><td class="wrap-ok">A fixed amount for children born from 2024, capped at the mother's earned income.</td></tr>
-              <tr><td><strong>Qualifying Child Relief</strong></td><td class="n">$4,000</td><td class="n">$4,000</td><td class="n">$4,000</td><td class="wrap-ok">Per child, every year. Can be shared between the parents. $7,500 if the child has a disability.</td></tr>
-              <tr><td><strong>Grandparent Caregiver Relief</strong></td><td class="n" colspan="3">$3,000</td><td class="wrap-ok">For a working mother whose child (12 or under) is looked after by a grandparent earning $8,000 a year or less.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>
-          Reliefs reduce your chargeable income, so they are worth your marginal rate, and
-          they count toward the <strong>$80,000</strong> cap on all reliefs, the same cap that
-          limits the CPF top-up relief in <a href="#cpf">section 01</a>. The Parenthood Tax
-          Rebate does not count toward that cap. Put the rebate on the higher-earning
-          parent first, because their tax bill uses it up fastest.
-        </p>
-
-        <h3 id="baby-childcare-health-and-housing">Childcare, health and housing</h3>
-        <ul class="ticks">
-          <li><strong>Infant care subsidy:</strong> $600 a month basic subsidy if the mother works, plus up to $710 more on a means test for household income up to $12,000 a month ($15,000 from 2027). Childcare from 18 months: $300 basic, plus up to $467 more. The subsidy is paid directly to the centre.</li>
-          <li><strong>Health:</strong> the baby has MediShield Life from birth for life, congenital conditions included. Childhood vaccinations and developmental screenings are free at polyclinics and CHAS GP clinics.</li>
-          <li><strong>Passport:</strong> the first one is free if you apply on MyICA before the baby's first birthday.</li>
-          <li><strong>Housing:</strong> first-timer families with a child (or expecting one) get priority and an extra ballot for BTO flats. From the Feb 2027 launch, it is one extra ballot per citizen child. NDR 2026 also raised the income ceiling for housing grants to $16,000.</li>
-          <li><strong>Helper:</strong> a citizen child under 16 at home cuts the levy on a domestic helper from $300 to $60 a month. See <a href="#helper">section 04</a>.</li>
-        </ul>
-
-        <h3 id="baby-what-to-do-and-when">What to do, and when</h3>
-        <ol class="steps">
-          <li><strong>During pregnancy:</strong> agree the shared parental leave split with your partner. Apply for a BTO flat under the parenthood priority if you are first-timers.</li>
-          <li><strong>Within 42 days of birth:</strong> register the birth on LifeSG and <strong>enrol in the Baby Bonus scheme in the same flow</strong>, choosing your CDA bank.</li>
-          <li><strong>Within 4 weeks of birth:</strong> reallocate the shared parental leave on LifeSG if you are not splitting it 5 + 5.</li>
-          <li><strong>Within a few weeks:</strong> open the CDA at the bank and make the first deposit. Add the baby to your MOM household for the helper levy concession, and apply for the free passport.</li>
-          <li><strong>Before 1 April 2027:</strong> set up PayNow on the baby's birth certificate number for the new Child Credits.</li>
-          <li><strong>Next tax season:</strong> claim the Parenthood Tax Rebate, Qualifying Child Relief and Working Mother's Child Relief in your tax return.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 06 · Insurance ==================== -->
+  <!-- ==================== 1.4 · Insurance ==================== -->
   <section class="section" id="insurance">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">06 — Insurance</span>
+        <span class="role">1.4 — Insurance</span>
         <span class="rail-note">What the government already covers, the one hospital plan worth adding, and how much life cover a parent actually needs.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#insurance-what-you-already-have">What you already have</a>
@@ -1925,11 +1584,11 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
-  <!-- ==================== 07 · Tax ==================== -->
+  <!-- ==================== 1.5 · Tax ==================== -->
   <section class="section" id="tax">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">07 — Tax</span>
+        <span class="role">1.5 — Tax</span>
         <span class="rail-note">Every relief a family can claim, the two voluntary ones worth funding before 31 December, and who should claim what.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#tax-the-rates">The rates</a>
@@ -2007,7 +1666,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
             <tbody>
               <tr><td><strong>Earned Income Relief</strong></td><td class="n">$1,000</td><td class="wrap-ok">Automatic. $6,000 from 55, $8,000 from 60.</td></tr>
               <tr><td><strong>CPF Relief</strong> (compulsory)</td><td class="n">your CPF</td><td class="wrap-ok">Automatic, for your own compulsory employee contributions.</td></tr>
-              <tr><td><strong>CPF Cash Top-up Relief</strong></td><td class="n">$8,000 + $8,000</td><td class="wrap-ok">$8,000 for top-ups to your own SA/RA/MediSave, and another $8,000 for parents, grandparents, spouse or siblings. A spouse or sibling must have earned $8,000 or less the year before. Top-ups that attract MRSS or MMSS matching grants get no relief. See <a href="#cpf">01 CPF</a>.</td></tr>
+              <tr><td><strong>CPF Cash Top-up Relief</strong></td><td class="n">$8,000 + $8,000</td><td class="wrap-ok">$8,000 for top-ups to your own SA/RA/MediSave, and another $8,000 for parents, grandparents, spouse or siblings. A spouse or sibling must have earned $8,000 or less the year before. Top-ups that attract MRSS or MMSS matching grants get no relief. See <a href="#cpf">CPF</a>.</td></tr>
               <tr><td><strong>SRS Relief</strong></td><td class="n">up to $15,300</td><td class="wrap-ok">Citizens and PRs; $35,700 for foreigners. See below.</td></tr>
               <tr><td><strong>Spouse Relief</strong></td><td class="n">$2,000</td><td class="wrap-ok">If your spouse earned $8,000 or less in the previous year, including foreign and tax-exempt income.</td></tr>
               <tr><td><strong>Qualifying Child Relief</strong></td><td class="n">$4,000 per child</td><td class="wrap-ok">Child under 16, or studying full-time, earning $8,000 or less. Either parent, or split. $7,500 for a child with a disability.</td></tr>
@@ -2117,11 +1776,11 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
-  <!-- ==================== 08 · STI dashboard ==================== -->
+  <!-- ==================== 2 · STI dashboard ==================== -->
   <section class="section" id="sti">
     <div class="section-grid">
       <div class="rail">
-        <span class="role">08 — STI dashboard</span>
+        <span class="role">2 — STI dashboard</span>
         <span class="rail-note">The Straits Times Index and its 30 members since 1987, with the crises, policy changes and earnings that moved them.</span>
       </div>
       <div class="body-col">
@@ -2130,7 +1789,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           The Straits Times Index and every one of its 30 constituents, with daily prices
           back to December 1987 for the index. Market crises, Singapore-specific events,
           policy changes and each company's earnings results are marked on the chart. Use it
-          for context, not for picking stocks; <a href="#etf-singapore-stocks-and-the-sti">section 02</a>
+          for context, not for picking stocks; <a href="#etf-singapore-stocks-and-the-sti">ETF investing</a>
           explains why the index fund beats choosing banks.
         </p>
         <p class="embed-cap">
@@ -2195,6 +1854,349 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
+  <!-- ==================== 3 · Helper ==================== -->
+  <section class="section" id="helper">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">3 — Hiring a helper</span>
+        <span class="rail-note">A live-in domestic helper: what it really costs, what MOM requires, and the levy discount most families qualify for.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#helper-what-it-costs">What it costs</a>
+          <a href="#helper-who-qualifies-for-the-60-levy">Who qualifies for the $60 levy</a>
+          <a href="#helper-who-can-hire-and-who-can-be-hired">Who can hire, and who can be hired</a>
+          <a href="#helper-step-by-step">Step by step</a>
+          <a href="#helper-your-obligations-as-employer">Your obligations as employer</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Hire a helper with your eyes open on the full monthly cost</h2>
+        <p class="lede">
+          A live-in migrant domestic worker (MDW) is the most common childcare and eldercare
+          arrangement in Singapore. The salary is the smallest surprise. Most of the real cost
+          is in the levy, upkeep, insurance and agency fee. The one large saving is a levy
+          concession that applies automatically once a Singapore Citizen child under 16 lives
+          with you, as long as you register the child.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li>Budget about <strong>$1,000–$1,250 a month</strong> all-in, and <strong>$13,600–$18,400</strong> in the first year including the agency fee.</li>
+            <li>The levy is <strong>$300 a month</strong>, or <strong>$60</strong> if a citizen child under 16 (or a citizen aged 67+) lives with you. That is $2,880 a year saved, so register them in the FDW eService.</li>
+            <li>The FDW levy tax relief <strong>ended from YA2025</strong>. The concessionary levy is now the only support.</li>
+          </ul>
+        </div>
+
+        <h3 id="helper-what-it-costs">What it costs</h3>
+        <div class="figrow">
+          <div class="fig">
+            <span class="k">Levy, first helper</span>
+            <span class="v">$300</span>
+            <span class="m">a month. $450 for a second helper and any after that.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">Concessionary levy</span>
+            <span class="v">$60</span>
+            <span class="m">a month, with a citizen child under 16 or a citizen aged 67+ at home.</span>
+          </div>
+          <div class="fig">
+            <span class="k">Filipina minimum pay</span>
+            <span class="v">$650</span>
+            <span class="m">a month, for contracts from 21 Oct 2025. Singapore itself sets no minimum wage.</span>
+          </div>
+          <div class="fig">
+            <span class="k">Security bond</span>
+            <span class="v">$5,000</span>
+            <span class="m">A bank or insurer guarantee, not cash. Malaysians are exempt.</span>
+          </div>
+        </div>
+
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">First-year cost, first-time Filipina helper through an agency — estimate</caption>
+            <thead>
+              <tr><th>Item</th><th class="n">Normal levy</th><th class="n">Concession levy</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Salary</td><td class="n">$7,800</td><td class="n">$7,800</td><td class="wrap-ok">12 × $650. Indonesian and Myanmar helpers are often paid $550–$750.</td></tr>
+              <tr><td>Levy</td><td class="n">$3,600</td><td class="n">$720</td><td class="wrap-ok">12 × $300, or 12 × $60. Paid by GIRO on the 17th of the following month.</td></tr>
+              <tr><td>Upkeep (food, toiletries, phone)</td><td class="n">~$3,240</td><td class="n">~$3,240</td><td class="wrap-ok">About $270 a month. She is entitled to three meals a day.</td></tr>
+              <tr><td>Insurance + bond guarantee</td><td class="n">~$520</td><td class="n">~$520</td><td class="wrap-ok">Typical 26-month package. Medical cover of at least $60,000 a year and personal accident cover of at least $60,000 are mandatory.</td></tr>
+              <tr><td>Work Permit fees</td><td class="n">$70</td><td class="n">$70</td><td class="wrap-ok">$35 to apply and $35 on issuance.</td></tr>
+              <tr><td>Settling-In Programme</td><td class="n">~$77</td><td class="n">~$77</td><td class="wrap-ok">A one-day course for first-time helpers, $76–$93.</td></tr>
+              <tr><td>Employers' Orientation Programme</td><td class="n">$29+</td><td class="n">$29+</td><td class="wrap-ok">First-time employers only. Online $29–$36, classroom $35–$76.</td></tr>
+              <tr><td>Medical exams</td><td class="n">~$100</td><td class="n">~$100</td><td class="wrap-ok">One on arrival, then every six months. Clinic prices vary.</td></tr>
+              <tr><td>Agency fee</td><td class="n">$1,000–3,000</td><td class="n">$1,000–3,000</td><td class="wrap-ok">Not regulated. Usually includes her flight. Skip it entirely by hiring a transfer helper directly.</td></tr>
+              <tr><td><strong>First year</strong></td><td class="n"><strong>~$16,400–18,400</strong></td><td class="n"><strong>~$13,600–15,600</strong></td><td class="wrap-ok">Then about $1,240 or $1,000 a month ongoing.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Not in the table: a day's pay for each rest day she agrees to work, the
+          employer's 25% co-payment on any hospital bill above $15,000, and the home-leave air
+          ticket usually given when the two-year contract is renewed.
+        </p>
+
+        <h3 id="helper-who-qualifies-for-the-60-levy">Who qualifies for the $60 levy</h3>
+        <p>
+          The eligible person must live with you and be registered as a household member in
+          MOM's FDW eService. Any <em>one</em> of these qualifies:
+        </p>
+        <ul class="ticks">
+          <li>A <strong>Singapore Citizen child under 16</strong>. A newborn counts from the day you add them.</li>
+          <li>A <strong>Singapore Citizen aged 67 or above</strong>, or a PR aged 67 or above if you or your spouse is a citizen.</li>
+          <li>A <strong>person with disabilities</strong> certified as needing help with at least one activity of daily living, with an AIC recommendation letter.</li>
+        </ul>
+        <p>
+          Each eligible person covers one helper, up to two concession helpers per household.
+          The lower rate appears within two levy bills and is backdated to the day you
+          updated the household. MOM does not apply it automatically, so do the update the
+          week the baby's birth is registered.
+        </p>
+
+        <h3 id="helper-who-can-hire-and-who-can-be-hired">Who can hire, and who can be hired</h3>
+        <div class="tablewrap panel">
+          <table>
+            <thead><tr><th></th><th>Employer</th><th>Helper</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Age</strong></td><td class="wrap-ok">21 or older</td><td class="wrap-ok">Female, 23 to under 50 at first application (Filipinas 24+). Can renew until 60.</td></tr>
+              <tr><td><strong>Other</strong></td><td class="wrap-ok">Not an undischarged bankrupt, with the mental capacity to employ. MOM sets no published income bar but asks for income documents.</td><td class="wrap-ok">At least 8 years of formal education with a certificate. Not related to you. Outside Singapore while the permit is processed, unless Malaysian.</td></tr>
+              <tr><td><strong>Source countries</strong></td><td class="wrap-ok" colspan="2">Philippines, Indonesia, Myanmar, India, Sri Lanka, Bangladesh, Cambodia, Thailand, Malaysia, Hong Kong, Macau, South Korea, Taiwan.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="helper-step-by-step">Step by step</h3>
+        <ol class="steps">
+          <li><strong>Decide between an agency and a direct hire.</strong> A <em>transfer</em> helper (already working in Singapore) can be hired directly through the FDW eService with Singpass. That skips the Settling-In Programme and most of the agency fee.</li>
+          <li><strong>Attend the Employers' Orientation Programme</strong> if this is your first helper. Do it at least two working days before you apply. New or expectant mothers may send a representative.</li>
+          <li><strong>Apply in the FDW eService</strong> ($35) with her passport, your household details, income documents and her written consent. It takes about a week.</li>
+          <li><strong>Before she flies,</strong> send her the In-Principle Approval letter. Buy the $5,000 security bond (effective on her arrival date), the medical and personal accident insurance, and set up levy GIRO.</li>
+          <li><strong>Within 7 days of arrival</strong> she attends the Settling-In Programme. She may not start work until she has. <strong>Within 14 days</strong> she has a medical exam.</li>
+          <li><strong>Request issuance of the permit</strong> ($35) within two weeks. Register her fingerprints and photo if asked, and the card arrives within five working days.</li>
+          <li><strong>Register your under-16 child or 67+ parent</strong> in the eService for the $60 levy.</li>
+        </ol>
+
+        <h3 id="helper-your-obligations-as-employer">Your obligations as employer</h3>
+        <ul class="ticks">
+          <li><strong>A weekly rest day.</strong> If she agrees to work on it, pay at least one extra day's salary. Since 2023, at least <strong>one rest day a month cannot be bought out</strong>.</li>
+          <li><strong>Pay salary within 7 days</strong> of the end of each month, by bank transfer into her own account. If you pay in cash, both of you sign a monthly record. Never hold her passport, bank book or money.</li>
+          <li><strong>All medical costs are yours,</strong> including the six-monthly medical exam (6ME) at a clinic. Insurance premiums cannot be deducted from her pay.</li>
+          <li><strong>Adequate food and housing:</strong> three meals a day, her own mattress and bedding, ventilation, privacy, and no cameras in her private space.</li>
+          <li><strong>Expect well-being checks.</strong> A first-time helper has two interviews at the Centre for Domestic Employees in her first year, and MOM makes random doorstep visits with two weeks' notice.</li>
+        </ul>
+
+        <div class="note warn">
+          <span class="tag">Things that cost people their bond or permit</span>
+          <p>
+            Missing two consecutive months of levy, which revokes the permit. Having her work
+            at another address, such as your parents' flat. Lending her out part-time.
+            Paying her late or in cash without records. Not sending her home when the
+            permit ends.
+          </p>
+        </div>
+
+        <div class="note">
+          <span class="tag">If you do not want a live-in</span>
+          <p>
+            <strong>Household Services Scheme</strong> companies send licensed workers
+            part-time for cleaning, groceries and elder-minding. Child-minding was dropped
+            from the pilot in March 2026. For an elderly parent who needs help with three or
+            more daily activities, AIC's <strong>Home Caregiving Grant</strong> pays $200–$600
+            a month, and that grant can go toward a helper.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4 · Baby ==================== -->
+  <section class="section" id="baby">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">4 — Baby bonus</span>
+        <span class="rail-note">Every cash grant, account top-up, leave week and tax rebate for a Singapore Citizen baby, and the few forms that unlock them.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#baby-the-money-at-a-glance">The money, at a glance</a>
+          <a href="#baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</a>
+          <a href="#baby-parental-leave">Parental leave</a>
+          <a href="#baby-tax-reliefs-and-rebates">Tax reliefs and rebates</a>
+          <a href="#baby-childcare-health-and-housing">Childcare, health and housing</a>
+          <a href="#baby-what-to-do-and-when">What to do, and when</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Claim everything the government sets aside for a new baby</h2>
+        <p class="lede">
+          A Singapore Citizen baby comes with tens of thousands of dollars of support:
+          cash, a co-matched savings account, MediSave, 30 weeks of government-paid
+          parental leave, and tax rebates. Very little of it is paid automatically. Most of
+          it depends on one LifeSG enrolment, one bank account and one PayNow link, and on
+          you actually putting money into the CDA.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li>Enrol in the <strong>Baby Bonus</strong> scheme on LifeSG when you register the birth. That opens the CDA and starts the cash gift.</li>
+            <li>Deposit enough into the <strong>CDA</strong> to collect the full government match ($4,000 for a first child). It is a 100% instant return, and you can spend it on childcare and medical bills.</li>
+            <li>Take all <strong>30 weeks</strong> of paid leave between you, and claim the <strong>Parenthood Tax Rebate</strong> ($5,000 to $20,000) in the next tax return.</li>
+          </ul>
+        </div>
+
+        <div class="note warn">
+          <span class="tag">The scheme is changing: born 1 Jan 2026 to 31 Mar 2027</span>
+          <p>
+            At the National Day Rally on 23 August 2026 the government announced the
+            <strong>SG Child Support Package</strong>. It replaces the Baby Bonus and Large
+            Families schemes for every citizen child born from <strong>1 April 2027</strong>,
+            and is worth up to $62,000 per child regardless of birth order. It includes a
+            $10,000 Baby Gift, <strong>Child Credits of $2,000 a year from age 1 to 16</strong>,
+            CDA grants and matching, and a $10,000 PSEA top-up at 17.
+          </p>
+          <p>
+            Babies born 1 January 2026 to 31 March 2027 start on today's rules and move
+            across automatically. The cash gift is topped up to $10,000 by 30 April 2027,
+            Child Credits begin from April 2027, and the CDA match cap becomes $5,000 from
+            1 October 2027. The one thing you must do: <strong>set up PayNow on the child's
+            birth certificate or NRIC number before 1 April 2027</strong>, because that is
+            where the new payouts go.
+          </p>
+        </div>
+
+        <h3 id="baby-the-money-at-a-glance">The money, at a glance</h3>
+        <div class="figrow">
+          <div class="fig accent">
+            <span class="k">Baby Bonus cash gift</span>
+            <span class="v">$11,000</span>
+            <span class="m">1st and 2nd child; $13,000 from the 3rd. Paid in instalments to age 6½.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">CDA First Step Grant</span>
+            <span class="v">$5,000</span>
+            <span class="m">Paid automatically when the CDA opens. $10,000 for a 3rd+ child.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">CDA government match</span>
+            <span class="v">up to $4,000</span>
+            <span class="m">Dollar for dollar on what you deposit. Higher caps for later children.</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">MediSave Grant</span>
+            <span class="v">$5,000</span>
+            <span class="m">Into the baby's own MediSave within a week of birth registration. Automatic.</span>
+          </div>
+        </div>
+
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">Cash and accounts by birth order — current rules for babies born now</caption>
+            <thead>
+              <tr><th>Benefit</th><th class="n">1st</th><th class="n">2nd</th><th class="n">3rd–4th</th><th class="n">5th+</th><th>How it arrives</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Baby Bonus cash gift</td><td class="n">$11,000</td><td class="n">$11,000</td><td class="n">$13,000</td><td class="n">$13,000</td><td class="wrap-ok">Into the Child Savings Account. The first $3,000 ($4,000 for a 3rd+ child) comes 7–10 working days after the CDA opens.</td></tr>
+              <tr><td>CDA First Step Grant</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$10,000</td><td class="n">$10,000</td><td class="wrap-ok">Automatic on CDA opening. The $10,000 applies to a 3rd+ child born on or after 18 Feb 2025.</td></tr>
+              <tr><td>CDA co-matching cap</td><td class="n">$4,000</td><td class="n">$7,000</td><td class="n">$9,000</td><td class="n">$15,000</td><td class="wrap-ok">The government matches each dollar you deposit, up to this cap. It becomes $5,000 for everyone from 1 Oct 2027.</td></tr>
+              <tr><td>MediSave Grant for Newborns</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="wrap-ok">Automatic. Covers MediShield Life premiums, vaccinations and hospital bills.</td></tr>
+              <tr><td>Large Family MediSave Grant</td><td class="n">—</td><td class="n">—</td><td class="n">$5,000</td><td class="n">$5,000</td><td class="wrap-ok">Into the <em>mother's</em> MediSave, about two weeks after Baby Bonus enrolment.</td></tr>
+              <tr><td>Child LifeSG Credits</td><td class="n">$500</td><td class="n">$500</td><td class="n">$500</td><td class="n">$500</td><td class="wrap-ok">A Budget 2026 one-off. For a 2026 baby it is paid in April 2027, automatically, into the LifeSG wallet of the CDA trustee.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Cash gift payments require the parents to be <strong>lawfully married</strong>.
+          Children of parents who have never married still get the CDA benefits. You can
+          enrol any time until the end of the year the child turns 12, but every month you
+          wait is a month of instalments and matching you have not started.
+        </p>
+
+        <h3 id="baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</h3>
+        <p>
+          Every dollar you put into the Child Development Account, up to the cap, is matched
+          instantly. A first child's parents who deposit $4,000 have $13,000 in the account
+          once the $5,000 First Step Grant is added. The money is then spent on the things
+          you were going to pay for anyway: infant care and childcare fees, kindergarten,
+          medical bills at approved clinics and hospitals, MediShield Life premiums and early
+          intervention. That makes it a 100% return in weeks, not years.
+        </p>
+        <ul class="ticks">
+          <li><strong>Open it at DBS/POSB, OCBC or UOB</strong>. You choose the bank in the LifeSG Baby Bonus application.</li>
+          <li><strong>Deposit up to the match cap</strong>. Only your own deposits into the CDA are matched. The cash gift itself does <em>not</em> count toward the match.</li>
+          <li><strong>Link the CDA to the infant care centre</strong> so fees come straight out of the account.</li>
+          <li>Matched deposits are accepted until the end of the year the child turns 12. Anything unspent moves to the child's Post-Secondary Education Account.</li>
+        </ul>
+
+        <h3 id="baby-parental-leave">Parental leave</h3>
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">For a citizen baby born on or after 1 April 2026 — 30 weeks paid in total</caption>
+            <thead>
+              <tr><th>Leave</th><th class="n">Length</th><th>Who pays</th><th>Rules worth knowing</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Maternity</strong></td><td class="n">16 weeks</td><td class="wrap-ok">1st/2nd child: the employer pays weeks 1–8 and the government weeks 9–16. 3rd+ child: the government pays all 16.</td><td class="wrap-ok">The first 8 weeks are taken as one continuous block. The last 8 can be spread over 12 months. Requires 3 months' service.</td></tr>
+              <tr><td><strong>Paternity</strong></td><td class="n">4 weeks</td><td class="wrap-ok">Government, capped at $2,500 a week.</td><td class="wrap-ok">Mandatory for births from 1 Apr 2025. Taken within 16 weeks of birth, or flexibly within 12 months if your employer agrees.</td></tr>
+              <tr><td><strong>Shared parental</strong></td><td class="n">10 weeks</td><td class="wrap-ok">Government, capped at $2,500 a week.</td><td class="wrap-ok">Split 5 + 5 by default. Reallocate it on LifeSG <strong>within 4 weeks of birth</strong>; after that you need your employer's agreement.</td></tr>
+              <tr><td><strong>Childcare leave</strong></td><td class="n">6 days/yr</td><td class="wrap-ok">Days 1–3 employer, days 4–6 government.</td><td class="wrap-ok">Each parent, until the youngest child turns 7. NDR 2026 will raise it to 8 days (10 with two children, 12 with three); no start date yet.</td></tr>
+              <tr><td><strong>Unpaid infant care</strong></td><td class="n">12 days/yr</td><td class="wrap-ok">Unpaid.</td><td class="wrap-ok">Each parent, until the child turns 2.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A mother whose contract ended, or who is self-employed, can still claim the
+          government-paid portion through the <strong>Government-Paid Maternity
+          Benefit</strong> if she worked at least 90 days in the 12 months before the birth.
+          Apply within 15 months of the birth.
+        </p>
+
+        <h3 id="baby-tax-reliefs-and-rebates">Tax reliefs and rebates</h3>
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">Claimed from the Year of Assessment after the birth year — a 2026 baby counts in YA2027</caption>
+            <thead>
+              <tr><th>Item</th><th class="n">1st</th><th class="n">2nd</th><th class="n">3rd+</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Parenthood Tax Rebate</strong></td><td class="n">$5,000</td><td class="n">$10,000</td><td class="n">$20,000</td><td class="wrap-ok">A rebate on tax payable, not a relief. Share it between the parents in any split, and unused amounts carry forward until used.</td></tr>
+              <tr><td><strong>Working Mother's Child Relief</strong></td><td class="n">$8,000</td><td class="n">$10,000</td><td class="n">$12,000</td><td class="wrap-ok">A fixed amount for children born from 2024, capped at the mother's earned income.</td></tr>
+              <tr><td><strong>Qualifying Child Relief</strong></td><td class="n">$4,000</td><td class="n">$4,000</td><td class="n">$4,000</td><td class="wrap-ok">Per child, every year. Can be shared between the parents. $7,500 if the child has a disability.</td></tr>
+              <tr><td><strong>Grandparent Caregiver Relief</strong></td><td class="n" colspan="3">$3,000</td><td class="wrap-ok">For a working mother whose child (12 or under) is looked after by a grandparent earning $8,000 a year or less.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Reliefs reduce your chargeable income, so they are worth your marginal rate, and
+          they count toward the <strong>$80,000</strong> cap on all reliefs, the same cap that
+          limits the <a href="#cpf">CPF top-up relief</a>. The Parenthood Tax
+          Rebate does not count toward that cap. Put the rebate on the higher-earning
+          parent first, because their tax bill uses it up fastest.
+        </p>
+
+        <h3 id="baby-childcare-health-and-housing">Childcare, health and housing</h3>
+        <ul class="ticks">
+          <li><strong>Infant care subsidy:</strong> $600 a month basic subsidy if the mother works, plus up to $710 more on a means test for household income up to $12,000 a month ($15,000 from 2027). Childcare from 18 months: $300 basic, plus up to $467 more. The subsidy is paid directly to the centre.</li>
+          <li><strong>Health:</strong> the baby has MediShield Life from birth for life, congenital conditions included. Childhood vaccinations and developmental screenings are free at polyclinics and CHAS GP clinics.</li>
+          <li><strong>Passport:</strong> the first one is free if you apply on MyICA before the baby's first birthday.</li>
+          <li><strong>Housing:</strong> first-timer families with a child (or expecting one) get priority and an extra ballot for BTO flats. From the Feb 2027 launch, it is one extra ballot per citizen child. NDR 2026 also raised the income ceiling for housing grants to $16,000.</li>
+          <li><strong>Helper:</strong> a citizen child under 16 at home cuts the levy on a domestic helper from $300 to $60 a month. See <a href="#helper">Hiring a helper</a>.</li>
+        </ul>
+
+        <h3 id="baby-what-to-do-and-when">What to do, and when</h3>
+        <ol class="steps">
+          <li><strong>During pregnancy:</strong> agree the shared parental leave split with your partner. Apply for a BTO flat under the parenthood priority if you are first-timers.</li>
+          <li><strong>Within 42 days of birth:</strong> register the birth on LifeSG and <strong>enrol in the Baby Bonus scheme in the same flow</strong>, choosing your CDA bank.</li>
+          <li><strong>Within 4 weeks of birth:</strong> reallocate the shared parental leave on LifeSG if you are not splitting it 5 + 5.</li>
+          <li><strong>Within a few weeks:</strong> open the CDA at the bank and make the first deposit. Add the baby to your MOM household for the helper levy concession, and apply for the free passport.</li>
+          <li><strong>Before 1 April 2027:</strong> set up PayNow on the baby's birth certificate number for the new Child Credits.</li>
+          <li><strong>Next tax season:</strong> claim the Parenthood Tax Rebate, Qualifying Child Relief and Working Mother's Child Relief in your tax return.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
 <!-- ==================== CHECKLIST ==================== -->
   <section class="section" id="checklist">
     <div class="section-grid">
@@ -2215,13 +2217,13 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
               <tr><th>Move</th><th>Mechanism</th><th class="n">Year-one value</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>01 CPF</strong></td><td class="wrap-ok">$8,000 CPF top-up at an 11.5% marginal rate, plus 4% on the balance</td><td class="n">$920 + 4%/yr</td></tr>
-              <tr><td><strong>02 ETFs</strong></td><td class="wrap-ok">Irish rather than US domicile on $150,000, at ~0.25% of withholding drag avoided</td><td class="n">~$375/yr</td></tr>
-              <tr><td><strong>03 Cards</strong></td><td class="wrap-ok">1.7% flat cashback on $30,000 of annual spend, fee waived</td><td class="n">$510/yr</td></tr>
-              <tr><td><strong>04 Helper</strong></td><td class="wrap-ok">Concessionary levy once a citizen child under 16 is registered in the household</td><td class="n">$2,880/yr</td></tr>
-              <tr><td><strong>05 Baby</strong></td><td class="wrap-ok">Full CDA match for a first child, on top of the $5,000 grant, $11,000 cash gift and $5,000 rebate</td><td class="n">$4,000 once</td></tr>
-              <tr><td><strong>06 Insurance</strong></td><td class="wrap-ok">Integrated Shield Plan premium paid from MediSave instead of cash, per adult aged 40 or below</td><td class="n">up to $300/yr</td></tr>
-              <tr><td><strong>07 Tax</strong></td><td class="wrap-ok">$15,300 SRS contribution at an 11.5% marginal rate, on top of the CPF top-up</td><td class="n">$1,760/yr</td></tr>
+              <tr><td><strong>CPF</strong></td><td class="wrap-ok">$8,000 CPF top-up at an 11.5% marginal rate, plus 4% on the balance</td><td class="n">$920 + 4%/yr</td></tr>
+              <tr><td><strong>ETFs</strong></td><td class="wrap-ok">Irish rather than US domicile on $150,000, at ~0.25% of withholding drag avoided</td><td class="n">~$375/yr</td></tr>
+              <tr><td><strong>Cards</strong></td><td class="wrap-ok">1.7% flat cashback on $30,000 of annual spend, fee waived</td><td class="n">$510/yr</td></tr>
+              <tr><td><strong>Insurance</strong></td><td class="wrap-ok">Integrated Shield Plan premium paid from MediSave instead of cash, per adult aged 40 or below</td><td class="n">up to $300/yr</td></tr>
+              <tr><td><strong>Tax</strong></td><td class="wrap-ok">$15,300 SRS contribution at an 11.5% marginal rate, on top of the CPF top-up</td><td class="n">$1,760/yr</td></tr>
+              <tr><td><strong>Helper</strong></td><td class="wrap-ok">Concessionary levy once a citizen child under 16 is registered in the household</td><td class="n">$2,880/yr</td></tr>
+              <tr><td><strong>Baby</strong></td><td class="wrap-ok">Full CDA match for a first child, on top of the $5,000 grant, $11,000 cash gift and $5,000 rebate</td><td class="n">$4,000 once</td></tr>
             </tbody>
           </table>
         </div>
@@ -2233,70 +2235,76 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         </p>
 
         <div class="check-group">
-          <span class="mono-label">01 · CPF</span>
+          <span class="mono-label">CPF</span>
           <div class="checklist">
-            <div class="check"><span class="mk">01</span><span class="tx">Check your CPF statement for SA and MA balances.<em>cpf.gov.sg → my cpf → account balances</em></span></div>
-            <div class="check"><span class="mk">02</span><span class="tx">Top up MediSave toward $79,000, and the Special Account with what is left of the $8,000.<em>Any time before 31 December for that year's relief</em></span></div>
-            <div class="check"><span class="mk">03</span><span class="tx">Set a calendar reminder for early January to repeat it.<em>Earlier in the year is more compounding</em></span></div>
+            <div class="check" data-id="01"><span class="mk">01</span><span class="tx">Check your CPF statement for SA and MA balances.<em>cpf.gov.sg → my cpf → account balances</em></span></div>
+            <div class="check" data-id="02"><span class="mk">02</span><span class="tx">Top up MediSave toward $79,000, and the Special Account with what is left of the $8,000.<em>Any time before 31 December for that year's relief</em></span></div>
+            <div class="check" data-id="03"><span class="mk">03</span><span class="tx">Set a calendar reminder for early January to repeat it.<em>Earlier in the year is more compounding</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">ETF investing</span>
+          <div class="checklist">
+            <div class="check" data-id="04"><span class="mk">04</span><span class="tx">Open IBKR Singapore, select Tiered pricing.<em>Two to three business days</em></span></div>
+            <div class="check" data-id="05"><span class="mk">05</span><span class="tx">Fund by PayNow, convert SGD to USD on IDEALPRO, buy IWDA — or VWRA if you want one line.<em>Limit order, mid-session</em></span></div>
+            <div class="check" data-id="06"><span class="mk">06</span><span class="tx">Repeat the same purchase monthly or quarterly, without reading the news first.<em>The hard part</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">Credit card</span>
+          <div class="checklist">
+            <div class="check" data-id="07"><span class="mk">07</span><span class="tx">Apply for one flat cashback card and put every payment through it.<em>GIRO, full balance</em></span></div>
+            <div class="check" data-id="08"><span class="mk">08</span><span class="tx">Diarise the annual fee date and call for the waiver.<em>Eleven months from approval</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">Insurance</span>
+          <div class="checklist">
+            <div class="check" data-id="18"><span class="mk">09</span><span class="tx">List the cover you already hold: MediShield Life, CareShield Life, DPS, HPS and any employer group cover.<em>CPF portal → my cpf → insurance</em></span></div>
+            <div class="check" data-id="19"><span class="mk">10</span><span class="tx">Put every family member on an Integrated Shield Plan for the ward you would really use.<em>Baby: apply in the first weeks</em></span></div>
+            <div class="check" data-id="20"><span class="mk">11</span><span class="tx">Buy term life and critical illness cover to the gap the cover check shows, to when the youngest is about 25.<em>Start with DPI on compareFIRST</em></span></div>
+            <div class="check" data-id="21"><span class="mk">12</span><span class="tx">Review any whole life, endowment or ILP plans against what they cost.<em>Before surrendering, get the surrender value in writing</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">Tax</span>
+          <div class="checklist">
+            <div class="check" data-id="22"><span class="mk">13</span><span class="tx">Open an SRS account and contribute, if your marginal rate is 11.5% or more.<em>By 31 December, for next year's relief</em></span></div>
+            <div class="check" data-id="23"><span class="mk">14</span><span class="tx">Top up a lower-earning spouse's or parents' CPF under the family $8,000.<em>Recipient earned $8,000 or less</em></span></div>
+            <div class="check" data-id="24"><span class="mk">15</span><span class="tx">Agree who claims each child relief, the Parenthood Tax Rebate and Parent Relief.<em>Higher marginal rate first</em></span></div>
+            <div class="check" data-id="25"><span class="mk">16</span><span class="tx">File and check the pre-filled reliefs, then set up GIRO.<em>By 18 April; 12 interest-free instalments</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">Hiring a helper</span>
+          <div class="checklist">
+            <div class="check" data-id="09"><span class="mk">17</span><span class="tx">Do the Employers' Orientation Programme, then apply in the FDW eService.<em>EOP at least 2 working days before applying</em></span></div>
+            <div class="check" data-id="10"><span class="mk">18</span><span class="tx">Buy the security bond and medical and personal accident insurance, and set up levy GIRO, before she arrives.<em>Bond effective on arrival date</em></span></div>
+            <div class="check" data-id="11"><span class="mk">19</span><span class="tx">Register your under-16 child or 67+ parent as a household member for the $60 levy.<em>FDW eService → household members</em></span></div>
+            <div class="check" data-id="12"><span class="mk">20</span><span class="tx">Pay salary by bank transfer within 7 days of month end, and book the six-monthly medical exam.<em>Every month / every 6 months</em></span></div>
+          </div>
+
+        <div class="check-group">
+          <span class="mono-label">Baby bonus</span>
+          <div class="checklist">
+            <div class="check" data-id="13"><span class="mk">21</span><span class="tx">Register the birth and enrol in the Baby Bonus scheme on LifeSG in the same flow.<em>Within 42 days of birth</em></span></div>
+            <div class="check" data-id="14"><span class="mk">22</span><span class="tx">Reallocate shared parental leave if you are not splitting it 5 + 5.<em>Within 4 weeks of birth</em></span></div>
+            <div class="check" data-id="15"><span class="mk">23</span><span class="tx">Open the CDA and deposit up to the government match cap.<em>$4,000 for a first child</em></span></div>
+            <div class="check" data-id="16"><span class="mk">24</span><span class="tx">Set up PayNow on the baby's birth certificate number.<em>Before 1 April 2027, for Child Credits</em></span></div>
+            <div class="check" data-id="17"><span class="mk">25</span><span class="tx">Claim the Parenthood Tax Rebate and child reliefs in the next tax return.<em>YA after the birth year</em></span></div>
           </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">02 · ETFs</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">04</span><span class="tx">Open IBKR Singapore, select Tiered pricing.<em>Two to three business days</em></span></div>
-            <div class="check"><span class="mk">05</span><span class="tx">Fund by PayNow, convert SGD to USD on IDEALPRO, buy IWDA — or VWRA if you want one line.<em>Limit order, mid-session</em></span></div>
-            <div class="check"><span class="mk">06</span><span class="tx">Repeat the same purchase monthly or quarterly, without reading the news first.<em>The hard part</em></span></div>
-          </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">03 · Cards</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">07</span><span class="tx">Apply for one flat cashback card and put every payment through it.<em>GIRO, full balance</em></span></div>
-            <div class="check"><span class="mk">08</span><span class="tx">Diarise the annual fee date and call for the waiver.<em>Eleven months from approval</em></span></div>
-          </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">04 · Helper</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">09</span><span class="tx">Do the Employers' Orientation Programme, then apply in the FDW eService.<em>EOP at least 2 working days before applying</em></span></div>
-            <div class="check"><span class="mk">10</span><span class="tx">Buy the security bond and medical and personal accident insurance, and set up levy GIRO, before she arrives.<em>Bond effective on arrival date</em></span></div>
-            <div class="check"><span class="mk">11</span><span class="tx">Register your under-16 child or 67+ parent as a household member for the $60 levy.<em>FDW eService → household members</em></span></div>
-            <div class="check"><span class="mk">12</span><span class="tx">Pay salary by bank transfer within 7 days of month end, and book the six-monthly medical exam.<em>Every month / every 6 months</em></span></div>
-          </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">05 · Baby</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">13</span><span class="tx">Register the birth and enrol in the Baby Bonus scheme on LifeSG in the same flow.<em>Within 42 days of birth</em></span></div>
-            <div class="check"><span class="mk">14</span><span class="tx">Reallocate shared parental leave if you are not splitting it 5 + 5.<em>Within 4 weeks of birth</em></span></div>
-            <div class="check"><span class="mk">15</span><span class="tx">Open the CDA and deposit up to the government match cap.<em>$4,000 for a first child</em></span></div>
-            <div class="check"><span class="mk">16</span><span class="tx">Set up PayNow on the baby's birth certificate number.<em>Before 1 April 2027, for Child Credits</em></span></div>
-            <div class="check"><span class="mk">17</span><span class="tx">Claim the Parenthood Tax Rebate and child reliefs in the next tax return.<em>YA after the birth year</em></span></div>
-          </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">06 · Insurance</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">18</span><span class="tx">List the cover you already hold: MediShield Life, CareShield Life, DPS, HPS and any employer group cover.<em>CPF portal → my cpf → insurance</em></span></div>
-            <div class="check"><span class="mk">19</span><span class="tx">Put every family member on an Integrated Shield Plan for the ward you would really use.<em>Baby: apply in the first weeks</em></span></div>
-            <div class="check"><span class="mk">20</span><span class="tx">Buy term life and critical illness cover to the gap the cover check shows, to when the youngest is about 25.<em>Start with DPI on compareFIRST</em></span></div>
-            <div class="check"><span class="mk">21</span><span class="tx">Review any whole life, endowment or ILP plans against what they cost.<em>Before surrendering, get the surrender value in writing</em></span></div>
-          </div>
         </div>
 
-        <div class="check-group">
-          <span class="mono-label">07 · Tax</span>
-          <div class="checklist">
-            <div class="check"><span class="mk">22</span><span class="tx">Open an SRS account and contribute, if your marginal rate is 11.5% or more.<em>By 31 December, for next year's relief</em></span></div>
-            <div class="check"><span class="mk">23</span><span class="tx">Top up a lower-earning spouse's or parents' CPF under the family $8,000.<em>Recipient earned $8,000 or less</em></span></div>
-            <div class="check"><span class="mk">24</span><span class="tx">Agree who claims each child relief, the Parenthood Tax Rebate and Parent Relief.<em>Higher marginal rate first</em></span></div>
-            <div class="check"><span class="mk">25</span><span class="tx">File and check the pre-filled reliefs, then set up GIRO.<em>By 18 April; 12 interest-free instalments</em></span></div>
-          </div>
         </div>
       </div>
     </div>
@@ -2451,7 +2459,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   var ticked = {};
   try { ticked = JSON.parse(localStorage.getItem("sgms-ticks") || "{}") || {}; } catch (e) { ticked = {}; }
   Array.prototype.forEach.call(document.querySelectorAll(".check"), function (row) {
-    var key = row.querySelector(".mk").textContent.trim();
+    var key = row.getAttribute("data-id") || row.querySelector(".mk").textContent.trim();   // stable across renumbering
     row.setAttribute("role", "checkbox");
     row.setAttribute("tabindex", "0");
     function paint() { row.classList.toggle("done", !!ticked[key]); row.setAttribute("aria-checked", ticked[key] ? "true" : "false"); }
@@ -2465,17 +2473,47 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     paint();
   });
 
+  /* ---------- dropdown menu ---------- */
+  var menuToggle = document.querySelector(".menu-toggle");
+  var ddBtns = Array.prototype.slice.call(document.querySelectorAll(".dd-btn"));
+  function closeAll(except) {
+    ddBtns.forEach(function (b) { if (b !== except) b.setAttribute("aria-expanded", "false"); });
+  }
+  ddBtns.forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = b.getAttribute("aria-expanded") === "true";
+      closeAll(b);
+      b.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+  });
+  menuToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", open ? "false" : "true");
+    if (open) closeAll();
+  });
+  function closeMenu() { closeAll(); menuToggle.setAttribute("aria-expanded", "false"); }
+  document.addEventListener("click", function (e) { if (!e.target.closest(".mainnav")) closeMenu(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+  Array.prototype.forEach.call(document.querySelectorAll(".menu a"), function (a) {
+    a.addEventListener("click", closeMenu);
+  });
+
   /* ---------- highlight the section in view ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll("[data-nav]"));
+  var secLinks = Array.prototype.slice.call(document.querySelectorAll("[data-sec]"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".dd[data-secs]"));
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        navLinks.forEach(function (a) { a.classList.toggle("is-on", a.getAttribute("href") === "#" + e.target.id); });
+        var id = e.target.id;
+        secLinks.forEach(function (a) { a.classList.toggle("is-on", a.getAttribute("data-sec") === id && a.getAttribute("href") === "#" + id); });
+        groups.forEach(function (g) { g.classList.toggle("is-on", g.getAttribute("data-secs").split(" ").indexOf(id) > -1); });
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    navLinks.forEach(function (a) {
-      var t = document.querySelector(a.getAttribute("href"));
+    ["cpf", "etf", "cards", "insurance", "tax", "sti", "helper", "baby", "checklist"].forEach(function (id) {
+      var t = document.getElementById(id);
       if (t) io.observe(t);
     });
   }
@@ -2498,7 +2536,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   }
   stackTables();
 
-  /* ---------- 08 · STI dashboard: load its data only when it comes near ---------- */
+  /* ---------- 2 · STI dashboard: load its data only when it comes near ---------- */
   var stiApp = document.getElementById("sti-app");
   if (stiApp) {
     var stiStarted = false;
@@ -2529,7 +2567,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   function money(v) { return sgd.format(Math.round(v)); }
   function num(el) { var v = parseFloat(el.value); return isFinite(v) && v > 0 ? v : 0; }
 
-  /* ---------- 01 · CPF top-up planner ---------- */
+  /* ---------- 1.1 · CPF top-up planner ---------- */
   var BRS_2026 = 110200, FRS_2026 = 220400, BRS_GROWTH = 0.035, CPF_RATE = 0.04;
   var cAge = document.getElementById("cAge"),
       cSA = document.getElementById("cSA"),
@@ -2592,7 +2630,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   });
   runCpf();
 
-  /* ---------- 03 · Card break-even ---------- */
+  /* ---------- 1.3 · Card break-even ---------- */
   var CARDS = [
     { name: "UOB Absolute Cashback", rate: 0.017, fee: 196.20 },
     { name: "Citi Cash Back+",       rate: 0.016, fee: 194.40 },
@@ -2649,7 +2687,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   });
   runCards();
 
-  /* ---------- 06 · Insurance cover check ---------- */
+  /* ---------- 1.4 · Insurance cover check ---------- */
   var iInc = document.getElementById("iInc"), iLife = document.getElementById("iLife"),
       iCi = document.getElementById("iCi"), iSav = document.getElementById("iSav");
   function runIns() {
@@ -2669,7 +2707,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   [iInc, iLife, iCi, iSav].forEach(function (el) { el.addEventListener("input", runIns); });
   runIns();
 
-  /* ---------- 07 · Tax estimator ---------- */
+  /* ---------- 1.5 · Tax estimator ---------- */
   var BANDS = [[20000, 0], [30000, 0.02], [40000, 0.035], [80000, 0.07], [120000, 0.115], [160000, 0.15],
                [200000, 0.18], [240000, 0.19], [280000, 0.195], [320000, 0.20], [500000, 0.22], [1000000, 0.23], [Infinity, 0.24]];
   var CPF_WAGE_CAP = 102000, CPF_EE = 0.20, RELIEF_CAP = 80000;

@@ -1,26 +1,27 @@
 # SG Finance
 
-A single-page personal finance guide for Singapore households, in eight sections plus a
-checklist:
+A single-page personal finance guide for Singapore households in four parts, navigated
+from dropdowns in the top bar:
 
-1. **CPF** — funding CPF MediSave and Special Account toward the Basic Retirement Sum,
-   and what the cash top-up tax relief is actually worth at each marginal rate.
-2. **ETFs** — buying Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
-   Interactive Brokers, and why domicile beats index choice for a Singapore resident.
-   Includes where Singapore stocks and the STI fit.
-3. **Cards** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
-4. **Helper** — hiring a migrant domestic worker: full cost, the $60 concessionary levy,
-   MOM requirements and the step-by-step process.
-5. **Baby** — every government benefit for a Singapore Citizen newborn (Baby Bonus, CDA,
-   MediSave grant, parental leave, tax rebates) and the April 2027 switch to the
-   SG Child Support Package.
-6. **Insurance** — what MediShield Life, CareShield Life, DPS and HPS already cover,
-   Integrated Shield Plans and the April 2026 rider rules, how much term life and critical
-   illness cover a parent needs, and insuring a newborn.
-7. **Tax** — 2026 resident rates, every relief a family can claim, SRS, which spouse
-   should claim what, and the tax-year calendar.
-8. **STI dashboard** — the Straits Times Index and its 30 constituents since 1987 on an
+1. **Finance basics**
+   1. **CPF** — funding MediSave and the Special Account toward the Basic Retirement Sum,
+      and what the cash top-up tax relief is worth at each marginal rate.
+   2. **ETF investing** — Ireland-domiciled accumulating ETFs (IWDA / EIMI / VWRA) through
+      Interactive Brokers, why domicile beats index choice, and where Singapore stocks fit.
+   3. **Credit card** — one uncapped flat-rate cashback card, with the fee-versus-rate maths.
+   4. **Insurance** — what MediShield Life, CareShield Life, DPS and HPS already cover,
+      Integrated Shield Plans and the April 2026 rider rules, term life and critical illness
+      cover, and insuring a newborn.
+   5. **Tax** — 2026 resident rates, every relief a family can claim, SRS, which spouse
+      should claim what, and the tax-year calendar.
+   6. **Checklist** — the whole page as things to do.
+2. **STI dashboard** — the Straits Times Index and its 30 constituents since 1987 on an
    interactive chart, annotated with market events and every earnings result.
+3. **Hiring a helper** — full cost, the $60 concessionary levy, MOM requirements and the
+   step-by-step process.
+4. **Baby bonus** — every government benefit for a Singapore Citizen newborn (Baby Bonus,
+   CDA, MediSave grant, parental leave, tax rebates) and the April 2027 switch to the
+   SG Child Support Package.
 
 Four interactive calculators are built in: a CPF top-up planner that projects your Special
 Account against your own cohort's Basic Retirement Sum, a card comparison that nets
