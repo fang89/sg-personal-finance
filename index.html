@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SG Household Money Guide</title>
-<meta name="description" content="A plain Singapore household money guide: CPF top-ups, Irish-domiciled ETFs through IBKR, one flat cashback card, hiring a domestic helper, and every government benefit for a new baby.">
+<title>SG Finance</title>
+<meta name="description" content="SG Finance: a plain Singapore household money guide covering CPF top-ups, Irish-domiciled ETFs through IBKR, one flat cashback card, hiring a domestic helper, government benefits for a new baby, insurance, income tax reliefs, and an annotated STI dashboard.">
 <meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -554,13 +554,33 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   #sti-app details.tbl td.pos { color: var(--up); }
   #sti-app details.tbl td.neg { color: var(--down); }
 
+
+/* STI dashboard button in the top bar */
+.sti-btn {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; margin-left: 6px;
+  font: 600 13.5px var(--f-text); color: #fff; text-decoration: none; white-space: nowrap;
+  background: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 6px 12px;
+  box-shadow: 0 1px 2px rgba(15,27,51,.12); transition: background .15s ease, box-shadow .15s ease;
+}
+.sti-btn svg { width: 15px; height: 15px; }
+.sti-btn:hover { background: var(--accent-ink); border-color: var(--accent-ink); color: #fff; box-shadow: 0 3px 10px -4px rgba(29,78,216,.6); }
+.sti-btn.is-on { box-shadow: 0 0 0 3px var(--accent-line); }
+.sti-btn .short { display: none; }
+:root[data-theme="dark"] .sti-btn, :root[data-theme="dark"] .sti-btn:hover { color: #0A1020; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sti-btn, :root:not([data-theme="light"]) .sti-btn:hover { color: #0A1020; } }
+@media (max-width: 720px) {
+  .sti-btn { margin-left: 0; padding: 6px 10px; }
+  .sti-btn .long { display: none; }
+  .sti-btn .short { display: inline; }
+}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="topbar-in">
-    <a class="brand" href="#top"><span class="logo" aria-hidden="true">S$</span><span class="txt">SG Household Money Guide</span></a>
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">S$</span><span class="txt">SG Finance</span></a>
+    <a class="sti-btn" data-nav href="#sti" title="Straits Times Index dashboard"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 11l3.5-4 3 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="long">STI dashboard</span><span class="short">STI</span></a>
     <nav class="topnav" aria-label="Sections">
       <a data-nav href="#cpf">CPF</a>
       <a data-nav href="#etf">ETFs</a>
@@ -569,7 +589,6 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
       <a data-nav href="#baby">Baby</a>
       <a data-nav href="#insurance">Insurance</a>
       <a data-nav href="#tax">Tax</a>
-      <a data-nav href="#sti">STI</a>
       <a data-nav href="#checklist">Checklist</a>
     </nav>
     <button id="themeBtn" type="button" aria-label="Switch colour theme">Dark mode</button>
@@ -631,7 +650,6 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <a href="#tax-which-spouse-claims-what">Which spouse claims what</a>
           <a href="#tax-the-tax-year-in-order">The tax year, in order</a>
         </div>
-      <a class="sec" data-nav href="#sti"><span class="i">08</span>STI dashboard</a>
       <a class="sec" data-nav href="#checklist"><span class="i">✓</span>Checklist</a>
     </nav>
     <p class="side-foot">Figures verified 16 Aug 2026 (CPF, ETFs, cards) and 4 Oct 2026 (helper, baby, insurance, tax). Not financial advice.</p>

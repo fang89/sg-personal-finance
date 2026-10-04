@@ -1,4 +1,4 @@
-# SG Household Money Guide
+# SG Finance
 
 A single-page personal finance guide for Singapore households, in eight sections plus a
 checklist:
