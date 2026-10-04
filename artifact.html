@@ -158,6 +158,16 @@ code { font-family: var(--f-mono); font-size: .86em; background: var(--band); bo
    Sections
    ============================================================ */
 .section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+.paged .section { border-bottom: 0; padding-bottom: 32px; }
+.pager { display: flex; gap: 12px; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.pager a { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--paper); }
+.pager a:hover { border-color: var(--accent); }
+.pager a span { font-size: 12.5px; color: var(--ink-faint); }
+.pager a b { font-size: 16px; font-weight: 650; color: var(--accent-ink); }
+.pager .prev span::before { content: "← "; }
+.pager .next { text-align: right; }
+.pager .next span::after { content: " →"; }
+[hidden] { display: none !important; }
 .section-grid { display: block; }
 .rail { margin-bottom: 10px; }
 .rail .role { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink); }
@@ -604,7 +614,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
             <a href="#cards" data-sec="cards"><b>Credit card</b><span>One flat cashback card, fee versus rate</span></a>
             <a href="#insurance" data-sec="insurance"><b>Insurance</b><span>Shield plans, term life, insuring the baby</span></a>
             <a href="#tax" data-sec="tax"><b>Tax</b><span>Every relief, SRS, who claims what</span></a>
-            <a class="foot" href="#checklist" data-sec="checklist"><b>Checklist</b><span>Everything on the page, in order</span></a>
+            <a class="foot" href="#checklist" data-sec="checklist"><b>Checklist</b><span>Everything in the guide, in order</span></a>
           </div>
         </li>
         <li><a class="sti-btn" href="#sti" data-sec="sti"><span class="num">2</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 13.5h13M2.5 11l3.5-4 3 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>STI dashboard</a></li>
@@ -624,7 +634,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <div class="dd-panel dd-right">
             <a href="#baby" data-sec="baby"><b>Overview</b></a>
             <a href="#baby-the-money-at-a-glance" data-sec="baby"><b>The money, at a glance</b></a>
-            <a href="#baby-the-cda-is-the-best-return-on-this-page" data-sec="baby"><b>The CDA is the best return on this page</b></a>
+            <a href="#baby-the-cda-is-the-best-return-on-this-page" data-sec="baby"><b>The CDA is the best return in this guide</b></a>
             <a href="#baby-parental-leave" data-sec="baby"><b>Parental leave</b></a>
             <a href="#baby-tax-reliefs-and-rebates" data-sec="baby"><b>Tax reliefs and rebates</b></a>
             <a href="#baby-childcare-health-and-housing" data-sec="baby"><b>Childcare, health and housing</b></a>
@@ -870,7 +880,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <p>
           Read that last column carefully. A taxpayer in the 15% band who tops up $8,000 has
           made $1,200 back immediately, <em>and then</em> the $8,000 compounds at 4% for
-          decades. Nothing else on this page pays that in year one. If your $8,000 straddles
+          decades. Nothing else in this guide pays that in year one. If your $8,000 straddles
           a bracket boundary the saving is blended across the two rates.
         </p>
 
@@ -2007,7 +2017,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="rail-note">Every cash grant, account top-up, leave week and tax rebate for a Singapore Citizen baby, and the few forms that unlock them.</span>
         <nav class="rail-toc" aria-label="In this section">
           <a href="#baby-the-money-at-a-glance">The money, at a glance</a>
-          <a href="#baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</a>
+          <a href="#baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return in this guide</a>
           <a href="#baby-parental-leave">Parental leave</a>
           <a href="#baby-tax-reliefs-and-rebates">Tax reliefs and rebates</a>
           <a href="#baby-childcare-health-and-housing">Childcare, health and housing</a>
@@ -2101,7 +2111,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           wait is a month of instalments and matching you have not started.
         </p>
 
-        <h3 id="baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return on this page</h3>
+        <h3 id="baby-the-cda-is-the-best-return-on-this-page">The CDA is the best return in this guide</h3>
         <p>
           Every dollar you put into the Child Development Account, up to the cap, is matched
           instantly. A first child's parents who deposit $4,000 have $13,000 in the account
@@ -2193,7 +2203,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="rail-note">The whole page as things to do, grouped by topic. Tick through it once a year.</span>
       </div>
       <div class="body-col">
-        <h2>Everything on this page, in order</h2>
+        <h2>Everything in this guide, in order</h2>
         <p>
           The levers are not the same size. Worked for a single person earning $110,000,
           spending $2,500 a month on a card and holding $150,000 invested:
@@ -2218,7 +2228,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <p>
           The ETF line understates itself badly. It prices only the tax leak, not the
           return from being invested at all, which over thirty years dwarfs everything else
-          on this page. But each row is the same kind of decision: set it up correctly once,
+          in this guide. But each row is the same kind of decision: set it up correctly once,
           then leave it alone.
         </p>
 
@@ -2488,23 +2498,59 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     a.addEventListener("click", closeMenu);
   });
 
-  /* ---------- highlight the section in view ---------- */
+  /* ---------- one section per page: the hash picks which one is shown ---------- */
+  var PAGES = [
+    ["cpf", "CPF"], ["etf", "ETF investing"], ["cards", "Credit card"], ["insurance", "Insurance"],
+    ["tax", "Tax"], ["sti", "STI dashboard"], ["helper", "Hiring a helper"], ["baby", "Baby bonus"],
+    ["checklist", "Checklist"]
+  ];
+  var BASE_TITLE = document.title;
+  var home = [document.querySelector(".masthead"), document.querySelector(".toc")];
   var secLinks = Array.prototype.slice.call(document.querySelectorAll("[data-sec]"));
   var groups = Array.prototype.slice.call(document.querySelectorAll(".dd[data-secs]"));
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var id = e.target.id;
-        secLinks.forEach(function (a) { a.classList.toggle("is-on", a.getAttribute("data-sec") === id && a.getAttribute("href") === "#" + id); });
-        groups.forEach(function (g) { g.classList.toggle("is-on", g.getAttribute("data-secs").split(" ").indexOf(id) > -1); });
+  var current = null;
+
+  // Previous / next links at the foot of every section.
+  PAGES.forEach(function (p, i) {
+    var sec = document.getElementById(p[0]);
+    if (!sec) return;
+    var nav = document.createElement("nav");
+    nav.className = "pager";
+    nav.setAttribute("aria-label", "More of the guide");
+    var prev = PAGES[i - 1], next = PAGES[i + 1];
+    nav.innerHTML =
+      (prev ? '<a class="prev" href="#' + prev[0] + '"><span>Previous</span><b>' + prev[1] + "</b></a>"
+            : '<a class="prev" href="#top"><span>Back to</span><b>Contents</b></a>') +
+      (next ? '<a class="next" href="#' + next[0] + '"><span>Next</span><b>' + next[1] + "</b></a>"
+            : '<a class="next" href="#top"><span>Back to</span><b>Contents</b></a>');
+    sec.appendChild(nav);
+  });
+
+  function show() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var target = id && id !== "top" ? document.getElementById(id) : null;
+    var sec = target ? target.closest("section.section") : null;
+    var view = sec ? sec.id : "home";
+
+    if (view !== current) {
+      home.forEach(function (el) { if (el) el.hidden = view !== "home"; });
+      PAGES.forEach(function (p) {
+        var s = document.getElementById(p[0]);
+        if (s) s.hidden = p[0] !== view;
       });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    ["cpf", "etf", "cards", "insurance", "tax", "sti", "helper", "baby", "checklist"].forEach(function (id) {
-      var t = document.getElementById(id);
-      if (t) io.observe(t);
-    });
+      secLinks.forEach(function (a) { a.classList.toggle("is-on", a.getAttribute("href") === "#" + view); });
+      groups.forEach(function (g) { g.classList.toggle("is-on", g.getAttribute("data-secs").split(" ").indexOf(view) > -1); });
+      var name = PAGES.filter(function (p) { return p[0] === view; })[0];
+      document.title = name ? name[1] + " · " + BASE_TITLE : BASE_TITLE;
+      if (view === "sti") window.dispatchEvent(new Event("resize"));   // chart measured while hidden
+      current = view;
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+    if (target && target !== sec) target.scrollIntoView({ behavior: "instant", block: "start" });
   }
+  document.documentElement.classList.add("paged");
+  window.addEventListener("hashchange", show);
+  show();
 
   /* ---------- label table cells so phones can stack rows ---------- */
   function stackTables() {
