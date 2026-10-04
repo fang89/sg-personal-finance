@@ -386,6 +386,8 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
       <a data-nav href="#cards">Cards</a>
       <a data-nav href="#helper">Helper</a>
       <a data-nav href="#baby">Baby</a>
+      <a data-nav href="#insurance">Insurance</a>
+      <a data-nav href="#tax">Tax</a>
       <a data-nav href="#checklist">Checklist</a>
     </nav>
     <button id="themeBtn" type="button" aria-label="Switch colour theme">Dark mode</button>
@@ -432,9 +434,24 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <a href="#baby-childcare-health-and-housing">Childcare, health and housing</a>
           <a href="#baby-what-to-do-and-when">What to do, and when</a>
         </div>
+      <a class="sec" data-nav href="#insurance"><span class="i">06</span>Insurance</a>
+        <div class="sub">
+          <a href="#insurance-what-you-already-have">What you already have</a>
+          <a href="#insurance-hospital-cover">Hospital cover</a>
+          <a href="#insurance-life-and-critical-illness-cover">Life and critical illness cover</a>
+          <a href="#insurance-insuring-the-baby">Insuring the baby</a>
+        </div>
+      <a class="sec" data-nav href="#tax"><span class="i">07</span>Tax</a>
+        <div class="sub">
+          <a href="#tax-the-rates">The rates</a>
+          <a href="#tax-every-relief-a-family-can-claim">Every relief a family can claim</a>
+          <a href="#tax-srs-tax-deferred-and-often-tax-free">SRS</a>
+          <a href="#tax-which-spouse-claims-what">Which spouse claims what</a>
+          <a href="#tax-the-tax-year-in-order">The tax year, in order</a>
+        </div>
       <a class="sec" data-nav href="#checklist"><span class="i">✓</span>Checklist</a>
     </nav>
-    <p class="side-foot">Figures verified 16 Aug 2026 (CPF, ETFs, cards) and 4 Oct 2026 (helper, baby). Not financial advice.</p>
+    <p class="side-foot">Figures verified 16 Aug 2026 (CPF, ETFs, cards) and 4 Oct 2026 (helper, baby, insurance, tax). Not financial advice.</p>
   </aside>
 
 <main class="wrap" id="top">
@@ -446,8 +463,9 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
       Most personal finance content in Singapore sells you complexity. For an ordinary
       salaried household, nearly all of the value sits in a handful of decisions you make
       once: fund the CPF floor, own the world through one Irish-domiciled fund, stop leaking
-      money at the card terminal — and, when the family grows, hire help properly and claim
-      every dollar the government sets aside for a new baby.
+      money at the card terminal. When the family grows, hire help properly, claim every
+      dollar set aside for a new baby, insure the income everyone depends on, and file
+      for every relief you are owed.
     </p>
     <div class="stamp">
       <span>Updated <b>4 Oct 2026</b></span>
@@ -488,6 +506,18 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="h">Claim every baby benefit</span>
         <span class="d">Baby Bonus, CDA matching, MediSave grant, 30 weeks of paid leave, tax rebates — and the April 2027 switch.</span>
         <span class="x">$25,000+ for a first child · what to file, when</span>
+      </a>
+      <a class="toc-card" href="#insurance">
+        <span class="n">06 · Insurance</span>
+        <span class="h">Insure the income, not the savings</span>
+        <span class="d">What MediShield Life, CareShield Life and DPS already cover, Shield plans and the 2026 rider rules, and how much term cover a parent needs.</span>
+        <span class="x">9× income · cover check</span>
+      </a>
+      <a class="toc-card" href="#tax">
+        <span class="n">07 · Tax</span>
+        <span class="h">Claim every relief</span>
+        <span class="d">Every relief a family can claim, CPF top-ups and SRS before 31 December, and which spouse should claim what.</span>
+        <span class="x">tax estimator</span>
       </a>
       <a class="toc-card" href="#checklist">
         <span class="n">Checklist</span>
@@ -1417,7 +1447,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
               <tr><td><strong>Parenthood Tax Rebate</strong></td><td class="n">$5,000</td><td class="n">$10,000</td><td class="n">$20,000</td><td class="wrap-ok">A rebate on tax payable, not a relief. Share it between the parents in any split, and unused amounts carry forward until used.</td></tr>
               <tr><td><strong>Working Mother's Child Relief</strong></td><td class="n">$8,000</td><td class="n">$10,000</td><td class="n">$12,000</td><td class="wrap-ok">A fixed amount for children born from 2024, capped at the mother's earned income.</td></tr>
               <tr><td><strong>Qualifying Child Relief</strong></td><td class="n">$4,000</td><td class="n">$4,000</td><td class="n">$4,000</td><td class="wrap-ok">Per child, every year. Can be shared between the parents. $7,500 if the child has a disability.</td></tr>
-              <tr><td><strong>Grandparent Caregiver Relief</strong></td><td class="n" colspan="3">$3,000</td><td class="wrap-ok">For a working mother whose child (12 or under) is looked after by a grandparent who is not working.</td></tr>
+              <tr><td><strong>Grandparent Caregiver Relief</strong></td><td class="n" colspan="3">$3,000</td><td class="wrap-ok">For a working mother whose child (12 or under) is looked after by a grandparent earning $8,000 a year or less.</td></tr>
             </tbody>
           </table>
         </div>
@@ -1451,6 +1481,441 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
+  <!-- ==================== 06 · Insurance ==================== -->
+  <section class="section" id="insurance">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">06 — Insurance</span>
+        <span class="rail-note">What the government already covers, the one hospital plan worth adding, and how much life cover a parent actually needs.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#insurance-what-you-already-have">What you already have</a>
+          <a href="#insurance-hospital-cover">Hospital cover: Shield plans and riders</a>
+          <a href="#insurance-life-and-critical-illness-cover">Life and critical illness cover</a>
+          <a href="#insurance-insuring-the-baby">Insuring the baby</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Insure the income your family depends on, and little else</h2>
+        <p class="lede">
+          Insurance is where Singapore households lose the most money quietly, mostly by
+          buying savings plans dressed up as protection. Treat it as protection only. The
+          government already covers basic hospital bills and severe disability for everyone.
+          On top of that you need a hospital plan for the ward you would actually choose, and
+          enough term life cover to replace your income until the children are grown.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li>Keep <strong>MediShield Life</strong> and <strong>CareShield Life</strong>. Both are automatic. Add an <strong>Integrated Shield Plan</strong> for each family member, paid mostly from MediSave.</li>
+            <li>For each working parent, buy <strong>term life</strong> cover of about <strong>9× annual income</strong> and critical illness cover of about <strong>4×</strong> (MAS guide), running until the youngest child is independent.</li>
+            <li>Keep protection under <strong>15% of income</strong>. Do not use insurance to save or invest. That is what <a href="#cpf">CPF</a> and <a href="#etf">ETFs</a> are for.</li>
+          </ul>
+        </div>
+
+        <h3 id="insurance-what-you-already-have">What you already have</h3>
+        <p>
+          Every Singapore Citizen and PR already holds some cover through CPF. Check it
+          before buying anything, because it changes how much private cover you need.
+        </p>
+        <div class="tablewrap panel tight">
+          <table>
+            <thead>
+              <tr><th>Scheme</th><th>Covers</th><th>Paid from</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>MediShield Life</strong></td><td class="wrap-ok">Large hospital bills and some outpatient treatment (dialysis, chemotherapy), for life. Sized for B2/C wards in public hospitals.</td><td>MediSave</td><td class="wrap-ok">Automatic from birth, including pre-existing and congenital conditions. Claim limit of $200,000 a year from April 2025, with no lifetime limit. You pay a deductible and 3–10% co-insurance.</td></tr>
+              <tr><td><strong>CareShield Life</strong></td><td class="wrap-ok">Severe disability: being unable to do 3 of the 6 daily activities (washing, dressing, feeding, toileting, walking, moving in and out of bed).</td><td>MediSave</td><td class="wrap-ok">Automatic for those born 1980 or later, from age 30. Pays <strong>$689 a month</strong> for life for a first claim in 2026, rising 4% a year to 2030.</td></tr>
+              <tr><td><strong>Dependants' Protection Scheme</strong></td><td class="wrap-ok">Death, terminal illness and total permanent disability, to age 65.</td><td>CPF</td><td class="wrap-ok">$70,000 of cover to age 60, then $55,000. Automatic once you contribute to CPF, run by Great Eastern. It costs $18 a year at 34 or younger. Keep it; it is cheap.</td></tr>
+              <tr><td><strong>Home Protection Scheme</strong></td><td class="wrap-ok">Pays off your HDB loan if you die or are permanently disabled, to age 65.</td><td>CPF OA</td><td class="wrap-ok">Compulsory if you pay an HDB loan with CPF. Cover reduces with the loan. Co-owners' shares must add up to at least 100%.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Many employers also give group term life and hospital cover. Count it while you
+          have it, but do not build your plan on it: it ends when you change job, and that is
+          often when you are least insurable.
+        </p>
+
+        <h3 id="insurance-hospital-cover">Hospital cover: Shield plans and riders</h3>
+        <p>
+          An <strong>Integrated Shield Plan (IP)</strong> is a private insurer's plan built
+          on top of MediShield Life, covering A or B1 wards in public hospitals or a private
+          hospital. The MediShield Life part of the premium is paid entirely from MediSave.
+          MediSave also pays the private part up to a yearly limit:
+        </p>
+        <div class="figrow">
+          <div class="fig">
+            <span class="k">Age 40 or below</span>
+            <span class="v">$300</span>
+            <span class="m">a year of MediSave toward the private part of the premium</span>
+          </div>
+          <div class="fig">
+            <span class="k">Age 41 to 70</span>
+            <span class="v">$600</span>
+            <span class="m">a year</span>
+          </div>
+          <div class="fig">
+            <span class="k">Age 71 and above</span>
+            <span class="v">$900</span>
+            <span class="m">a year. Anything above the limit is paid in cash.</span>
+          </div>
+        </div>
+        <p>
+          A plan for a public-hospital A ward is the sensible default for most families. The
+          premium for a young adult is usually covered by MediSave, so it costs nothing in
+          cash. A private-hospital plan costs much more, and the gap widens sharply after 60.
+          Choose the ward you would really use, and make sure you can still afford the
+          premium at 70.
+        </p>
+
+        <div class="note">
+          <span class="tag">Riders changed on 1 April 2026</span>
+          <p>
+            A <strong>rider</strong> pays the deductible and co-insurance that the IP leaves
+            to you, and it is always paid in cash. Riders sold from 1 April 2026 can
+            <strong>no longer cover the deductible</strong> ($1,500–$3,500 a year depending on
+            the ward). You still pay at least 5% of the bill, but that share is capped at
+            <strong>at least $6,000 a year</strong> (previously $3,000) for panel or
+            pre-authorised treatment. In return, new riders are expected to cost about 30%
+            less: around $600 a year less for private-hospital riders and $200 less for
+            public-hospital riders. Riders bought before 27 November 2025 are unchanged.
+            Riders bought between then and 31 March 2026 must switch to the new rules by the
+            first renewal after 1 April 2028.
+          </p>
+          <p>
+            A rider is optional. If you hold a few thousand dollars in cash or in MediSave
+            for the deductible and co-payment, the IP alone covers the large, ruinous bills,
+            which is what insurance is for.
+          </p>
+        </div>
+
+        <h3 id="insurance-life-and-critical-illness-cover">Life and critical illness cover</h3>
+        <p>
+          MAS's <strong>Basic Financial Planning Guide</strong> gives three rules of thumb,
+          based on LIA's protection gap study:
+        </p>
+        <div class="figrow">
+          <div class="fig accent">
+            <span class="k">Death and total permanent disability</span>
+            <span class="v">9×</span>
+            <span class="m">annual income in cover</span>
+          </div>
+          <div class="fig accent">
+            <span class="k">Critical illness</span>
+            <span class="v">4×</span>
+            <span class="m">annual income in cover</span>
+          </div>
+          <div class="fig">
+            <span class="k">Total protection premiums</span>
+            <span class="v">≤ 15%</span>
+            <span class="m">of income. MAS assumes term plans here; whole life plans cost more.</span>
+          </div>
+        </div>
+        <p>
+          Subtract what you already hold, such as DPS, employer group cover, and invested
+          savings you would happily spend. Then buy the rest as <strong>term</strong> cover
+          that runs until your youngest child is about 25, or until the mortgage is paid off,
+          whichever is later. Cover is needed most when the children are young, so a single
+          policy to age 65 or 70 is usually enough.
+        </p>
+
+        <div class="tablewrap panel tight">
+          <table>
+            <thead>
+              <tr><th></th><th>Term life</th><th>Whole life or investment-linked (ILP)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>What you buy</strong></td><td class="wrap-ok">Cover only, for a fixed period. Nothing back if you outlive it.</td><td class="wrap-ok">Cover bundled with a savings or investment part that builds a cash value.</td></tr>
+              <tr><td><strong>Cost for the same cover</strong></td><td class="wrap-ok">Low. Usually a small fraction of a whole life premium for the same sum assured.</td><td class="wrap-ok">Several times more. Much of the early premium goes to costs and commission.</td></tr>
+              <tr><td><strong>If you stop early</strong></td><td class="wrap-ok">Cover ends. You lose nothing you were owed.</td><td class="wrap-ok">The surrender value in the first years is usually far below what you paid in.</td></tr>
+              <tr><td><strong>Fits this guide if</strong></td><td class="wrap-ok">Almost always. Invest the difference in <a href="#etf">IWDA</a> and top up <a href="#cpf">CPF</a>.</td><td class="wrap-ok">Rarely. Only if you value forced saving and accept the cost.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          "Buy term and invest the rest" is a common approach, not official advice. MoneySense
+          simply notes that term is usually the most affordable protection and that bundled
+          products generally cost more. The cheapest route is <strong>Direct Purchase
+          Insurance (DPI)</strong>. These are commission-free term policies of $50,000 to
+          $400,000 per insurer, compared side by side on <strong>compareFIRST</strong>. For
+          larger amounts, compare quotes from a few insurers or a fee-based adviser.
+        </p>
+
+        <div class="note warn">
+          <span class="tag">Things that cost people money</span>
+          <p>
+            Buying an ILP or endowment as a "savings plan", then surrendering it in year
+            three. Cancelling an old policy before the new one is approved. Leaving out a
+            medical condition on the form, which lets the insurer refuse a claim later.
+            Forgetting that every life policy has a <strong>14-day free-look period</strong>
+            from when you receive the policy document, in which you can cancel for a near-full
+            refund.
+          </p>
+        </div>
+
+        <h3 id="insurance-insuring-the-baby">Insuring the baby</h3>
+        <ul class="ticks">
+          <li><strong>MediShield Life covers your baby from birth</strong>, including congenital and neonatal conditions. The $5,000 MediSave Grant for Newborns pays its premiums to about age 21.</li>
+          <li><strong>Add an Integrated Shield Plan early.</strong> Insurers usually accept newborns from 15 days old, or after discharge from hospital if later. A condition found before you apply can be excluded for life, so apply in the first weeks. The premium for a child's public-hospital plan is usually within the MediSave limit.</li>
+          <li><strong>Maternity policies</strong> can usually be bought from about 13 weeks of pregnancy. They pay fixed sums for listed pregnancy complications and congenital conditions in the baby. They are optional, and most useful if you want cover before birth.</li>
+          <li><strong>Life insurance on a child</strong> is rarely needed. Nobody depends on the child's income. Spend the premium on the parents' term cover instead.</li>
+        </ul>
+
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">MediSave Maternity Package — the most you can use from MediSave</caption>
+            <thead>
+              <tr><th>Delivery</th><th class="n">Limit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Normal delivery</td><td class="n">$2,020</td></tr>
+              <tr><td>Assisted delivery</td><td class="n">$2,290</td></tr>
+              <tr><td>Caesarean section</td><td class="n">$3,280</td></tr>
+              <tr><td>Hospital stay</td><td class="n">$1,130/day for 2 days, then $400/day</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The delivery limits include up to <strong>$900</strong> for pre-delivery
+          consultations, scans and tests, which can come from either parent's MediSave.
+        </p>
+
+        <!-- CALCULATOR 3 -->
+        <div class="panel" id="calc-ins">
+          <div class="panel-head">
+            <span class="t">Cover check</span>
+            <span class="s">MAS rules of thumb · one parent at a time</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="iInc">Annual income</label>
+                <input id="iInc" type="number" min="0" step="1000" value="100000">
+                <span class="hint">S$, before tax</span>
+              </div>
+              <div class="field">
+                <label for="iLife">Life cover you already hold</label>
+                <input id="iLife" type="number" min="0" step="10000" value="70000">
+                <span class="hint">DPS ($70,000), group cover, policies</span>
+              </div>
+              <div class="field">
+                <label for="iCi">Critical illness cover held</label>
+                <input id="iCi" type="number" min="0" step="10000" value="0">
+                <span class="hint">S$ sum assured</span>
+              </div>
+              <div class="field">
+                <label for="iSav">Savings you would spend</label>
+                <input id="iSav" type="number" min="0" step="10000" value="50000">
+                <span class="hint">Cash and investments, not CPF</span>
+              </div>
+            </div>
+            <div class="outrow">
+              <div class="out"><span class="k">Life cover target (9×)</span><span class="v" id="oLifeT">—</span></div>
+              <div class="out"><span class="k">Life cover to buy</span><span class="v" id="oLifeG">—</span></div>
+              <div class="out"><span class="k">CI target (4×)</span><span class="v" id="oCiT">—</span></div>
+              <div class="out"><span class="k">CI cover to buy</span><span class="v" id="oCiG">—</span></div>
+              <div class="out"><span class="k">Premium ceiling (15%)</span><span class="v" id="oPrem">—</span></div>
+            </div>
+            <p class="meter-foot" id="iNote"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 07 · Tax ==================== -->
+  <section class="section" id="tax">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">07 — Tax</span>
+        <span class="rail-note">Every relief a family can claim, the two voluntary ones worth funding before 31 December, and who should claim what.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#tax-the-rates">The rates</a>
+          <a href="#tax-every-relief-a-family-can-claim">Every relief a family can claim</a>
+          <a href="#tax-srs-tax-deferred-and-often-tax-free">SRS: tax-deferred, and often tax-free</a>
+          <a href="#tax-which-spouse-claims-what">Which spouse claims what</a>
+          <a href="#tax-the-tax-year-in-order">The tax year, in order</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Claim every relief, then fund the two that pay you back</h2>
+        <p class="lede">
+          Singapore's income tax is low and simple, and for a salaried household most of it
+          is filled in automatically. What is left to you is the reliefs. Some you only have
+          to claim. Two you can choose to fund, CPF top-ups and SRS, and they return your
+          marginal tax rate straight away. Once children arrive, it also matters which
+          parent claims what.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li>A relief is worth your <strong>marginal rate</strong>; a rebate is worth its face value. All reliefs together are capped at <strong>$80,000</strong> a year.</li>
+            <li>Before <strong>31 December</strong>, consider a CPF cash top-up (up to <strong>$8,000</strong>, plus $8,000 for family) and an SRS contribution (up to <strong>$15,300</strong>). At an 11.5% rate the two together save over $2,600.</li>
+            <li>Put shareable child reliefs and the Parenthood Tax Rebate on the parent with the <strong>higher</strong> marginal rate. File by <strong>18 April</strong> and pay by GIRO in 12 interest-free instalments.</li>
+          </ul>
+        </div>
+
+        <h3 id="tax-the-rates">The rates</h3>
+        <p>
+          Resident rates are unchanged for YA2026 (income earned in 2025) and YA2027. There is
+          <strong>no personal income tax rebate for YA2026</strong>; Budget 2026 gave cash
+          support instead. Each rate applies only to the slice of income in its band.
+        </p>
+        <div class="tablewrap panel">
+          <table>
+            <caption style="padding:12px 16px 10px">Resident income tax rates, YA2024 onwards</caption>
+            <thead>
+              <tr><th>Chargeable income</th><th class="n">Rate on this slice</th><th class="n">Tax up to the top of the band</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>First $20,000</td><td class="n">0%</td><td class="n">$0</td></tr>
+              <tr><td>$20,001 – $30,000</td><td class="n">2%</td><td class="n">$200</td></tr>
+              <tr><td>$30,001 – $40,000</td><td class="n">3.5%</td><td class="n">$550</td></tr>
+              <tr><td>$40,001 – $80,000</td><td class="n">7%</td><td class="n">$3,350</td></tr>
+              <tr><td>$80,001 – $120,000</td><td class="n">11.5%</td><td class="n">$7,950</td></tr>
+              <tr><td>$120,001 – $160,000</td><td class="n">15%</td><td class="n">$13,950</td></tr>
+              <tr><td>$160,001 – $200,000</td><td class="n">18%</td><td class="n">$21,150</td></tr>
+              <tr><td>$200,001 – $240,000</td><td class="n">19%</td><td class="n">$28,750</td></tr>
+              <tr><td>$240,001 – $280,000</td><td class="n">19.5%</td><td class="n">$36,550</td></tr>
+              <tr><td>$280,001 – $320,000</td><td class="n">20%</td><td class="n">$44,550</td></tr>
+              <tr><td>$320,001 – $500,000</td><td class="n">22%</td><td class="n">$84,150</td></tr>
+              <tr><td>$500,001 – $1,000,000</td><td class="n">23%</td><td class="n">$199,150</td></tr>
+              <tr><td>Above $1,000,000</td><td class="n">24%</td><td class="n">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Capital gains on shares, ETFs and property are generally not taxed, unless you trade
+          so often that it looks like a business. Neither is foreign income an individual
+          receives in Singapore, such as dividends from the <a href="#etf">ETFs</a>.
+        </p>
+
+        <h3 id="tax-every-relief-a-family-can-claim">Every relief a family can claim</h3>
+        <p>
+          Most are pre-filled from your employer, CPF and earlier returns. Check them every
+          year when you file, because the pre-fill misses new children, parents who have
+          moved in and anything that depends on the other spouse's choices.
+        </p>
+        <div class="tablewrap panel tight">
+          <table>
+            <thead>
+              <tr><th>Relief</th><th class="n">Amount</th><th>Conditions</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Earned Income Relief</strong></td><td class="n">$1,000</td><td class="wrap-ok">Automatic. $6,000 from 55, $8,000 from 60.</td></tr>
+              <tr><td><strong>CPF Relief</strong> (compulsory)</td><td class="n">your CPF</td><td class="wrap-ok">Automatic, for your own compulsory employee contributions.</td></tr>
+              <tr><td><strong>CPF Cash Top-up Relief</strong></td><td class="n">$8,000 + $8,000</td><td class="wrap-ok">$8,000 for top-ups to your own SA/RA/MediSave, and another $8,000 for parents, grandparents, spouse or siblings. A spouse or sibling must have earned $8,000 or less the year before. Top-ups that attract MRSS or MMSS matching grants get no relief. See <a href="#cpf">01 CPF</a>.</td></tr>
+              <tr><td><strong>SRS Relief</strong></td><td class="n">up to $15,300</td><td class="wrap-ok">Citizens and PRs; $35,700 for foreigners. See below.</td></tr>
+              <tr><td><strong>Spouse Relief</strong></td><td class="n">$2,000</td><td class="wrap-ok">If your spouse earned $8,000 or less in the previous year, including foreign and tax-exempt income.</td></tr>
+              <tr><td><strong>Qualifying Child Relief</strong></td><td class="n">$4,000 per child</td><td class="wrap-ok">Child under 16, or studying full-time, earning $8,000 or less. Either parent, or split. $7,500 for a child with a disability.</td></tr>
+              <tr><td><strong>Working Mother's Child Relief</strong></td><td class="n">$8,000 / $10,000 / $12,000</td><td class="wrap-ok">1st / 2nd / 3rd+ citizen child born from 2024. Older children: 15% / 20% / 25% of the mother's earned income. Child reliefs are capped at $50,000 per child.</td></tr>
+              <tr><td><strong>Parenthood Tax Rebate</strong></td><td class="n">$5,000 / $10,000 / $20,000</td><td class="wrap-ok">A <em>rebate</em> on tax payable, outside the $80,000 cap. One-off per child, shareable, and carried forward until used.</td></tr>
+              <tr><td><strong>Parent Relief</strong></td><td class="n">$9,000 / $5,500</td><td class="wrap-ok">Per parent or grandparent aged 55+ who earned $8,000 or less: $9,000 if they live with you, $5,500 if not (you must spend $2,000 a year supporting them). Up to two; siblings can share.</td></tr>
+              <tr><td><strong>Grandparent Caregiver Relief</strong></td><td class="n">$3,000</td><td class="wrap-ok">Working mothers, when a grandparent earning $8,000 or less looks after a citizen child aged 12 or under. Can be claimed alongside Parent Relief.</td></tr>
+              <tr><td><strong>NSman Relief</strong></td><td class="n">$1,500 – $5,000</td><td class="wrap-ok">Automatic for NSmen. Wives and parents of NSmen get $750.</td></tr>
+              <tr><td><strong>Donations</strong></td><td class="n">250% deduction</td><td class="wrap-ok">Donations to approved charities (IPCs), automatic when you give your NRIC. Extended to the end of 2029.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note warn">
+          <span class="tag">Reliefs that are gone</span>
+          <p>
+            <strong>Foreign Domestic Worker Levy Relief</strong> ended from YA2025, so the
+            <a href="#helper">helper</a> levy no longer reduces tax. <strong>Course Fees
+            Relief</strong> ended from YA2026. Life Insurance Relief still exists, but only for
+            people whose compulsory CPF is under $5,000 a year, which excludes most employees.
+          </p>
+        </div>
+
+        <h3 id="tax-srs-tax-deferred-and-often-tax-free">SRS: tax-deferred, and often tax-free</h3>
+        <p>
+          The <strong>Supplementary Retirement Scheme</strong> is an account you open at
+          DBS, OCBC or UOB. Every dollar paid in is deducted from that year's income. The
+          catch is that it is locked until the statutory retirement age in force when you
+          make your first contribution, which is <strong>64</strong> for accounts opened from
+          1 July 2026.
+        </p>
+        <ul class="ticks">
+          <li><strong>Only half of each withdrawal is taxed</strong>, and you can spread withdrawals over 10 years. Taking out $40,000 a year makes $20,000 taxable, which is inside the 0% band if you have no other income. Done that way, the money is never taxed at all.</li>
+          <li><strong>Early withdrawal is expensive.</strong> The whole amount is taxed, plus a 5% penalty, except on death, serious illness or bankruptcy.</li>
+          <li><strong>Invest it.</strong> Left as cash, SRS earns next to nothing. The SRS bank's brokerage can buy SGX-listed ETFs such as the <a href="#etf-singapore-stocks-and-the-sti">STI ETFs</a>, plus unit trusts and Singapore Savings Bonds.</li>
+          <li><strong>Worth it from about the 11.5% band.</strong> Below that, the CPF top-up (which also earns 4%) is the better first $8,000. Fund CPF first, then SRS.</li>
+        </ul>
+
+        <h3 id="tax-which-spouse-claims-what">Which spouse claims what</h3>
+        <ul class="ticks">
+          <li><strong>Parenthood Tax Rebate:</strong> put it on the higher-earning parent first. It offsets tax dollar for dollar and carries forward, so none is wasted, but the higher earner uses it up sooner.</li>
+          <li><strong>Qualifying Child Relief:</strong> claim it on the parent with the higher marginal rate. Splitting only helps if it would otherwise push someone below their band.</li>
+          <li><strong>Working Mother's Child Relief and Grandparent Caregiver Relief:</strong> the mother only. Check her reliefs do not exceed her income, or the excess is wasted.</li>
+          <li><strong>Parent Relief:</strong> each parent can be claimed by only one child. Agree with your siblings who claims, and give it to whoever has the highest rate.</li>
+          <li><strong>CPF top-ups:</strong> topping up a lower-earning spouse's CPF counts toward your <em>family</em> $8,000 relief, if they earned $8,000 or less the year before. That builds the lower earner's retirement and cuts the higher earner's tax.</li>
+        </ul>
+
+        <h3 id="tax-the-tax-year-in-order">The tax year, in order</h3>
+        <ol class="steps">
+          <li><strong>January to 31 December:</strong> make CPF top-ups, SRS contributions and donations. They count for the <em>next</em> year of assessment, so money paid in 2026 reduces the YA2027 bill. Paying early in the year also gives a CPF top-up more months of interest.</li>
+          <li><strong>From March:</strong> if you are on the No-Filing Service, IRAS pre-fills your return; if you are on Direct Notice of Assessment, the bill itself arrives from mid-March. Either way, log in and check the reliefs, especially after a birth.</li>
+          <li><strong>1 March to 18 April:</strong> file through myTax Portal with Singpass. Add new children, the Parenthood Tax Rebate split and Parent Relief here.</li>
+          <li><strong>End April to September:</strong> the Notice of Assessment arrives. Object within 30 days if something is wrong.</li>
+          <li><strong>From May:</strong> on GIRO, the bill is paid in up to 12 interest-free monthly instalments on the 6th of each month.</li>
+        </ol>
+
+        <!-- CALCULATOR 4 -->
+        <div class="panel" id="calc-tax">
+          <div class="panel-head">
+            <span class="t">Tax estimator</span>
+            <span class="s">Resident, under 55 · YA2026 rates · employment income only</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="tInc">Annual employment income</label>
+                <input id="tInc" type="number" min="0" step="1000" value="120000">
+                <span class="hint">S$, including bonus</span>
+              </div>
+              <div class="field">
+                <label for="tTop">CPF cash top-ups</label>
+                <input id="tTop" type="number" min="0" max="16000" step="500" value="8000">
+                <span class="hint">Self + family, up to $16,000</span>
+              </div>
+              <div class="field">
+                <label for="tSrs">SRS contribution</label>
+                <input id="tSrs" type="number" min="0" max="15300" step="500" value="0">
+                <span class="hint">Up to $15,300</span>
+              </div>
+              <div class="field">
+                <label for="tOther">Other reliefs</label>
+                <input id="tOther" type="number" min="0" step="500" value="4000">
+                <span class="hint">Child, parent, spouse, NSman…</span>
+              </div>
+              <div class="field">
+                <label for="tPtr">Parenthood Tax Rebate used</label>
+                <input id="tPtr" type="number" min="0" step="500" value="0">
+                <span class="hint">Rebate, not a relief</span>
+              </div>
+            </div>
+            <div class="outrow">
+              <div class="out"><span class="k">Chargeable income</span><span class="v" id="oCh">—</span></div>
+              <div class="out"><span class="k">Tax payable</span><span class="v" id="oTaxP">—</span></div>
+              <div class="out"><span class="k">Marginal rate</span><span class="v" id="oMarg">—</span></div>
+              <div class="out"><span class="k">Effective rate</span><span class="v" id="oEff">—</span></div>
+              <div class="out"><span class="k">Saved by top-up + SRS</span><span class="v good" id="oSaved">—</span></div>
+            </div>
+            <p class="meter-foot" id="tNote"></p>
+            <p style="font-size:14px;color:var(--ink-soft);max-width:var(--measure)">
+              Assumes employee CPF of 20% on wages up to the 2026 ceilings of $8,000 a month
+              and $102,000 a year, plus $1,000 Earned Income Relief. A rough guide only:
+              your bill depends on how your pay splits between salary and bonus, and on
+              reliefs not listed here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <!-- ==================== CHECKLIST ==================== -->
   <section class="section" id="checklist">
     <div class="section-grid">
@@ -1476,6 +1941,8 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
               <tr><td><strong>03 Cards</strong></td><td class="wrap-ok">1.7% flat cashback on $30,000 of annual spend, fee waived</td><td class="n">$510/yr</td></tr>
               <tr><td><strong>04 Helper</strong></td><td class="wrap-ok">Concessionary levy once a citizen child under 16 is registered in the household</td><td class="n">$2,880/yr</td></tr>
               <tr><td><strong>05 Baby</strong></td><td class="wrap-ok">Full CDA match for a first child, on top of the $5,000 grant, $11,000 cash gift and $5,000 rebate</td><td class="n">$4,000 once</td></tr>
+              <tr><td><strong>06 Insurance</strong></td><td class="wrap-ok">Integrated Shield Plan premium paid from MediSave instead of cash, per adult aged 40 or below</td><td class="n">up to $300/yr</td></tr>
+              <tr><td><strong>07 Tax</strong></td><td class="wrap-ok">$15,300 SRS contribution at an 11.5% marginal rate, on top of the CPF top-up</td><td class="n">$1,760/yr</td></tr>
             </tbody>
           </table>
         </div>
@@ -1532,6 +1999,26 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
             <div class="check"><span class="mk">17</span><span class="tx">Claim the Parenthood Tax Rebate and child reliefs in the next tax return.<em>YA after the birth year</em></span></div>
           </div>
         </div>
+
+        <div class="check-group">
+          <span class="mono-label">06 · Insurance</span>
+          <div class="checklist">
+            <div class="check"><span class="mk">18</span><span class="tx">List the cover you already hold: MediShield Life, CareShield Life, DPS, HPS and any employer group cover.<em>CPF portal → my cpf → insurance</em></span></div>
+            <div class="check"><span class="mk">19</span><span class="tx">Put every family member on an Integrated Shield Plan for the ward you would really use.<em>Baby: apply in the first weeks</em></span></div>
+            <div class="check"><span class="mk">20</span><span class="tx">Buy term life and critical illness cover to the gap the cover check shows, to when the youngest is about 25.<em>Start with DPI on compareFIRST</em></span></div>
+            <div class="check"><span class="mk">21</span><span class="tx">Review any whole life, endowment or ILP plans against what they cost.<em>Before surrendering, get the surrender value in writing</em></span></div>
+          </div>
+        </div>
+
+        <div class="check-group">
+          <span class="mono-label">07 · Tax</span>
+          <div class="checklist">
+            <div class="check"><span class="mk">22</span><span class="tx">Open an SRS account and contribute, if your marginal rate is 11.5% or more.<em>By 31 December, for next year's relief</em></span></div>
+            <div class="check"><span class="mk">23</span><span class="tx">Top up a lower-earning spouse's or parents' CPF under the family $8,000.<em>Recipient earned $8,000 or less</em></span></div>
+            <div class="check"><span class="mk">24</span><span class="tx">Agree who claims each child relief, the Parenthood Tax Rebate and Parent Relief.<em>Higher marginal rate first</em></span></div>
+            <div class="check"><span class="mk">25</span><span class="tx">File and check the pre-filled reliefs, then set up GIRO.<em>By 18 April; 12 interest-free instalments</em></span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1544,10 +2031,10 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           <strong>This is not financial advice.</strong> It is a summary of publicly
           available rules, written for general information, by someone who is not your
           financial adviser and does not know your circumstances. CPF limits, tax rates,
-          levies, family benefits, broker fee schedules and card terms all change, several
+          levies, family benefits, insurance rules, broker fee schedules and card terms all change, several
           of them every January, and the baby benefits are being replaced from April 2027.
           Figures were checked against the primary sources on <strong>16 August 2026</strong>
-          (CPF, ETFs, cards) and <strong>4 October 2026</strong> (helper, baby), and may be
+          (CPF, ETFs, cards) and <strong>4 October 2026</strong> (helper, baby, insurance, tax), and may be
           out of date by the time you read them. Helper costs marked "~" are estimates. Verify
           at the source before acting, and consider taking licensed advice for anything
           irreversible. CPF top-ups, in particular, cannot be undone.
@@ -1611,11 +2098,43 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
               <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/working-mother's-child-relief-(wmcr)">IRAS — Working Mother's Child Relief</a>
             </div>
           </div>
+          <div>
+            <span class="mono-label">Insurance</span>
+            <div class="srclist">
+              <a href="https://www.moh.gov.sg/newsroom/government-accepts-medishield-life-council-s-recommendations-to-enhance-medishield-life-scheme---government-support-more-than-offsets-premium-increases/">MOH — MediShield Life enhancements (2025)</a>
+              <a href="https://www.moh.gov.sg/newsroom/new-requirements-for-integrated-shield-plan-riders-to-strengthen-sustainability-of-private-health-insurance-and-address-rising-healthcare-costs/">MOH — New rules for Integrated Shield Plan riders</a>
+              <a href="https://www.moh.gov.sg/newsroom/medisave-additional-withdrawal-limits-for-integrated-shield-plan-premiums/">MOH — MediSave limits for Shield plan premiums</a>
+              <a href="https://www.cpf.gov.sg/service/article/what-is-the-monthly-payout-amount-for-careshield-life">CPF Board — CareShield Life payouts</a>
+              <a href="https://www.cpf.gov.sg/member/account-services/providing-for-your-loved-ones/insuring-to-protect-your-dependants">CPF Board — Dependants' Protection Scheme</a>
+              <a href="https://www.cpf.gov.sg/member/home-ownership/protecting-against-losing-your-home">CPF Board — Home Protection Scheme</a>
+              <a href="https://www.cpf.gov.sg/member/infohub/educational-resources/what-you-need-to-know-about-the-medisave-maternity-package">CPF Board — MediSave Maternity Package</a>
+              <a href="https://www.mas.gov.sg/news/media-releases/2023/mas-and-financial-industry-launch-basic-financial-planning-guide">MAS — Basic Financial Planning Guide</a>
+              <a href="https://www.moneysense.gov.sg/buying-direct-purchase-insurance/">MoneySense — Direct Purchase Insurance</a>
+              <a href="https://www.moneysense.gov.sg/term-vs-whole-life/">MoneySense — Term vs whole life</a>
+              <a href="https://www.sdic.org.sg/pp_entitlement/">SDIC — Policy Owners' Protection Scheme</a>
+            </div>
+          </div>
+          <div>
+            <span class="mono-label">Tax</span>
+            <div class="srclist">
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates">IRAS — Individual income tax rates</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/supplementary-retirement-scheme-(srs)-relief">IRAS — SRS relief</a>
+              <a href="https://www.iras.gov.sg/schemes/individual-income-tax/tax-on-srs-withdrawals">IRAS — Tax on SRS withdrawals</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/spouse-relief-spouse-relief-(disability)">IRAS — Spouse Relief</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/parent-relief-parent-relief-(disability)">IRAS — Parent Relief</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/qualifying-child-relief-(qcr)-child-relief-(disability)">IRAS — Qualifying Child Relief</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/grandparent-caregiver-relief">IRAS — Grandparent Caregiver Relief</a>
+              <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/course-fees-relief">IRAS — Course Fees Relief (ended YA2026)</a>
+              <a href="https://www.iras.gov.sg/taxes/other-taxes/charities/donations-tax-deductions">IRAS — Donations and the 250% deduction</a>
+              <a href="https://www.iras.gov.sg/quick-links/payments/giro-individual-income-tax">IRAS — GIRO instalments</a>
+              <a href="https://www.singaporebudget.gov.sg/budget-speech/budget-statement/e-give-families-more-support-and-greater-assurance">Budget 2026 — Support for families</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="colophon">
-      Figures current 16 Aug 2026 (CPF · ETFs · cards) and 4 Oct 2026 (helper · baby) · Open source, corrections welcome · Built as a static page
+      Figures current 16 Aug 2026 (CPF · ETFs · cards) and 4 Oct 2026 (helper · baby · insurance · tax) · Open source, corrections welcome · Built as a static page
     </div>
   </footer>
 </main>
@@ -1838,5 +2357,58 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     el.addEventListener("change", runCards);
   });
   runCards();
+
+  /* ---------- 06 · Insurance cover check ---------- */
+  var iInc = document.getElementById("iInc"), iLife = document.getElementById("iLife"),
+      iCi = document.getElementById("iCi"), iSav = document.getElementById("iSav");
+  function runIns() {
+    var inc = num(iInc), sav = num(iSav);
+    var lifeT = inc * 9, ciT = inc * 4;
+    var lifeG = Math.max(0, lifeT - num(iLife) - sav);
+    var ciG = Math.max(0, ciT - num(iCi));
+    document.getElementById("oLifeT").textContent = money(lifeT);
+    document.getElementById("oLifeG").textContent = money(lifeG);
+    document.getElementById("oCiT").textContent = money(ciT);
+    document.getElementById("oCiG").textContent = money(ciG);
+    document.getElementById("oPrem").textContent = money(inc * 0.15) + "/yr";
+    document.getElementById("iNote").textContent = lifeG === 0
+      ? "Your existing cover and savings already meet the 9× guide. Check it still runs until your youngest child is independent."
+      : "Buy about " + money(lifeG) + " of term life cover, to when your youngest child is about 25. Savings count against life cover only: a critical illness payout is meant to replace income while you recover.";
+  }
+  [iInc, iLife, iCi, iSav].forEach(function (el) { el.addEventListener("input", runIns); });
+  runIns();
+
+  /* ---------- 07 · Tax estimator ---------- */
+  var BANDS = [[20000, 0], [30000, 0.02], [40000, 0.035], [80000, 0.07], [120000, 0.115], [160000, 0.15],
+               [200000, 0.18], [240000, 0.19], [280000, 0.195], [320000, 0.20], [500000, 0.22], [1000000, 0.23], [Infinity, 0.24]];
+  var CPF_WAGE_CAP = 102000, CPF_EE = 0.20, RELIEF_CAP = 80000;
+  function taxOn(ch) {
+    var t = 0, lo = 0;
+    for (var i = 0; i < BANDS.length && ch > lo; i++) { t += (Math.min(ch, BANDS[i][0]) - lo) * BANDS[i][1]; lo = BANDS[i][0]; }
+    return t;
+  }
+  function rateAt(ch) { for (var i = 0; i < BANDS.length; i++) if (ch <= BANDS[i][0]) return BANDS[i][1]; return 0.24; }
+  var tInc = document.getElementById("tInc"), tTop = document.getElementById("tTop"), tSrs = document.getElementById("tSrs"),
+      tOther = document.getElementById("tOther"), tPtr = document.getElementById("tPtr");
+  function runTax() {
+    var inc = num(tInc), top = Math.min(16000, num(tTop)), srs = Math.min(15300, num(tSrs));
+    var base = Math.min(inc, 1000) + CPF_EE * Math.min(inc, CPF_WAGE_CAP) + num(tOther);
+    var withAll = Math.min(RELIEF_CAP, base + top + srs), without = Math.min(RELIEF_CAP, base);
+    var ch = Math.max(0, inc - withAll), ch0 = Math.max(0, inc - without);
+    var ptr = num(tPtr);
+    var tax = Math.max(0, taxOn(ch) - ptr), tax0 = Math.max(0, taxOn(ch0) - ptr);
+    document.getElementById("oCh").textContent = money(ch);
+    document.getElementById("oTaxP").textContent = money(tax);
+    document.getElementById("oMarg").textContent = (Math.round(rateAt(ch) * 1000) % 10 ? (rateAt(ch) * 100).toFixed(1) : (rateAt(ch) * 100).toFixed(0)) + "%";
+    document.getElementById("oEff").textContent = inc > 0 ? (tax / inc * 100).toFixed(1) + "%" : "0%";
+    document.getElementById("oSaved").textContent = money(tax0 - tax);
+    var note = "";
+    if (base + top + srs > RELIEF_CAP) note = "Your reliefs exceed the $80,000 cap, so the excess saves nothing.";
+    else if (ptr > 0 && taxOn(ch) < ptr) note = "The rebate is larger than this year's tax. The unused " + money(ptr - taxOn(ch)) + " carries forward.";
+    else if (srs > 0 && rateAt(ch) < 0.115) note = "At under 11.5%, the SRS relief is small. Fund the CPF top-up first.";
+    document.getElementById("tNote").textContent = note;
+  }
+  [tInc, tTop, tSrs, tOther, tPtr].forEach(function (el) { el.addEventListener("input", runTax); });
+  runTax();
 })();
 </script>

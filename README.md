@@ -1,6 +1,6 @@
 # SG Household Money Guide
 
-A single-page personal finance guide for Singapore households, in five sections plus a
+A single-page personal finance guide for Singapore households, in seven sections plus a
 checklist:
 
 1. **CPF** — funding CPF MediSave and Special Account toward the Basic Retirement Sum,
@@ -15,13 +15,19 @@ checklist:
 5. **Baby** — every government benefit for a Singapore Citizen newborn (Baby Bonus, CDA,
    MediSave grant, parental leave, tax rebates) and the April 2027 switch to the
    SG Child Support Package.
+6. **Insurance** — what MediShield Life, CareShield Life, DPS and HPS already cover,
+   Integrated Shield Plans and the April 2026 rider rules, how much term life and critical
+   illness cover a parent needs, and insuring a newborn.
+7. **Tax** — 2026 resident rates, every relief a family can claim, SRS, which spouse
+   should claim what, and the tax-year calendar.
 
-Two interactive calculators are built in: a CPF top-up planner that projects your Special
-Account against your own cohort's Basic Retirement Sum, and a card comparison that nets
-cashback against the annual fee.
+Four interactive calculators are built in: a CPF top-up planner that projects your Special
+Account against your own cohort's Basic Retirement Sum, a card comparison that nets
+cashback against the annual fee, an insurance cover check against the MAS rules of thumb,
+and a tax estimator.
 
 **This is not financial advice.** Figures were checked against primary sources on
-16 August 2026 (CPF, ETFs, cards) and 4 October 2026 (helper, baby). See the disclaimer and source list in the page footer.
+16 August 2026 (CPF, ETFs, cards) and 4 October 2026 (helper, baby, insurance, tax). See the disclaimer and source list in the page footer.
 
 ## Structure
 
@@ -94,11 +100,13 @@ that move, and when:
 | MDW levy, bond, insurance rules | occasionally | [MOM](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker) |
 | Baby Bonus / CDA / SG Child Support Package | Budget and National Day Rally; scheme replaced 1 Apr 2027 | [Made for Families](https://www.madeforfamilies.gov.sg/ndr-2026-supporting-families) |
 | STI dashboard prices and earnings | whenever refreshed (`sti/fetch_*.py`) | Yahoo Finance |
+| MediShield Life, CareShield Life, IP rider rules | MOH reviews, roughly every 5 years | [MOH](https://www.moh.gov.sg/managing-expenses/schemes-and-subsidies/medishield-life/) |
+| SRS cap, retirement age | occasionally | [IRAS](https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/supplementary-retirement-scheme-(srs)-relief) |
 | Parental leave | Budget and NDR | [Made for Families](https://www.madeforfamilies.gov.sg/parental-leave-and-benefits/shared-parental-leave) |
 
 Hard-coded numbers live in two places: the HTML tables, and the constants at the top of
 each calculator in the `<script>` block (`BRS_2026`, `FRS_2026`, `BRS_GROWTH`, `CPF_RATE`,
-and the `CARDS` array). Change both.
+the `CARDS` array, `BANDS`, `CPF_WAGE_CAP` and `RELIEF_CAP`). Change both.
 
 ## Contributing
 
