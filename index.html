@@ -609,7 +609,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     <nav class="mainnav" aria-label="Sections">
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <ul class="menu" id="menu">
-        <li class="dd" data-secs="cpf etf cards insurance tax checklist">
+        <li class="dd" data-secs="cpf etf cards insurance tax payouts checklist">
           <button class="dd-btn" type="button" aria-expanded="false"><span class="num">1</span>Finance basics <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="dd-panel">
             <a href="#cpf" data-sec="cpf"><b>CPF</b><span>Top-ups toward the Basic Retirement Sum, and the tax relief</span></a>
@@ -617,6 +617,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
             <a href="#cards" data-sec="cards"><b>Credit card</b><span>One flat cashback card, fee versus rate</span></a>
             <a href="#insurance" data-sec="insurance"><b>Insurance</b><span>Shield plans, term life, insuring the baby</span></a>
             <a href="#tax" data-sec="tax"><b>Tax</b><span>Every relief, SRS, who claims what</span></a>
+            <a href="#payouts" data-sec="payouts"><b>Government payouts</b><span>Every cash payout, voucher and rebate, and when it lands</span></a>
             <a class="foot" href="#checklist" data-sec="checklist"><b>Checklist</b><span>Everything in the guide, in order</span></a>
           </div>
         </li>
@@ -717,6 +718,12 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
         <span class="h">Claim every relief</span>
         <span class="d">Every relief a family can claim, CPF top-ups and SRS before 31 December, and which spouse should claim what.</span>
         <span class="x">tax estimator</span>
+      </a>
+      <a class="toc-card" href="#payouts">
+        <span class="n">1.6 · Government payouts</span>
+        <span class="h">Collect every payout</span>
+        <span class="d">Cost-of-Living payment, GST Voucher, CDC vouchers, U-Save and child credits: who gets what, when, and what you must do.</span>
+        <span class="x">~$3,000 for a typical family · estimator</span>
       </a>
       <a class="toc-card" href="#checklist">
         <span class="n">Checklist</span>
@@ -1796,6 +1803,172 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
     </div>
   </section>
 
+  <!-- ==================== 1.6 · Government payouts ==================== -->
+  <section class="section" id="payouts">
+    <div class="section-grid">
+      <div class="rail">
+        <span class="role">1.6 — Government payouts</span>
+        <span class="rail-note">Every cash payment, voucher and rebate a household gets in the 2026 financial year, when it lands, and the few things you must do to receive it.</span>
+        <nav class="rail-toc" aria-label="In this section">
+          <a href="#payouts-what-arrives-when">What arrives when</a>
+          <a href="#payouts-estimator">Payout estimator</a>
+          <a href="#payouts-who-gets-how-much">Who gets how much</a>
+          <a href="#payouts-make-sure-it-reaches-you">Make sure it reaches you</a>
+        </nav>
+      </div>
+      <div class="body-col">
+        <h2>Collect every government payout, on time</h2>
+        <p class="lede">
+          Budget 2026 and two support packages in April and July put cash, vouchers and
+          rebates into almost every citizen household between April 2026 and April 2027.
+          Most of it arrives automatically. The parts people miss are the CDC vouchers, which
+          someone has to claim, and the cash that waits for a PayNow link or a first-time
+          sign-up.
+        </p>
+
+        <div class="tldr">
+          <span class="tag">In short</span>
+          <ul>
+            <li><strong>Link PayNow to every adult's NRIC.</strong> It is the fastest payment route and the default for every cash payout.</li>
+            <li><strong>Claim the CDC vouchers</strong> at go.gov.sg/cdcv: $500 out since June, and $300 more in January 2027. One person claims for the whole household.</li>
+            <li>A typical HDB family of two working adults and two young children gets about <strong>$3,000 or more</strong> in cash, vouchers and credits this year. Use the <a href="#payouts-estimator">estimator</a> for yours.</li>
+          </ul>
+        </div>
+
+        <h3 id="payouts-what-arrives-when">What arrives when</h3>
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">Financial year 2026 (April 2026 to March 2027), as of 4 October 2026</caption>
+            <thead>
+              <tr><th>When</th><th>Payout</th><th class="n">Amount</th><th>Who</th><th>You need to</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Apr, Jul, Oct 2026, Jan 2027</td><td><strong>U-Save</strong> and <strong>S&amp;CC rebates</strong></td><td class="n">$440–760 + 1.5–3.5 months</td><td class="wrap-ok">HDB households; October and January U-Save is doubled</td><td class="wrap-ok">Nothing. Credited to the SP and S&amp;CC accounts.</td></tr>
+              <tr><td>Jun 2026</td><td><strong>CDC vouchers</strong></td><td class="n">$500</td><td class="wrap-ok">Every citizen household</td><td class="wrap-ok"><strong>Claim</strong> at go.gov.sg/cdcv. Valid to 31 Dec 2027.</td></tr>
+              <tr><td>From 14 Jul 2026</td><td><strong>Child LifeSG Credits</strong></td><td class="n">$500 per child</td><td class="wrap-ok">Citizen children born 2014–2025; 2026 babies in April 2027</td><td class="wrap-ok">Nothing. Spend in the LifeSG app (CDA trustee).</td></tr>
+              <tr><td>Jul 2026</td><td><strong>Edusave / PSEA top-up</strong></td><td class="n">$500</td><td class="wrap-ok">Born 2009–2012 (Edusave) or 2005–2008 (PSEA)</td><td class="wrap-ok">Nothing.</td></tr>
+              <tr><td>From 7 Aug 2026</td><td><strong>GST Voucher – Cash</strong></td><td class="n">$450 or $850</td><td class="wrap-ok">Adults 21+, assessable income ≤ $39,000, home AV ≤ $31,000</td><td class="wrap-ok">First-timers sign up on govbenefits.gov.sg.</td></tr>
+              <tr><td>Aug 2026</td><td><strong>GST Voucher – MediSave</strong></td><td class="n">$150–450</td><td class="wrap-ok">Citizens 65+, home AV ≤ $31,000</td><td class="wrap-ok">Nothing. Into MediSave.</td></tr>
+              <tr><td>From 9 Sep 2026</td><td><strong>Cost-of-Living Special Payment</strong></td><td class="n">$400–600</td><td class="wrap-ok">Adults 21+, assessable income ≤ $100,000</td><td class="wrap-ok">Nothing, if PayNow-NRIC or a bank account is on record.</td></tr>
+              <tr><td>Dec 2026</td><td><strong>CPF top-up</strong></td><td class="n">$500–1,500</td><td class="wrap-ok">Citizens 50+ with under $110,200 in CPF retirement savings</td><td class="wrap-ok">Nothing. Into the Retirement or Special Account.</td></tr>
+              <tr><td>Jan 2027</td><td><strong>CDC vouchers</strong></td><td class="n">$300</td><td class="wrap-ok">Every citizen household</td><td class="wrap-ok"><strong>Claim</strong> again. Valid to 31 Dec 2027.</td></tr>
+              <tr><td>From Apr 2027</td><td><strong>Child Credits</strong></td><td class="n">$2,000 a year</td><td class="wrap-ok">Citizen children aged 1–16, under the new SG Child Support Package</td><td class="wrap-ok">PayNow on the child's birth certificate number. See <a href="#baby">Baby bonus</a>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Every adult payment except CDC vouchers excludes anyone who owns more than one
+          property. "Assessable income" is your income for <strong>YA2025</strong>, meaning
+          what you earned in 2024, after expenses and donations but before personal reliefs.
+          It is on your YA2025 notice of assessment in myTax Portal. "AV" is the annual value
+          of the home you live in, as at 31 December 2025, which is on your property tax bill.
+        </p>
+
+        <!-- CALCULATOR 5 -->
+        <div class="panel" id="payouts-estimator">
+          <div class="panel-head">
+            <span class="t">Payout estimator</span>
+            <span class="s">Financial year 2026 · citizen household</span>
+          </div>
+          <div class="panel-body">
+            <div class="controls">
+              <div class="field">
+                <label for="pAdults">Adults 21+</label>
+                <select id="pAdults">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pAi1">Adult 1 assessable income</label>
+                <input id="pAi1" type="number" min="0" step="1000" value="70000">
+                <span class="hint">S$, YA2025 (2024 income)</span>
+              </div>
+              <div class="field">
+                <label for="pAi2">Adult 2 assessable income</label>
+                <input id="pAi2" type="number" min="0" step="1000" value="50000">
+                <span class="hint">S$, YA2025; 0 if not working</span>
+              </div>
+              <div class="field">
+                <label for="pFlat">Home</label>
+                <select id="pFlat">
+                  <option value="760">HDB 1- or 2-room</option>
+                  <option value="680">HDB 3-room</option>
+                  <option value="600" selected>HDB 4-room</option>
+                  <option value="520">HDB 5-room</option>
+                  <option value="440">HDB Executive</option>
+                  <option value="0">Private property</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pAv">Home annual value</label>
+                <select id="pAv">
+                  <option value="15000">$15,000 or less</option>
+                  <option value="21000" selected>$15,001–21,000</option>
+                  <option value="31000">$21,001–31,000</option>
+                  <option value="99999">Above $31,000</option>
+                </select>
+                <span class="hint">On the property tax bill</span>
+              </div>
+              <div class="field">
+                <label for="pKids">Children born 2014–2026</label>
+                <input id="pKids" type="number" min="0" step="1" value="2">
+                <span class="hint">Citizens, for Child LifeSG Credits</span>
+              </div>
+              <div class="field">
+                <label for="pProp">Own more than one property?</label>
+                <select id="pProp">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="outrow">
+              <div class="out"><span class="k">Cost-of-Living payment</span><span class="v" id="pCol">—</span></div>
+              <div class="out"><span class="k">GST Voucher cash</span><span class="v" id="pGst">—</span></div>
+              <div class="out"><span class="k">CDC vouchers</span><span class="v" id="pCdc">—</span></div>
+              <div class="out"><span class="k">U-Save</span><span class="v" id="pUs">—</span></div>
+              <div class="out"><span class="k">Child LifeSG Credits</span><span class="v" id="pKid">—</span></div>
+              <div class="out"><span class="k">Total</span><span class="v" id="pTot">—</span></div>
+            </div>
+            <p class="meter-foot" id="pNote"></p>
+          </div>
+        </div>
+
+        <h3 id="payouts-who-gets-how-much">Who gets how much</h3>
+        <div class="tablewrap panel tight">
+          <table>
+            <caption style="padding:12px 16px 10px">Cost-of-Living Special Payment, September 2026, per adult</caption>
+            <thead>
+              <tr><th>Assessable income (YA2025)</th><th class="n">AV ≤ $15,000</th><th class="n">AV $15,001–31,000</th><th class="n">AV above $31,000</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Up to $22,000</td><td class="n">$600</td><td class="n">$500</td><td class="n">$400</td></tr>
+              <tr><td>$22,001–39,000</td><td class="n">$500</td><td class="n">$500</td><td class="n">$400</td></tr>
+              <tr><td>$39,001–100,000</td><td class="n">$400</td><td class="n">$400</td><td class="n">$400</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="ticks">
+          <li><strong>GST Voucher – Cash:</strong> $850 if the home's AV is up to $21,000, or $450 if up to $31,000, for adults with assessable income up to $39,000. It is paid every August, not just this year.</li>
+          <li><strong>GST Voucher – MediSave</strong> for parents and grandparents: $250 / $350 / $450 at ages 65–74 / 75–84 / 85+ if the AV is up to $21,000, and $100 less if it is up to $31,000.</li>
+          <li><strong>U-Save</strong> per year: $760 (1–2 room), $680 (3-room), $600 (4-room), $520 (5-room), $440 (Executive). <strong>S&amp;CC rebate</strong>: 3.5, 2.5, 2.5, 2.0 and 1.5 months. The household must have a citizen owner or occupier and own no other property.</li>
+          <li><strong>CDC vouchers</strong>: half for heartland shops and hawkers, half for supermarkets. You cannot move value between the two halves.</li>
+          <li><strong>CPF top-up for 50+</strong> (December 2026): $1,500 if retirement savings are under $60,000 and AV up to $21,000; $1,000 if savings are $60,000–110,199; $500 at an AV of $21,001–31,000. Worth checking for your parents.</li>
+        </ul>
+
+        <h3 id="payouts-make-sure-it-reaches-you">Make sure it reaches you</h3>
+        <ol class="steps">
+          <li><strong>Link PayNow to each adult's NRIC</strong> through your bank app. PayNow-NRIC payments land first (GST Voucher by 7 August; Cost-of-Living payment by 9 September). Bank crediting and GovCash collection come one to three weeks later.</li>
+          <li><strong>First time getting a GST Voucher?</strong> Sign up once on govbenefits.gov.sg with Singpass. After that, every year's payout is automatic.</li>
+          <li><strong>Claim CDC vouchers</strong> at go.gov.sg/cdcv with Singpass, then save the voucher link. Do it again after the January 2027 tranche.</li>
+          <li><strong>Keep your Singpass mobile number current.</strong> Notifications come by SMS from the sender ID "gov.sg". Government SMSes about payouts only inform you; they never ask you to click a link to pay, log in, or give bank details. Treat any that do as a scam.</li>
+          <li><strong>Check what you are owed</strong> any time: log in to govbenefits.gov.sg with Singpass to see each payout, its amount and its status.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== 2 · STI dashboard ==================== -->
   <section class="section" id="sti">
     <div class="section-grid">
@@ -2537,31 +2710,40 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
           </div>
 
         <div class="check-group">
+          <span class="mono-label">Government payouts</span>
+          <div class="checklist">
+            <div class="check" data-id="29"><span class="mk">17</span><span class="tx">Link PayNow to every adult's NRIC, and your child's birth certificate number.<em>Bank app → PayNow</em></span></div>
+            <div class="check" data-id="30"><span class="mk">18</span><span class="tx">Claim the household's CDC vouchers.<em>go.gov.sg/cdcv · $500 now, $300 from January 2027</em></span></div>
+            <div class="check" data-id="31"><span class="mk">19</span><span class="tx">Check every adult's payouts, and your parents', on govbenefits.gov.sg.<em>First-time GST Voucher recipients must sign up</em></span></div>
+          </div>
+        </div>
+
+        <div class="check-group">
           <span class="mono-label">Hiring a helper</span>
           <div class="checklist">
-            <div class="check" data-id="09"><span class="mk">17</span><span class="tx">Do the Employers' Orientation Programme, then apply in the FDW eService.<em>EOP at least 2 working days before applying</em></span></div>
-            <div class="check" data-id="10"><span class="mk">18</span><span class="tx">Buy the security bond and medical and personal accident insurance, and set up levy GIRO, before she arrives.<em>Bond effective on arrival date</em></span></div>
-            <div class="check" data-id="11"><span class="mk">19</span><span class="tx">Register your under-16 child or 67+ parent as a household member for the $60 levy.<em>FDW eService → household members</em></span></div>
-            <div class="check" data-id="12"><span class="mk">20</span><span class="tx">Pay salary by bank transfer within 7 days of month end, and book the six-monthly medical exam.<em>Every month / every 6 months</em></span></div>
+            <div class="check" data-id="09"><span class="mk">20</span><span class="tx">Do the Employers' Orientation Programme, then apply in the FDW eService.<em>EOP at least 2 working days before applying</em></span></div>
+            <div class="check" data-id="10"><span class="mk">21</span><span class="tx">Buy the security bond and medical and personal accident insurance, and set up levy GIRO, before she arrives.<em>Bond effective on arrival date</em></span></div>
+            <div class="check" data-id="11"><span class="mk">22</span><span class="tx">Register your under-16 child or 67+ parent as a household member for the $60 levy.<em>FDW eService → household members</em></span></div>
+            <div class="check" data-id="12"><span class="mk">23</span><span class="tx">Pay salary by bank transfer within 7 days of month end, and book the six-monthly medical exam.<em>Every month / every 6 months</em></span></div>
           </div>
 
         <div class="check-group">
           <span class="mono-label">Baby bonus</span>
           <div class="checklist">
-            <div class="check" data-id="13"><span class="mk">21</span><span class="tx">Register the birth and enrol in the Baby Bonus scheme on LifeSG in the same flow.<em>Within 42 days of birth</em></span></div>
-            <div class="check" data-id="14"><span class="mk">22</span><span class="tx">Reallocate shared parental leave if you are not splitting it 5 + 5.<em>Within 4 weeks of birth</em></span></div>
-            <div class="check" data-id="15"><span class="mk">23</span><span class="tx">Open the CDA and deposit up to the government match cap.<em>$4,000 for a first child</em></span></div>
-            <div class="check" data-id="16"><span class="mk">24</span><span class="tx">Set up PayNow on the baby's birth certificate number.<em>Before 1 April 2027, for Child Credits</em></span></div>
-            <div class="check" data-id="17"><span class="mk">25</span><span class="tx">Claim the Parenthood Tax Rebate and child reliefs in the next tax return.<em>YA after the birth year</em></span></div>
+            <div class="check" data-id="13"><span class="mk">24</span><span class="tx">Register the birth and enrol in the Baby Bonus scheme on LifeSG in the same flow.<em>Within 42 days of birth</em></span></div>
+            <div class="check" data-id="14"><span class="mk">25</span><span class="tx">Reallocate shared parental leave if you are not splitting it 5 + 5.<em>Within 4 weeks of birth</em></span></div>
+            <div class="check" data-id="15"><span class="mk">26</span><span class="tx">Open the CDA and deposit up to the government match cap.<em>$4,000 for a first child</em></span></div>
+            <div class="check" data-id="16"><span class="mk">27</span><span class="tx">Set up PayNow on the baby's birth certificate number.<em>Before 1 April 2027, for Child Credits</em></span></div>
+            <div class="check" data-id="17"><span class="mk">28</span><span class="tx">Claim the Parenthood Tax Rebate and child reliefs in the next tax return.<em>YA after the birth year</em></span></div>
           </div>
         </div>
 
         <div class="check-group">
           <span class="mono-label">Childcare</span>
           <div class="checklist">
-            <div class="check" data-id="26"><span class="mk">26</span><span class="tx">Shortlist Anchor and Partner Operator centres near home or work, and register interest at several.<em>During pregnancy, for infant care</em></span></div>
-            <div class="check" data-id="27"><span class="mk">27</span><span class="tx">Apply for the childcare subsidy through the centre on enrolment.<em>Recheck the means test from 1 Jan 2027: ceiling $15,000</em></span></div>
-            <div class="check" data-id="28"><span class="mk">28</span><span class="tx">Link the child's CDA to the centre for fee GIRO.<em>Matched money pays first</em></span></div>
+            <div class="check" data-id="26"><span class="mk">29</span><span class="tx">Shortlist Anchor and Partner Operator centres near home or work, and register interest at several.<em>During pregnancy, for infant care</em></span></div>
+            <div class="check" data-id="27"><span class="mk">30</span><span class="tx">Apply for the childcare subsidy through the centre on enrolment.<em>Recheck the means test from 1 Jan 2027: ceiling $15,000</em></span></div>
+            <div class="check" data-id="28"><span class="mk">31</span><span class="tx">Link the child's CDA to the centre for fee GIRO.<em>Matched money pays first</em></span></div>
           </div>
         </div>
 
@@ -2659,7 +2841,7 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   /* ---------- one section per page: the hash picks which one is shown ---------- */
   var PAGES = [
     ["cpf", "CPF"], ["etf", "ETF investing"], ["cards", "Credit card"], ["insurance", "Insurance"],
-    ["tax", "Tax"], ["sti", "STI dashboard"], ["helper", "Hiring a helper"], ["baby", "Baby bonus"],
+    ["tax", "Tax"], ["payouts", "Government payouts"], ["sti", "STI dashboard"], ["helper", "Hiring a helper"], ["baby", "Baby bonus"],
     ["childcare", "Childcare"],
     ["checklist", "Checklist"]
   ];
@@ -2899,6 +3081,41 @@ thead th { background: var(--accent-tint); color: var(--accent-ink); }
   }
   [iInc, iLife, iCi, iSav].forEach(function (el) { el.addEventListener("input", runIns); });
   runIns();
+
+  /* ---------- 1.6 · Payout estimator (FY2026) ---------- */
+  var pAdults = document.getElementById("pAdults"), pAi1 = document.getElementById("pAi1"), pAi2 = document.getElementById("pAi2"),
+      pFlat = document.getElementById("pFlat"), pAv = document.getElementById("pAv"), pKids = document.getElementById("pKids"),
+      pProp = document.getElementById("pProp");
+  function colPay(ai, av) {   // Enhanced Cost-of-Living Special Payment, Sep 2026
+    if (ai > 100000) return 0;
+    if (ai <= 22000) return av <= 15000 ? 600 : av <= 31000 ? 500 : 400;
+    if (ai <= 39000) return av <= 31000 ? 500 : 400;
+    return 400;
+  }
+  function gstvCash(ai, av) { return ai > 39000 ? 0 : av <= 21000 ? 850 : av <= 31000 ? 450 : 0; }
+  function runPay() {
+    var multi = pProp.value === "1", av = +pAv.value;
+    var ais = [num(pAi1)].concat(pAdults.value === "2" ? [num(pAi2)] : []);
+    pAi2.disabled = pAdults.value !== "2";
+    var col = 0, gst = 0;
+    if (!multi) ais.forEach(function (ai) { col += colPay(ai, av); gst += gstvCash(ai, av); });
+    var us = multi ? 0 : +pFlat.value, cdc = 800, kids = Math.floor(num(pKids)) * 500;
+    document.getElementById("pCol").textContent = money(col);
+    document.getElementById("pGst").textContent = money(gst);
+    document.getElementById("pCdc").textContent = money(cdc);
+    document.getElementById("pUs").textContent = money(us);
+    document.getElementById("pKid").textContent = money(kids);
+    document.getElementById("pTot").textContent = money(col + gst + cdc + us + kids);
+    var note = multi
+      ? "Owning more than one property rules out the cash payments and U-Save; the household still gets CDC vouchers, and children still get Child LifeSG Credits."
+      : "Not counted: S&CC rebates" + (us ? " (" + { 760: "3.5", 680: "2.5", 600: "2.5", 520: "2.0", 440: "1.5" }[us] + " months of your charges)" : "") +
+        ", GST Voucher MediSave and the December CPF top-up for anyone 50+, and Edusave or PSEA top-ups for older children.";
+    if (!multi && pFlat.value === "0" && av <= 21000) note += " Check the annual value: most private homes are above $21,000.";
+    document.getElementById("pNote").textContent = note;
+  }
+  [pAdults, pFlat, pAv, pProp].forEach(function (el) { el.addEventListener("change", runPay); });
+  [pAi1, pAi2, pKids].forEach(function (el) { el.addEventListener("input", runPay); });
+  runPay();
 
   /* ---------- 5 · Childcare fee calculator ---------- */
   // Fee caps from 1 Jan 2026 with 9% GST; additional subsidy bands [income up to, max AS, min co-pay].
